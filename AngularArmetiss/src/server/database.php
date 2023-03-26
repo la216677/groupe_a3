@@ -1,8 +1,9 @@
 <?php
-  $db_host='130.61.110.159';
-  $db_username='armecaisse';
-  $db_password='*j#$!^C5@7K879C583s6';
-  $db_name='armecaisse';
+  header("Access-Control-Allow-Origin: *");
+  header('Access-Control-Allow-Credentials: true');
+  header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE");
+  header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+  header("Content-Type: application/json; charset=UTF-8");
 
   function connect($db_host,$db_username,$db_name,$db_password){
     try{

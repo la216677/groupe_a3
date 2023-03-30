@@ -1,0 +1,203 @@
+<div class="container">
+  <div *ngIf="isAddForm" class="title">Ajouter un utilisateur</div>
+  <div *ngIf="!isAddForm" class="title">Modifier un utilisateur</div>
+  <div class="content">
+    <form *ngIf="user" (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="user-details">
+        <!-- Nom -->
+
+        <div class="input-box">
+          <span class="details">Nom</span>
+          <input
+            type="text"
+            placeholder="Entrer un nom"
+            required
+            pattern="^[a-zA-ZÀ-ÿ\- ']*$"
+            [(ngModel)]="user.last_name"
+            name="last_name"
+            #last_name="ngModel"
+          />
+
+          <div
+            class="error"
+            [hidden]="!last_name || last_name.valid || last_name.pristine"
+          >
+            <span *ngIf="last_name.errors?.['required']"
+              >Le nom est requis.</span
+            >
+            <span *ngIf="last_name.errors?.['pattern']"
+              >Le nom ne peut pas contenir de chiffres ou de caractères.</span
+            >
+          </div>
+        </div>
+
+        <!-- Prénom -->
+
+        <div class="input-box">
+          <span class="details">Prénom</span>
+          <input
+            type="text"
+            placeholder="Entrer un prénom"
+            required
+            pattern="^[a-zA-ZÀ-ÿ\- ']*$"
+            [(ngModel)]="user.first_name"
+            name="first_name"
+            #first_name="ngModel"
+          />
+
+          <div
+            class="error"
+            [hidden]="!first_name || first_name.valid || first_name.pristine"
+          >
+            <span *ngIf="first_name.errors?.['required']"
+              >Le prénom est requis.</span
+            >
+            <span *ngIf="first_name.errors?.['pattern']"
+              >Le prénom ne peut pas contenir de chiffres ou de
+              caractères.</span
+            >
+          </div>
+        </div>
+
+        <!-- Email -->
+
+        <div class="input-box">
+          <span class="details">Email</span>
+          <input
+            type="email"
+            placeholder="Entrer un email"
+            required
+            [(ngModel)]="user.email"
+            name="email"
+            (ngModelChange)="checkEmail(user.email)"
+            #email="ngModel"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          />
+
+          <div class="error" [hidden]="!email || email.valid || email.pristine">
+            <span *ngIf="email.errors?.['required']"
+              >L'adresse e-mail est requise.</span
+            >
+            <span *ngIf="email.errors?.['pattern']"
+              >L'adresse e-mail doit être valide.</span
+            >
+          </div>
+
+          <div *ngIf="emailExists" class="error"> L'adressse e-mail existe déjà</div>
+        </div>
+
+        <!-- Date de naissance -->
+
+        <div class="input-box">
+          <span class="details">Date de naissance</span>
+          <input
+            type="date"
+            required
+            [(ngModel)]="user.birthDate"
+            name="birthDate"
+            #birthDate="ngModel"
+          />
+
+          <div
+            class="error"
+            [hidden]="!birthDate || birthDate.valid || birthDate.pristine"
+          >
+            <span *ngIf="birthDate.errors?.['required']"
+              >La date de naissance est requise.</span
+            >
+          </div>
+        </div>
+
+        <!-- Mot de passe -->
+        <div class="input-box">
+          <span class="details">Mot de passe</span>
+          <input
+            type="password"
+            placeholder="Mot de passe"
+            minlength="6"
+            required
+            [(ngModel)]="user.pwd"
+            name="pwd"
+            #pwd="ngModel"
+            (keyup)="checkPasswords()"
+          />
+          <div class="error">
+            <span [hidden]="pwd.valid || pwd.pristine">
+              Le mot de passe doit avoir une longueur minimale de 6 caractères.
+            </span>
+          </div>
+        </div>
+
+        <!-- Confirmer mot de passe -->
+        <div class="input-box">
+          <span class="details">Confirmer mot de passe</span>
+          <input
+            type="password"
+            placeholder="Confirmer mot de passe"
+            required
+            [(ngModel)]="user.confirm_pwd"
+            name="confirm_pwd"
+            #confirmPwd="ngModel"
+            (ngModelChange)="checkPasswords()"
+          />
+          <div class="error">
+            <span [hidden]="confirmPwd.valid || confirmPwd.pristine"
+              >La confirmation de mot de passe est requise. <br
+            /></span>
+            <span [hidden]="passwordsMatch || confirmPwd.pristine"
+              >Les mots de passe ne correspondent pas.
+            </span>
+          </div>
+        </div>
+
+        <div class="input-box">
+          <span class="details">Role</span>
+          <select
+            name="role"
+            required
+            [(ngModel)]="user.role"
+            #roleUser="ngModel"
+          >
+            <option disabled>Sélectionner un rôle</option>
+            <option
+              *ngFor="let selectRole of roles"
+              value="{{ selectRole.ID_Role }}"
+            >
+              {{ selectRole.Role }}
+            </option>
+          </select>
+
+          <div class="error" [hidden]="roleUser.valid || roleUser.pristine">
+            <span *ngIf="roleUser.errors?.['required']"
+              >Le rôle est obligatoire</span
+            >
+          </div>
+        </div>
+
+
+      <div *ngIf="!isAddForm"  class="input-box">
+        <span class="details">Status</span>
+        <select
+          name="activity"
+          required
+          [(ngModel)]="user.activity"
+          #activity="ngModel"
+        >
+          <option disabled>Status</option>
+          <option value="true"> Actif </option>
+          <option value="false"> Inactif </option>
+        </select>
+      </div>
+    </div>
+
+
+      <div class="button">
+        <input
+          type="submit"
+          value="Ajouter utilisateur"
+          [disabled]="!userForm.form.valid || !checkPasswords() ||emailExists"
+        />
+      </div>
+    </form>
+  </div>
+</div>

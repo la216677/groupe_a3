@@ -1,0 +1,36 @@
+body {
+    
+}
+
+header {
+    display: flex;
+    position: sticky;
+    top: 0;
+    color: white;
+    background: #232B42;
+    height: 80px;
+    justify-content: center;
+}
+
+#Logo_ARMETISS {
+    position: absolute;
+    align-self: center;
+    width: 150px;
+    margin-bottom: 0.2%;
+}
+
+.profile { 
+    right: 25px;
+    align-self: center;
+    position: absolute;
+    width: 50px;
+    cursor: pointer;
+}
+
+#profil-dropdown {
+    
+}
+
+.btn-group {
+    
+}

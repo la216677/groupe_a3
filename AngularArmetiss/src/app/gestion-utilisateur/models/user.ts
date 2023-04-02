@@ -1,16 +1,14 @@
-import { Role } from "./role";
-
-export class Users {
-   id: number;
-   last_name: string;
-   first_name: string;
-   pwd:string;
+export class User {
+   Id_User: number;
+   User_Last_Name: string;
+   User_First_Name: string;
+   User_Password:string;
    confirm_pwd: string;
    originalEmail: string;
-   email:string;
-   birthDate:Date;
-   role: Role;
-   activity: boolean;
+   User_Email_Address:string;
+   User_BirthDate:Date;
+   Id_Role: number;
+   User_Activity: boolean;
 /*
   constructor(last_name: string,first_name: string,pwd:string,email:string,birthDate: Date, role:number) {
 

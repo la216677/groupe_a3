@@ -13,7 +13,7 @@
             placeholder="Entrer un nom"
             required
             pattern="^[a-zA-ZÀ-ÿ\- ']*$"
-            [(ngModel)]="user.last_name"
+            [(ngModel)]="user.User_Last_Name"
             name="last_name"
             #last_name="ngModel"
           />
@@ -40,7 +40,7 @@
             placeholder="Entrer un prénom"
             required
             pattern="^[a-zA-ZÀ-ÿ\- ']*$"
-            [(ngModel)]="user.first_name"
+            [(ngModel)]="user.User_First_Name"
             name="first_name"
             #first_name="ngModel"
           />
@@ -67,9 +67,9 @@
             type="email"
             placeholder="Entrer un email"
             required
-            [(ngModel)]="user.email"
+            [(ngModel)]="user.User_Email_Address"
             name="email"
-            (ngModelChange)="checkEmail(user.email)"
+            (ngModelChange)="checkEmail(user.User_Email_Address)"
             #email="ngModel"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           />
@@ -83,7 +83,9 @@
             >
           </div>
 
-          <div *ngIf="emailExists" class="error"> L'adressse e-mail existe déjà</div>
+          <div *ngIf="emailExists" class="error">
+            L'adressse e-mail existe déjà
+          </div>
         </div>
 
         <!-- Date de naissance -->
@@ -93,7 +95,7 @@
           <input
             type="date"
             required
-            [(ngModel)]="user.birthDate"
+            [(ngModel)]="user.User_BirthDate"
             name="birthDate"
             #birthDate="ngModel"
           />
@@ -109,17 +111,19 @@
         </div>
 
         <!-- Mot de passe -->
-        <div class="input-box">
+        <div class="input-box" *ngIf="editMode && !isAddForm">
           <span class="details">Mot de passe</span>
           <input
+
             type="password"
             placeholder="Mot de passe"
             minlength="6"
             required
-            [(ngModel)]="user.pwd"
+            [(ngModel)]="user.User_Password"
             name="pwd"
             #pwd="ngModel"
-            (keyup)="checkPasswords()"
+            [disabled]="!editMode && !isAddForm"
+            (ngModelChange)="checkPasswords()"
           />
           <div class="error">
             <span [hidden]="pwd.valid || pwd.pristine">
@@ -129,7 +133,7 @@
         </div>
 
         <!-- Confirmer mot de passe -->
-        <div class="input-box">
+        <div class="input-box" *ngIf="editMode && !isAddForm">
           <span class="details">Confirmer mot de passe</span>
           <input
             type="password"
@@ -138,6 +142,7 @@
             [(ngModel)]="user.confirm_pwd"
             name="confirm_pwd"
             #confirmPwd="ngModel"
+            [disabled]="!editMode && !isAddForm"
             (ngModelChange)="checkPasswords()"
           />
           <div class="error">
@@ -155,7 +160,7 @@
           <select
             name="role"
             required
-            [(ngModel)]="user.role"
+            [(ngModel)]="user.Id_Role"
             #roleUser="ngModel"
           >
             <option disabled>Sélectionner un rôle</option>
@@ -174,30 +179,44 @@
           </div>
         </div>
 
-
-      <div *ngIf="!isAddForm"  class="input-box">
-        <span class="details">Status</span>
-        <select
-          name="activity"
-          required
-          [(ngModel)]="user.activity"
-          #activity="ngModel"
-        >
-          <option disabled>Status</option>
-          <option value="true"> Actif </option>
-          <option value="false"> Inactif </option>
-        </select>
+        <div *ngIf="!isAddForm" class="input-box">
+          <span class="details">Status</span>
+          <select
+            name="activity"
+            required
+            [(ngModel)]="user.User_Activity"
+            #activity="ngModel"
+          >
+            <option disabled>Status</option>
+            <option value="1">Actif</option>
+            <option value="0">Inactif</option>
+          </select>
+        </div>
       </div>
-    </div>
+      <!-- Modifier mot de passe -->
+      <button class="btn-edit" *ngIf="!editMode && !isAddForm" (click)="updatePwd()">
+        Modifier mot de passe
+      </button>
 
 
-      <div class="button">
+
+      <div *ngIf="isAddForm" class="button">
         <input
           type="submit"
           value="Ajouter utilisateur"
-          [disabled]="!userForm.form.valid || !checkPasswords() ||emailExists"
+          [disabled]="!userForm.form.valid || !checkPasswords() || emailExists || boutonDesactive"
         />
       </div>
+
+      <div *ngIf="!isAddForm" class="button">
+        <input
+          type="submit"
+          value="Modifier utilisateur"
+          [disabled]="!userForm.form.valid || !checkPasswords() || emailExists || boutonDesactive"
+        />
+      </div>
+
+
     </form>
   </div>
 </div>

@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title">Supprimer l'utilisateur</h4>
+  <button type="button" class="btn btn-danger" aria-label="close" (click)="cancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>Êtes-vous sûr de vouloir supprimer cet utilisateur ?</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="cancel()">Annuler</button>
+  <button [disabled]="boutonDesactive" type="button" class="btn btn-danger" (click)="confirm()">Supprimer</button>
+</div>

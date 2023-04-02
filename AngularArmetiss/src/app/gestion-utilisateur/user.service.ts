@@ -22,8 +22,7 @@ export class UserService {
     };
 
     return this.http.post<User>(`${this.baseUrl}/addUser.php`,user, httpOptions).pipe(
-      tap((response) => this.log(response)),
-      catchError((error) => this.handleError(error, null)),
+      catchError((error) => this.handleError(error, null))
     )
 
 }
@@ -37,8 +36,7 @@ public updateUser(user: User): Observable<null> {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
   return this.http.put<User>(`${this.baseUrl}/updateUser.php`,user, httpOptions).pipe( //put persister modification d'un objet existant
-    tap((response) => this.log(response)),
-    catchError((error) => this.handleError(error, null)),
+    catchError((error) => this.handleError(error, null))
   )
 
 }
@@ -46,14 +44,12 @@ public updateUser(user: User): Observable<null> {
 /*
 *Méthode pour récuperer la liste de Users dans la Db
 */
-
 getUserList(): Observable<User[]> {
   return this.http.get(`${this.baseUrl}/getUser.php`).pipe(
     // On utilise l'opérateur map pour transformer la réponse HTTP en tableau.
     map((res: any) => {
       return res['data'];
     }),
-    tap((response) => this.log(response)),
     catchError((error) => this.handleError(error, []))
   );
 }
@@ -63,15 +59,25 @@ getUserById(userId: number): Observable<User | undefined>{
     map((res: any) => {
       return res['data'];
     }),
-    tap((response) => this.log(response)),
     catchError((error) => this.handleError(error,undefined))
   );
 }
 
+
+/*
+* Supprimer un utilisateur
+*/
+deleteUserById(userId: number): Observable<null>{
+  return this.http.delete(`${this.baseUrl}/deleteUser.php?userId=${userId}`).pipe(
+    catchError((error) => this.handleError(error,null))
+  )
+}
+
+
+
 /*
 * Méthode pour vérifier si l'email existe deja en DB
 */
-
 checkEmailExists(email: string): Observable<boolean> {
   return this.http.get<boolean>(`${this.baseUrl}/checkEmail.php?email=${email}`);
 }
@@ -85,7 +91,6 @@ getRole(): Observable<Role[]> {
     map((res: any) => {
       return res['data'];
     }),
-    tap((response) => this.log(response)),
     catchError((error) => this.handleError(error, []))
 
   );
@@ -93,9 +98,6 @@ getRole(): Observable<Role[]> {
 
 
 
-private log(response: any) {
-  console.table(response);
-}
 
 private handleError(error: Error, errorValue: any) {
   console.error(error);

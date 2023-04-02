@@ -111,7 +111,7 @@
         </div>
 
         <!-- Mot de passe -->
-        <div class="input-box" *ngIf="editMode && !isAddForm">
+        <div class="input-box" *ngIf="editMode || isAddForm">
           <span class="details">Mot de passe</span>
           <input
 
@@ -122,7 +122,6 @@
             [(ngModel)]="user.User_Password"
             name="pwd"
             #pwd="ngModel"
-            [disabled]="!editMode && !isAddForm"
             (ngModelChange)="checkPasswords()"
           />
           <div class="error">
@@ -133,7 +132,7 @@
         </div>
 
         <!-- Confirmer mot de passe -->
-        <div class="input-box" *ngIf="editMode && !isAddForm">
+        <div class="input-box" *ngIf="editMode || isAddForm">
           <span class="details">Confirmer mot de passe</span>
           <input
             type="password"
@@ -142,7 +141,6 @@
             [(ngModel)]="user.confirm_pwd"
             name="confirm_pwd"
             #confirmPwd="ngModel"
-            [disabled]="!editMode && !isAddForm"
             (ngModelChange)="checkPasswords()"
           />
           <div class="error">

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>Gestion <b>de catégorie</b></h2>
+        </div>
+        <div class="col-sm-6">
+          <button  (click)="openAddCatModal()" class="btn btn-success" >
+            <i class="material-icons">&#xE147;</i>
+            <span>Ajouter une catégorie</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Nom</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categoryList">
+          <td></td>
+          <td>{{ category.Category_Name }}</td>
+          <td>{{ category.Category_Description }}</td>
+          <td>
+            <div class="button-wrapper">
+              <div class="col-sm-6">
+                <button (click)="openEditCatModal(category.ID_Category)" class="btn btn-sm btn-primary"><i class="material-icons" title="Modifier">&#xE254;</i></button>
+              </div>
+              <div class="col-sm-6">
+                <button (click)="openConfirmationDeleteModal(category.ID_Category)"  class="btn btn-sm btn-danger"><i class="material-icons" title="Supprimer">&#xE872;</i></button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

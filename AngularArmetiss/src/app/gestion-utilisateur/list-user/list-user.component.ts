@@ -28,14 +28,14 @@ export class ListUserComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getUserInit();
-    this.getRoleInit();
+    this.getUser();
+    this.getRole();
 
   }
 
 
   //on récupère tout les user de la db
-  getUserInit(){
+  getUser(){
     this.userService.getUserList()
     .subscribe(
       (data: User[]) => {
@@ -50,7 +50,7 @@ export class ListUserComponent implements OnInit {
   }
 
   //on récupère tout les roles de la db
-  getRoleInit(){
+  getRole(){
     this.userService.getRole().subscribe(
       //on envoie les donne sous forme de type Role[] en cas de réussite
       (data: Role[]) => {
@@ -95,7 +95,7 @@ export class ListUserComponent implements OnInit {
     if (this.modalRef) { //on verifie si il existe pour eviter des erreur
       //lorsque le modal est fermer on raffraichi la liste d'utilisateur
       this.modalRef.onHidden?.subscribe(() => {
-        this.getUserInit();
+        this.getUser();
       });
     }
   }

@@ -6,8 +6,11 @@
     height: 200px;
     border-radius: 5%;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .card img {
     width: 70%;
     padding: 5%;
+    margin: 0%;
 }

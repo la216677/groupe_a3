@@ -9,8 +9,8 @@ if(isset($postdata) && !empty($postdata)){
   $request = json_decode($postdata);
 
   $id = mysqli_real_escape_string($mysqli, trim($request->Id_User));
-  $last_name = mysqli_real_escape_string($mysqli, trim($request->User_Last_Name));
-  $first_name = mysqli_real_escape_string($mysqli, trim($request->User_First_Name));
+  $last_name = trim($request->User_Last_Name);
+  $first_name = trim($request->User_First_Name);
   $pwd = mysqli_real_escape_string($mysqli, trim($request->User_Password));
   $email = mysqli_real_escape_string($mysqli, trim($request->User_Email_Address));
   $birthDate = mysqli_real_escape_string($mysqli, trim($request->User_BirthDate));

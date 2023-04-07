@@ -11,6 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { ProfileDropdownComponent } from './profile-dropdown/profile-dropdown.component';
 import { CardPageComponent } from './card-page/card-page.component';
 import { UserFormComponent } from './gestion-utilisateur/user-form/user-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { UserFormComponent } from './gestion-utilisateur/user-form/user-form.com
     HeaderComponent,
     ProfileDropdownComponent,
     CardPageComponent,
+    ConnexionComponent,
     
   ],
   imports: [
@@ -26,7 +29,8 @@ import { UserFormComponent } from './gestion-utilisateur/user-form/user-form.com
     FormsModule,
     HttpClientModule,
     UserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from '../../models/category';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
-import { ProductManagementService } from '../../product-management.service';
+import { CategoryService } from '../../service/category.service';
 
 @Component({
   selector: 'app-edit-category',
@@ -25,7 +25,7 @@ export class EditCategoryComponent implements OnInit {
   constructor(
     public modalRef: BsModalRef,
     private router: Router,
-    private categoryService: ProductManagementService
+    private categoryService: CategoryService
   ) { }
 
   ngOnInit(){

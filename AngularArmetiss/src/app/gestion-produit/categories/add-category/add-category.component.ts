@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductManagementService } from '../../product-management.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Category } from '../../models/category';
+import { CategoryService } from '../../service/category.service';
 
 @Component({
   selector: 'app-add-category',
@@ -17,7 +17,7 @@ export class AddCategoryComponent {
   constructor(
     public modalRef: BsModalRef,
     private router: Router,
-    private categoryService: ProductManagementService
+    private categoryService: CategoryService
   ) { }
 
   confirm(): void {

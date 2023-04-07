@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
-import { ProductManagementService } from '../../product-management.service';
 import { Router } from '@angular/router';
+import { CategoryService } from '../../service/category.service';
 
 @Component({
   selector: 'app-delete-category',
@@ -16,7 +16,7 @@ export class DeleteCategoryComponent {
 
   constructor(
     public modalRef: BsModalRef,
-    private categoryService : ProductManagementService,
+    private categoryService : CategoryService,
     private router: Router
     ) {}
 

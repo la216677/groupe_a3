@@ -24,6 +24,23 @@
         </div>
       </div>
     </div>
+
+    <!-- Visibilité -->
+<div class="form-group">
+  <label for="categoryVisibility">Visibilité :</label>
+  <select class="form-control"
+    required
+    [(ngModel)]="category.Category_Visibility"
+    name="categoryVisibility"
+    #categoryVisibility="ngModel"
+    [class.is-invalid]="categoryVisibility.invalid && (categoryVisibility.dirty || categoryVisibility.touched)"
+  >
+    <option disabled>Sélectionner la visibilité du produit</option>
+    <option value="1">Visible</option>
+    <option value="0">Invisible</option>
+  </select>
+</div>
+
       </form>
 </div>
 <div class="modal-footer">

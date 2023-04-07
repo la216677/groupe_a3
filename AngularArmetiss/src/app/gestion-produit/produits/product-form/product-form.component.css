@@ -31,13 +31,13 @@
   border-radius: 5px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
-.content form .user-details{
+.content form .product-details{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 20px 0 12px 0;
 }
-form .user-details .input-box{
+form .product-details .input-box{
   margin-bottom: 15px;
   width: calc(100% / 2 - 20px);
 }
@@ -46,7 +46,7 @@ form .input-box span.details{
   font-weight: 500;
   margin-bottom: 5px;
 }
-.user-details .input-box input{
+.product-details .input-box input{
   height: 45px;
   width: 100%;
   outline: none;
@@ -69,8 +69,9 @@ form .input-box span.details{
   transition: all 0.3s ease;
 }
 
-.user-details .input-box input:focus,
-.user-details .input-box input:valid{
+
+.product-details .input-box input:focus,
+.product-details .input-box input:valid{
   border-color: #9b59b6;
 }
  form .category{
@@ -99,9 +100,7 @@ form .input-box span.details{
    background: #9b59b6;
    border-color: #d9d9d9;
  }
- form input[type="radio"]{
-   display: none;
- }
+
  form .button{
    height: 45px;
    margin: 35px 0
@@ -129,18 +128,18 @@ form .input-box span.details{
  .container{
   max-width: 100%;
 }
-form .user-details .input-box{
+form .product-details .input-box{
     margin-bottom: 15px;
     width: 100%;
   }
   form .category{
     width: 100%;
   }
-  .content form .user-details{
+  .content form .product-details{
     max-height: 300px;
     overflow-y: scroll;
   }
-  .user-details::-webkit-scrollbar{
+  .product-details::-webkit-scrollbar{
     width: 5px;
   }
   }
@@ -149,13 +148,14 @@ form .user-details .input-box{
     flex-direction: column;
   }
 }
-
+ /*message erreur*/
 .error {
   color: red;
   font-size: 0.8em;
   margin-top: 0.2em;
 }
 
+/*boutton*/
 .btn-edit{
   display: block;
   margin: 0 auto; /*centrer le btn*/
@@ -168,12 +168,9 @@ form .user-details .input-box{
   font-size: 16px;
 }
 
-.btn-edit:hover{
-  background-color: #3e8e41;
-}
-
 /* quand formulaire pas valide*/
 .disabled-button {
   opacity: 0.5;
 }
+
 

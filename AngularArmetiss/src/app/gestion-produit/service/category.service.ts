@@ -1,19 +1,15 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Category } from './models/category';
 import { Observable, catchError, map, of } from 'rxjs';
+import { Category } from '../models/category';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductManagementService {
+export class CategoryService {
+  baseUrl: string = 'http://localhost/test/server/gestion-categorie';
 
-  baseUrl: string = 'http://localhost/test/server/gestion-produit';
 
-
-  /**********************************************
-   *                Categories                  *
-   **********************************************/
 
   constructor(private http: HttpClient) { }
 
@@ -74,13 +70,8 @@ public updateCategory(category: Category): Observable<null> {
 }
 
 
-
-
-
   private handleError(error: Error, errorValue: any) {
     console.error(error);
     return of (errorValue); //le of permet de transformer une donnée simple en flux de données, observable qui emmet la donnée en param
   }
-
-
 }

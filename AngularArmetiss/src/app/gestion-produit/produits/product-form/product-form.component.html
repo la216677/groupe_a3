@@ -1,0 +1,149 @@
+<div class="container">
+  <div *ngIf="isAddForm" class="title">Ajouter un produit</div>
+  <div *ngIf="!isAddForm" class="title">Modifier un produit</div>
+  <div class="content">
+    <form *ngIf="product" (ngSubmit)="onSubmit()" #productForm="ngForm">
+      <div class="product-details">
+        <!-- Nom -->
+        <div class="input-box">
+          <span class="details">Nom</span>
+          <input
+            type="text"
+            placeholder="Entrer un nom"
+            required
+            [(ngModel)]="product.Product_Name"
+            name="productName"
+            #productName="ngModel"
+          />
+          <div
+            class="error"
+            [hidden]="!productName || productName.valid || productName.pristine"
+          >
+            <span *ngIf="productName.errors?.['required']"
+              >Le nom du produit est requis.</span
+            >
+          </div>
+        </div>
+
+
+        <!-- Prix -->
+        <div class="input-box">
+          <span class="details">Prix HTVA</span>
+          <input
+            type="number"
+            placeholder="Entrer un prix"
+            required
+            [(ngModel)]="product.Product_Sale_Price_HTVA"
+            name="productPrice"
+            #productPrice="ngModel"
+          />
+          <div
+            class="error"
+            [hidden]="!productPrice || productPrice.valid || productPrice.pristine"
+          >
+            <span *ngIf="productPrice.errors?.['required']"
+              >Le prix du produit est requis.</span
+            >
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="input-box">
+          <span class="details">Description</span>
+          <textarea
+            placeholder="Entrer une description"
+            required
+            [(ngModel)]="product.Product_Description"
+            name="productDescription"
+            #productDescription="ngModel"
+            class="form-control"
+            style="resize: vertical; min-height: 60px;"
+          ></textarea>
+          <div
+            class="error"
+            [hidden]="!productDescription || productDescription.valid || productDescription.pristine"
+          >
+            <span *ngIf="productDescription.errors?.['required']"
+              >La description du produit est requise.</span
+            >
+          </div>
+        </div>
+
+
+
+        <!-- Image -->
+        <div class="input-box">
+          <span class="details">Image</span>
+          <input
+            type="text"
+            placeholder="Entrer l'URL d'une image"
+            [(ngModel)]="product.Product_Image_URL"
+            name="productImage"
+            #productImage="ngModel"
+          />
+        </div>
+
+        <!-- Catégorie -->
+        <div class="input-box">
+          <span class="details">Catégorie</span>
+          <select
+            required
+            [(ngModel)]="product.Id_Category"
+            name="productCategory"
+            #productCategory="ngModel"
+            [class.is-invalid]="productCategory.invalid && (productCategory.dirty || productCategory.touched)"
+          >
+          <option disabled>Sélectionner une catégorie</option>
+          <option *ngFor="let category of categoryList" [value]="category.ID_Category">{{ category.Category_Name }}</option>
+        </select>
+      </div>
+
+      <!-- Visibilité -->
+      <div class="input-box">
+        <span class="details">Visibilité</span>
+        <select
+          required
+          [(ngModel)]="product.Product_Visibility"
+          name="productVisibility"
+          #productVisibility="ngModel"
+          [class.is-invalid]="productVisibility.invalid && (productVisibility.dirty || productVisibility.touched)"
+        >
+          <option disabled>Sélectionner la visibilité du produit</option>
+          <option value="1">Visible</option>
+          <option value="0">Invisible</option>
+        </select>
+      </div>
+
+      <!-- TVA -->
+      <div class="input-box">
+        <span class="details">TVA</span>
+        <select
+          required
+          [(ngModel)]="product.Id_TVA"
+          name="productTva"
+          #productTva="ngModel"
+          [class.is-invalid]="productTva.invalid && (productTva.dirty || productTva.touched)"
+        >
+          <option  disabled >Sélectionner la TVA du produit</option>
+          <option *ngFor="let tva of tvaList" [value]="tva.ID_TVA"> {{ tva.TVA_Rate_Name }} : {{ tva.TVA_Rate*100 }}%</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- Boutons d'action -->
+    <div *ngIf="isAddForm" class="button">
+      <input type="submit"  [disabled]="!productForm.form.valid || boutonDesactive" value="Ajouter"
+      [ngClass]="{'disabled-button': !productForm.form.valid}">
+
+    </div>
+
+    <div *ngIf="!isAddForm" class="button">
+      <input type="submit"  [disabled]="!productForm.form.valid || boutonDesactive" value="Modifier"
+      [ngClass]="{'disabled-button': !productForm.form.valid}">
+
+    </div>
+
+  </form>
+</div>
+</div>

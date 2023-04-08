@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProfileDropdownComponent } from './profile-dropdown/profile-dropdown.component';
 import { CardPageComponent } from './card-page/card-page.component';
 import { UserFormComponent } from './gestion-utilisateur/user-form/user-form.component';
+import { AddStockComponent } from './gestion-produit/gestion-stock/add-stock-form/add-stock.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { UserFormComponent } from './gestion-utilisateur/user-form/user-form.com
     HeaderComponent,
     ProfileDropdownComponent,
     CardPageComponent,
-    
+    AddStockComponent,
   ],
   imports: [
     BrowserModule,

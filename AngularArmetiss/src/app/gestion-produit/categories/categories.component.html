@@ -19,6 +19,7 @@
           <th></th>
           <th>Nom</th>
           <th>Description</th>
+          <th>Visibilité</th>
           <th></th>
         </tr>
       </thead>
@@ -27,6 +28,15 @@
           <td></td>
           <td>{{ category.Category_Name }}</td>
           <td>{{ category.Category_Description }}</td>
+          <td *ngIf="category.Category_Visibility == true">
+            <pre style="display:inline-block">   </pre> <!-- Ajouter plusieurs espaces ici -->
+            <i class="material-icons">visibility</i>
+          </td>
+          <td *ngIf="category.Category_Visibility == false">
+            <pre style="display:inline-block">   </pre> <!-- Ajouter plusieurs espaces ici -->
+            <i class="material-icons">visibility_off</i>
+          </td>
+
           <td>
             <div class="button-wrapper">
               <div class="col-sm-6">

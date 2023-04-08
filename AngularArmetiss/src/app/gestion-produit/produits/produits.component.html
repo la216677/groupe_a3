@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>Gestion <b>de produit</b></h2>
+        </div>
+        <div class="col-sm-6">
+          <button (click)="goToAddProduct()" class="btn btn-success">
+            <i class="material-icons">&#xE147;</i>
+            <span>Ajouter un produit</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="categorySelect">Catégorie :</label>
+          <select id="categorySelect" class="form-control" [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+            <option selected value="0">Toutes les catégories</option>
+            <option *ngFor="let category of categoryList" [value]="category.ID_Category">{{ category.Category_Name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="searchInput">Recherche :</label>
+          <input id="searchInput" type="text" class="form-control" placeholder="Rechercher un produit..." [(ngModel)]="searchTerm" (input)="filterProducts()">
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Image</th>
+          <th>Nom</th>
+          <th>Description</th>
+          <th>Prix</th>
+          <th>Visibilité</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of filteredProductList">
+          <td></td>
+          <td> <img src="{{ product.Product_Image_URL }}" ></td>
+          <td>{{ product.Product_Name }}</td>
+          <td>{{ product.Product_Description }}</td>
+          <td>{{ product.Product_Sale_Price_TVAC }}€</td>
+          <td *ngIf="product.Product_Visibility == 1">
+            <pre style="display:inline-block">   </pre> <!-- Ajouter plusieurs espaces ici -->
+            <i class="material-icons">visibility</i>
+          </td>
+          <td *ngIf="product.Product_Visibility == 0">
+            <pre style="display:inline-block">   </pre> <!-- Ajouter plusieurs espaces ici -->
+            <i class="material-icons">visibility_off</i>
+          </td>
+
+          <td>
+            <div class="button-wrapper">
+              <div class="col-sm-6">
+                <button (click)="goToEditProduct(product.Id_Product)" class="btn btn-sm btn-primary"><i class="material-icons" title="Modifier">&#xE254;</i></button>
+              </div>
+              <div class="col-sm-6">
+                <button (click)="openConfirmationDeleteModal(product.Id_Product)" class="btn btn-sm btn-danger"><i class="material-icons" title="Supprimer">&#xE872;</i></button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

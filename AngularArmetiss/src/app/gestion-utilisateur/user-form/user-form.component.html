@@ -203,6 +203,7 @@
           type="submit"
           value="Ajouter utilisateur"
           [disabled]="!userForm.form.valid || !checkPasswords() || emailExists || boutonDesactive"
+          [ngClass]="{'disabled-button': !userForm.form.valid}">
         />
       </div>
 
@@ -211,6 +212,7 @@
           type="submit"
           value="Modifier utilisateur"
           [disabled]="!userForm.form.valid || !checkPasswords() || emailExists || boutonDesactive"
+          [ngClass]="{'disabled-button': !userForm.form.valid}">
         />
       </div>
 

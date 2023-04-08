@@ -6,12 +6,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserModule } from './gestion-utilisateur/user.module';
+
+import { ProductManagementModule } from './gestion-produit/product-management.module';
 import { ContainerCardsComponent } from './container-cards/container-cards.component';
 import { HeaderComponent } from './header/header.component';
 import { ProfileDropdownComponent } from './profile-dropdown/profile-dropdown.component';
 import { CardPageComponent } from './card-page/card-page.component';
 import { UserFormComponent } from './gestion-utilisateur/user-form/user-form.component';
 import { AddStockComponent } from './gestion-produit/gestion-stock/add-stock-form/add-stock.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConnexionComponent } from './connexion/connexion.component';
+
 
 @NgModule({
   declarations: [
@@ -21,13 +26,18 @@ import { AddStockComponent } from './gestion-produit/gestion-stock/add-stock-for
     ProfileDropdownComponent,
     CardPageComponent,
     AddStockComponent,
+    ConnexionComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     UserModule,
-    AppRoutingModule
+    ProductManagementModule,
+    AppRoutingModule,
+    BrowserAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../models/category';
 import { Router } from '@angular/router';
-import { ProductManagementService } from '../product-management.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DeleteCategoryComponent } from './delete-category/delete-category.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { CategoryService } from '../service/category.service';
 
 @Component({
   selector: 'app-categories',
@@ -19,7 +19,7 @@ export class CategoriesComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private categoryService: ProductManagementService,
+    private categoryService: CategoryService,
     private modalService: BsModalService
   ) {}
 
@@ -28,7 +28,7 @@ export class CategoriesComponent implements OnInit {
     this.getCategory();
   }
 
-    //on récupère tout les user de la db
+    //on récupère tout les catégorie de la db
     getCategory(){
       this.categoryService.getCategoryList()
       .subscribe(
@@ -43,7 +43,7 @@ export class CategoriesComponent implements OnInit {
       );
     }
 
-    //ouvrir modal pour confiremer suppression
+    //ouvrir modal pour confirmer suppression
     openConfirmationDeleteModal(categoryId: number){
       const initialState = {
         categoryId: categoryId

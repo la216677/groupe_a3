@@ -16,7 +16,8 @@ import { UserFormComponent } from './gestion-utilisateur/user-form/user-form.com
 import { AddStockComponent } from './gestion-produit/gestion-stock/add-stock-form/add-stock.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConnexionComponent } from './connexion/connexion.component';
-
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ListProductComponent } from './list-product/list-product.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,8 @@ import { ConnexionComponent } from './connexion/connexion.component';
     CardPageComponent,
     AddStockComponent,
     ConnexionComponent,
+    PageNotFoundComponent,
+    ListProductComponent,
 
   ],
   imports: [

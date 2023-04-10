@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-container-cards',
@@ -6,5 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./container-cards.component.css']
 })
 export class ContainerCardsComponent {
-  
+  constructor(private router:Router){}
+
+  goToProduct(){
+    this.router.navigate(['/produits']);
+  }
 }

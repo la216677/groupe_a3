@@ -17,7 +17,9 @@ import { AddStockComponent } from './gestion-produit/gestion-stock/add-stock-for
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ListProductComponent } from './list-product/list-product.component';
+import { GestionVentesModule } from './gestion-ventes/gestion-ventes.module';
+import { GestionHistoriqueModule } from './gestion-historique/gestion-historique.module';
+
 
 @NgModule({
   declarations: [
@@ -28,8 +30,7 @@ import { ListProductComponent } from './list-product/list-product.component';
     CardPageComponent,
     AddStockComponent,
     ConnexionComponent,
-    PageNotFoundComponent,
-    ListProductComponent,
+    PageNotFoundComponent
 
   ],
   imports: [
@@ -39,7 +40,9 @@ import { ListProductComponent } from './list-product/list-product.component';
     UserModule,
     ProductManagementModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    GestionVentesModule,
+    GestionHistoriqueModule
 
   ],
   providers: [],

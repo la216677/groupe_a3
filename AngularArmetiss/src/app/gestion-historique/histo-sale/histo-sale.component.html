@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>Historique <b>des commandes</b></h2>
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th>N°Commande</th>
+          <th>Client</th>
+          <th>Vendeur</th>
+          <th>Date</th>
+          <th>Prix total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of saleList" (click)="goToDetailSale(sale)">
+          <td></td>
+          <td>{{ sale.Id_Sale }}</td>
+          <td>{{ sale.Id_Client}}</td>
+          <td>{{ sale.Id_User}}</td>
+          <td>{{ sale.Sale_Date }}</td>
+          <td>{{ sale.Sale_Price }}€</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

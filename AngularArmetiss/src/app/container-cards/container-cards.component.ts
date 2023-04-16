@@ -12,4 +12,12 @@ export class ContainerCardsComponent {
   goToProduct(){
     this.router.navigate(['/produits']);
   }
+
+  goToVentes(){
+    this.router.navigate(['/ventes']);
+  }
+
+  goToHisto(){
+    this.router.navigate(['/historique']);
+  }
 }

@@ -1,6 +1,6 @@
 header {
     display: flex;
-    position: sticky;
+
     top: 0;
     color: white;
     background: #232B42;
@@ -15,7 +15,7 @@ header {
     margin-bottom: 0.2%;
 }
 
-.profile { 
+.profile {
     right: 25px;
     align-self: center;
     position: absolute;

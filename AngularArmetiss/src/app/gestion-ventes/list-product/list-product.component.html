@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="table-wrapper">
+    <nav class="navbar navbar-light bg-light">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="categorySelect">Catégorie :</label>
+        <select id="categorySelect" class="form-control" [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+          <option selected value="0">Toutes les catégories</option>
+          <option *ngFor="let category of categoryList" [value]="category.ID_Category">{{ category.Category_Name }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="searchInput">Recherche :</label>
+        <input id="searchInput" type="text" class="form-control" placeholder="Rechercher un produit..." [(ngModel)]="searchTerm" (input)="filterProducts()" >
+      </div>
+    </div>
+  </nav>
+  </div>
+</div>
+<div class="flex">
+  <div class="box">
+    <div class="flex">
+      <div class="card" *ngFor="let product of filteredProductList">
+        <div>
+          <img class="product_image" src='../../../assets/{{product.Product_Image_URL}}'>
+        </div>
+        <div>
+          <p class="center-text">{{product.Product_Name}}</p>
+        </div>
+        <button (click)="addBasket(product)">Appuyez</button>
+      </div>
+    </div>
+  </div>
+  <div class="panier-box">
+    <div class="panier">
+      <h2>Panier</h2>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Produit</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Prix</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of baskets">
+            <th scope="row">{{product[0].Product_Name}}</th>
+            <td>{{product[1]}}</td>
+            <td>{{product[0].Product_Sale_Price_TVAC}}</td>
+            <td>
+              <a (click)="deleteBasket(product[0],product[1])">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td scope="row" colspan="3">Total :</td>
+            <td>{{totalPriceRounded}}€</td>
+          </tr>
+          <tr>
+            <td scope="row" colspan="3">Client :</td>
+            <td>
+              <select class="form-control" id="selectClient" >
+                <option selected value="-1">Liste des client</option>
+                <option *ngFor="let client of clientList" [value]="client.ID_Client">{{ client.Client_Name }}</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <button (click)="postBasket()">Confirmer commande</button>
+  </div>
+</div>
+
+

@@ -14,18 +14,30 @@
 }
 
 .button {
-    display: flex;
+  display: flex;
+  flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 12vh;
+    height: 50vh;
     width: 100%;
 }
 
+.gestut{
+  background-color: #ffffff;
+  color: #232b42;
+  border: 1px solid #232b42;
+  margin-bottom: 5%;
+}
+
+.logout{
+  background-color: #232b42;
+  color: #ffffff;
+  border: 1px solid #232b42;
+}
+
 button{
-    min-height: 60%;
+    min-height: 30%;
     min-width: 20%;
-    background-color: #232b42;
-    color: #ffffff;
     font-size: 1.5em;
     border: none;
     border-radius: 10px;

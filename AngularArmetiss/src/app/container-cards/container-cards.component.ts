@@ -22,6 +22,10 @@ export class ContainerCardsComponent {
     this.router.navigate(['/historique']);
   }
 
+  goToUser(){
+    this.router.navigate(['/user']);
+  }
+
   logout(){
     this.cookieService.delete('connected');
     this.router.navigate(['/connexion']);

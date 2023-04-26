@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Panier } from '../models/panier';
-import jsPDF from 'jspdf';
 import { Client } from '../models/client';
-import 'jspdf-autotable';
 
 @Component({
   selector: 'app-confirm-commande',
@@ -28,7 +26,6 @@ export class ConfirmCommandeComponent implements OnInit{
   genererPdf() {
     console.table(this.client);
     console.table(this.panier);
-    const doc = new jsPDF();
 
     const tableData:[number, string, number, number, number][] = [];
     this.panier.basket.forEach((item,index) => {
@@ -39,8 +36,6 @@ export class ConfirmCommandeComponent implements OnInit{
     });
 
     //A completer
-
-    doc.save('mon-fichier-pdf.pdf');
 
   }
 

@@ -15,7 +15,6 @@ import { CardPageComponent } from './card-page/card-page.component';
 import { UserFormComponent } from './gestion-utilisateur/user-form/user-form.component';
 import { AddStockComponent } from './gestion-produit/gestion-stock/add-stock-form/add-stock.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ConnexionComponent } from './connexion/connexion.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { GestionVentesModule } from './gestion-ventes/gestion-ventes.module';
 import { GestionHistoriqueModule } from './gestion-historique/gestion-historique.module';
@@ -29,7 +28,6 @@ import { GestionHistoriqueModule } from './gestion-historique/gestion-historique
     ProfileDropdownComponent,
     CardPageComponent,
     AddStockComponent,
-    ConnexionComponent,
     PageNotFoundComponent
 
   ],

@@ -7,15 +7,16 @@ import { VentesComponent } from './gestion-ventes/ventes/ventes.component';
 import { ConfirmCommandeComponent } from './gestion-ventes/confirm-commande/confirm-commande.component';
 import { HistoSaleComponent } from './gestion-historique/histo-sale/histo-sale.component';
 import { DetailSaleComponent } from './gestion-historique/detail-sale/detail-sale.component';
+import { AuthentificattionGuard } from '../app/auth/authentificattion.guard';
 
 const routes: Routes = [
-  { path: 'ventes', component: VentesComponent },
-  { path: 'ventes/confirm/:id', component: ConfirmCommandeComponent },
-  { path: 'historique', component: HistoSaleComponent },
-  { path: 'historique/:id', component: DetailSaleComponent },
-  { path: 'menu', component: ContainerCardsComponent },
-  { path: 'produits', component: ProduitsComponent },
-  { path: 'home', component: ContainerCardsComponent },
+  { path: 'ventes', component: VentesComponent, canActivate: [AuthentificattionGuard] },
+  { path: 'ventes/confirm/:id', component: ConfirmCommandeComponent, canActivate: [AuthentificattionGuard] },
+  { path: 'historique', component: HistoSaleComponent, canActivate: [AuthentificattionGuard] },
+  { path: 'historique/:id', component: DetailSaleComponent, canActivate: [AuthentificattionGuard] },
+  { path: 'menu', component: ContainerCardsComponent, canActivate: [AuthentificattionGuard] },
+  { path: 'produits', component: ProduitsComponent, canActivate: [AuthentificattionGuard] },
+  { path: 'home', component: ContainerCardsComponent, canActivate: [AuthentificattionGuard] },
   { path: '', loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)},
   { path: '**', component: PageNotFoundComponent },
 

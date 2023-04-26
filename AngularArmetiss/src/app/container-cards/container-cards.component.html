@@ -1,8 +1,27 @@
 <div class="container">
-    <div class="container-cards">
-      <app-card-page (click)="goToVentes()" title="Vente" urlImage="assets/vente.png"></app-card-page>
-      <app-card-page (click)="goToProduct()" title="Gestion produit" urlImage="assets/bottle.png"></app-card-page>
-      <app-card-page title="Gestion du stock" urlImage="assets/stock.png"></app-card-page>
-      <app-card-page (click)="goToHisto()" title="Historique" urlImage="assets/history.png"></app-card-page>
-    </div>
+  <div class="container-cards">
+    <app-card-page
+      (click)="goToVentes()"
+      title="Vente"
+      urlImage="assets/vente.png"
+    ></app-card-page>
+    <app-card-page
+      (click)="goToProduct()"
+      title="Gestion produit"
+      urlImage="assets/bottle.png"
+    ></app-card-page>
+    <app-card-page
+      title="Gestion du stock"
+      urlImage="assets/stock.png"
+    ></app-card-page>
+    <app-card-page
+      (click)="goToHisto()"
+      title="Historique"
+      urlImage="assets/history.png"
+    ></app-card-page>
   </div>
+  <div class="button">
+    <button class="gestut" (click)="goToUser()">Gestion utilisateur</button>
+    <button class="logout" (click)="logout()">Déconnexion</button>
+  </div>
+</div>

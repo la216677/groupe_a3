@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-container-cards',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./container-cards.component.css']
 })
 export class ContainerCardsComponent {
-  constructor(private router:Router){}
+  constructor(private router:Router, private cookieService: CookieService){}
 
   goToProduct(){
     this.router.navigate(['/produits']);
@@ -19,5 +20,15 @@ export class ContainerCardsComponent {
 
   goToHisto(){
     this.router.navigate(['/historique']);
+  }
+
+  goToUser(){
+    this.router.navigate(['/user']);
+  }
+
+  logout(){
+    this.cookieService.delete('connected');
+    this.router.navigate(['/connexion']);
+
   }
 }

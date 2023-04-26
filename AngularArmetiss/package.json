@@ -22,6 +22,7 @@
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.28",
     "ngx-bootstrap": "^10.2.0",
+    "ngx-cookie-service": "^15.0.0",
     "pdfmake": "^0.2.7",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

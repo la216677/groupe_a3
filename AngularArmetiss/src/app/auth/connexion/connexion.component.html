@@ -1,0 +1,32 @@
+<div class="login-form-wrap">
+  <form class="login-form" name="form" #f="ngForm">
+    <h2>Connexion</h2>
+    <div class="input-center">
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Nom"
+        [(ngModel)]="form.nom"
+        #nom="ngModel"
+        autofocus
+        required
+      />
+      <p class="formErreur" *ngIf="nom.value == '' && f.submitted ">Entrez un nom valide</p>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Mot de passe"
+        [(ngModel)]="form.password"
+        #password="ngModel"
+        required
+      />
+      <p class="formErreur" *ngIf="password.value == '' && f.submitted">Entrez un mot de passe valide</p>
+    </div>
+    <button (click)="authentication(nom.value, password.value)">
+      Connexion
+    </button>
+    <p class="formErreur" *ngIf="flag == false && nom.value != '' && password.value != '' && f.submitted">{{errorMsg}}</p>
+  </form>
+</div>

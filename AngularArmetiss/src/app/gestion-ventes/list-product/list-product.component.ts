@@ -144,49 +144,29 @@ export class ListProductComponent implements OnInit{
     let panier:Panier;
     if(clientId=="-1"){
       clientData=null;
-      panier={
-        basket:this.baskets,
-        totalPrice:this.totalPrice,
-        client:clientId
-      };
-      fetch('http://localhost/test/server/gestion-ventes/addBasketClient.php', {
-      method: 'POST',
-      body: JSON.stringify(panier),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-      }).then(response => response.json())
-      .then(data => {
-        const lastId: number = data;
-        console.log(lastId);
-        this.router.navigate(['/ventes/confirm',lastId, {bask:JSON.stringify(panier),donnees:JSON.stringify(clientData)}]);
-      })
-      .catch(error => {
-        console.error(error);
-      });
     }else{
       clientData=this.clientList[+clientId-1];
-      panier={
-        basket:this.baskets,
-        totalPrice:this.totalPrice,
-        client:clientId
-      };
-      fetch('http://localhost/test/server/gestion-ventes/addBasketDb.php', {
-      method: 'POST',
-      body: JSON.stringify(panier),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-      }).then(response => response.json())
-      .then(data => {
-        const lastId: number = data;
-        console.log(lastId);
-        this.router.navigate(['/ventes/confirm',lastId, {bask:JSON.stringify(panier),donnees:JSON.stringify(clientData)}]);
-      })
-      .catch(error => {
-        console.error(error);
-      });
     }
+    panier={
+      basket:this.baskets,
+      totalPrice:this.totalPrice,
+      client:clientId
+    };
+    fetch('http://localhost/test/server/gestion-ventes/addBasket.php', {
+    method: 'POST',
+    body: JSON.stringify(panier),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+    }).then(response => response.json())
+    .then(data => {
+      const lastId: number = data;
+      console.log(lastId);
+      this.router.navigate(['/ventes/confirm',lastId, {bask:JSON.stringify(panier),donnees:JSON.stringify(clientData)}]);
+    })
+    .catch(error => {
+      console.error(error);
+    });
     console.table(clientData);
     console.table(panier);
 

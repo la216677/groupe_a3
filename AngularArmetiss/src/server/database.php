@@ -3,18 +3,15 @@
 require_once('../config.php');
 
   function connect(){
-
-    $mysqli = mysqli_connect(DB_HOST ,DB_USER ,DB_PASS ,DB_NAME);
-
-    if ($mysqli->connect_errno) {
-      die("Failed to connect:" . mysqli_connect_error());
+    try {
+        $pdo = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASS);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->exec("SET NAMES utf8");
+        return $pdo;
+    } catch(PDOException $e) {
+        die("Failed to connect: " . $e->getMessage());
     }
-  
-    mysqli_set_charset($mysqli , "utf8");
-  
-    return $mysqli;
-    }
+  }
 
-  $mysqli = connect();
-
+  $pdo=connect();
 ?>

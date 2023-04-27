@@ -2,14 +2,14 @@
 require_once('manager/DBManager.php');
 require_once('manager/UserManager.php');
 
-header("Access-Control-Allow-Origin: http://localhost:4200");
-header("Access-Control-Allow-Headers: content-type");
-header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 
 $dbManager = new DBManager();
 $pdo = $dbManager->connect();
 $userManager = new UserManager($pdo);
-
 if (isset($_POST['login']) && isset($_POST['password'])) {
   $auth = $userManager->getUser($_POST['login'], $_POST['password']);
   if ($auth) {

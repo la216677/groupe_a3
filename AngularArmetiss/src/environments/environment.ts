@@ -1,4 +1,4 @@
-const apiEndpoint = 'http://localhost/helha/angularTest/server';
+const apiEndpoint = 'C:/Users/franc/Documents/GitHub/groupe_a3/AngularArmetiss/src/server';
 
 export const environment = {
   apiLoginUrl: `${apiEndpoint}/user.php`,

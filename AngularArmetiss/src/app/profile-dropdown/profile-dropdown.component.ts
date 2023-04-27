@@ -7,15 +7,7 @@ import { Component } from '@angular/core';
 })
 export class ProfileDropdownComponent {
 
-  isOpened: boolean = false;
-  
-  toggleProfileDropdown() : void {
-    this.isOpened = !this.isOpened;
-  }
 
-  clickOutside() : void {
-    this.isOpened = false;
-  }
 }
 export { Component };
 

@@ -16,7 +16,7 @@ export class GestionService {
   }
 
   getProductList() : Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.baseUrl}getAllProduct`).pipe(
+    return this.http.get<Product[]>(`${this.baseUrl}getAllProduct.php`).pipe(
       map((res: any) => {
         return res['data'];
       })
@@ -24,7 +24,7 @@ export class GestionService {
   }
 
   getClientList() : Observable<Client[]>{
-    return this.http.get<Client[]>(`${this.baseUrl}getClient`).pipe(
+    return this.http.get<Client[]>(`${this.baseUrl}getClient.php`).pipe(
       map((res: any) => {
         return res['data'];
       })

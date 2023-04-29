@@ -1,27 +1,18 @@
-<?php 
+<?php
 
 include_once('../database.php');
 
 $category = [];
 $sql = "SELECT * FROM Category";
 
-if($result = mysqli_query($mysqli,$sql))
-{
-  $i = 0;
-  while($row = mysqli_fetch_assoc($result))
-  {
-    $category[$i]['ID_Category'] = $row['ID_Category'];
-    $category[$i]['Category_Name'] = $row['Category_Name'];
-    $category[$i]['Category_Description'] = $row['Category_Description'];
-    $category[$i]['Category_Image_URL'] = $row['Category_Image_URL'];
-    $category[$i]['Category_Visibility'] = $row['Category_Visibility'];
-    $i++;
+$stmt = $pdo->prepare($sql);
+if($stmt->execute()){
+  while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+    $category[] = $row;
   }
-    
-  echo json_encode(['data'=>$category]);
-}
-else
-{
+
+  echo json_encode(['data' => $category]);
+} else {
   http_response_code(404);
 }
 

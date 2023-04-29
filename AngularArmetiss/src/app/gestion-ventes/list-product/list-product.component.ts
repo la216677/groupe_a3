@@ -147,18 +147,26 @@ export class ListProductComponent implements OnInit{
     }else{
       clientData=this.clientList[+clientId-1];
     }
+
     panier={
       basket:this.baskets,
       totalPrice:this.totalPrice,
       client:clientId
     };
+
     fetch('http://localhost/test/server/gestion-ventes/addBasket.php', {
-    method: 'POST',
-    body: JSON.stringify(panier),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-    }).then(response => response.json())
+      method: 'POST',
+      body: JSON.stringify(panier),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erreur de réponse du serveur');
+      }
+      return response.json();
+    })
     .then(data => {
       const lastId: number = data;
       console.log(lastId);
@@ -167,6 +175,7 @@ export class ListProductComponent implements OnInit{
     .catch(error => {
       console.error(error);
     });
+
     console.table(clientData);
     console.table(panier);
 

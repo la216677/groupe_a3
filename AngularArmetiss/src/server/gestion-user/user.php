@@ -1,6 +1,6 @@
 <?php
-require_once('manager/DBManager.php');
-require_once('manager/UserManager.php');
+require_once('../manager/DBManager.php');
+require_once('../manager/UserManager.php');
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");

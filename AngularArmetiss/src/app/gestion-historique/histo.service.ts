@@ -13,7 +13,7 @@ export class HistoService {
   constructor(private http:HttpClient) { }
 
   getSaleList(){
-    return this.http.get<Sale[]>(`${this.baseUrl}getAllSale`).pipe(
+    return this.http.get<Sale[]>(`${this.baseUrl}getAllSale.php`).pipe(
       map((res: any) => {
         return res['data'];
       })

@@ -1049,7 +1049,7 @@ armecaisse|schema||armecaisse||UPDATE|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="316" parent="294" name="Id_Product">
-      <AutoIncrement>14</AutoIncrement>
+      <AutoIncrement>15</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1141,13 +1141,14 @@ armecaisse|schema||armecaisse||UPDATE|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="336" parent="296" name="Id_Sale">
-      <AutoIncrement>56</AutoIncrement>
+      <AutoIncrement>125</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
     <column id="337" parent="296" name="Sale_Price">
       <DasType>decimal(10,2 digit)|0s</DasType>
+      <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
     <column id="338" parent="296" name="Sale_Date">
@@ -1311,7 +1312,7 @@ Id_Sale</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="372" parent="300" name="Id_User">
-      <AutoIncrement>18</AutoIncrement>
+      <AutoIncrement>19</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>

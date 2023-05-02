@@ -10,13 +10,15 @@ import { Client } from './models/client';
 export class GestionService {
 
   baseUrl:string= "http://localhost/test/server/gestion-ventes/";
+  baseUrlProd:string= "http://localhost/test/server/gestion-produit/";
+
 
   constructor(private http:HttpClient){
 
   }
 
   getProductList() : Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.baseUrl}getAllProduct.php`).pipe(
+    return this.http.get<Product[]>(`${this.baseUrlProd}getProduct.php`).pipe(
       map((res: any) => {
         return res['data'];
       })

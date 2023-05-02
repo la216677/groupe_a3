@@ -87,20 +87,20 @@ export class ProductFormComponent implements OnInit{
   calculateTVAC(){
 
     const selectedTVA = this.product.Id_TVA;
-
     const tvaRate = this.tvaList.find(tva => tva.ID_TVA === selectedTVA);
 
     if (tvaRate) {
       const tvaPercentage = tvaRate.TVA_Rate;
       const productPriceHTVA = this.product.Product_Sale_Price_HTVA;
-      const tvaAmount = productPriceHTVA * (tvaPercentage);
-      const productPriceTVAC = productPriceHTVA + tvaAmount;
 
-      this.product.Product_Sale_Price_TVAC = productPriceTVAC;
+      if(!isNaN(productPriceHTVA)){
+        const tvaAmount = productPriceHTVA * (tvaPercentage);
+        const productPriceTVAC = +productPriceHTVA+tvaAmount;
+        this.product.Product_Sale_Price_TVAC = productPriceTVAC;
+      }else{
+        console.error('Le prix HTVA entré n\'est pas un nombre valide.');
+        return;
+      }
     }
-
-
   }
-
-
 }

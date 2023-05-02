@@ -29,10 +29,25 @@ if(isset($postdata) && !empty($postdata)){
   // Construire la requête SQL en excluant la colonne Product_Image_URL si elle est nulle ou vide
   $sql = "INSERT INTO Product(Product_Name, Product_Sale_Price_HTVA, Product_Sale_Price_TVAC, Product_Description, Product_Quantity, Product_Visibility, Id_TVA, Id_Category";
   $sql .= $product_Image_URL !== "NULL" ? ", Product_Image_URL)" : ")";
-  $sql .= " VALUES ('$product_Name', '$product_Sale_Price_HTVA', '$product_Sale_Price_TVAC', '$product_Description', '$product_Quantity', '$product_Visibility', '$id_TVA', '$id_Category'";
+  $sql .= " VALUES (:product_Name, :product_Sale_Price_HTVA, :product_Sale_Price_TVAC, :product_Description, :product_Quantity, :product_Visibility, :id_TVA, :id_Category";
   $sql .= $product_Image_URL !== "NULL" ? ", $product_Image_URL)" : ")";
 
-  if($mysqli->query($sql)){
+  // Préparer la requête PDO
+  $stmt = $pdo->prepare($sql);
+  $stmt->bindParam(':product_Name', $product_Name);
+  $stmt->bindParam(':product_Sale_Price_HTVA', $product_Sale_Price_HTVA);
+  $stmt->bindParam(':product_Sale_Price_TVAC', $product_Sale_Price_TVAC);
+  $stmt->bindParam(':product_Description', $product_Description);
+  $stmt->bindParam(':product_Quantity', $product_Quantity);
+  $stmt->bindParam(':product_Visibility', $product_Visibility);
+  $stmt->bindParam(':id_TVA', $id_TVA);
+  $stmt->bindParam(':id_Category', $id_Category);
+
+  if($product_Image_URL !== "NULL") {
+    $stmt->bindParam(':product_Image_URL', $product_Image_URL);
+  }
+
+  if($stmt->execute()){
     $data = array('message' => 'success');
     echo json_encode($data);
   } else{

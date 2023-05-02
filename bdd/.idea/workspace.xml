@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c103fc1-65c4-442b-b378-b267af3cb7f2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/container-cards/container-cards.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/container-cards/container-cards.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/container-cards/container-cards.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/container-cards/container-cards.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/gestion-ventes.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/gestion-ventes.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/header/header.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/header/header.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/list-product/list-product.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/list-product/list-product.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/list-product/list-product.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/list-product/list-product.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-historique/histo.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-historique/histo.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-produit/produits/product-form/product-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-produit/produits/product-form/product-form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/confirm-commande/confirm-commande.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/confirm-commande/confirm-commande.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/confirm-commande/confirm-commande.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/confirm-commande/confirm-commande.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/confirm-commande/confirm-commande.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/confirm-commande/confirm-commande.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/gestion.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/gestion.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/list-product/list-product.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/list-product/list-product.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/list-product/list-product.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/list-product/list-product.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/bfd7ead6-efc2-41d1-b1a5-ba1df2db8d8b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bfd7ead6-efc2-41d1-b1a5-ba1df2db8d8b.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -49,4 +44,15 @@
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
 </project>

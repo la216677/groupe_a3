@@ -3,15 +3,18 @@
 include_once('../database.php');
 
 if(isset($_GET['categoryId'])){
-    $categoryId = mysqli_real_escape_string($mysqli, $_GET['categoryId']);
-    $sql = "SELECT * FROM Category WHERE ID_Category = '$categoryId'";
-    $result = mysqli_query($mysqli, $sql);
-    
-    if($result){
-        $category = mysqli_fetch_assoc($result);
-        echo json_encode(['data'=>$category]);
-    }
-    else{
+    $categoryId = $_GET['categoryId'];
+
+    $stmt = $pdo->prepare("SELECT * FROM Category WHERE ID_Category = :categoryId");
+    $stmt->bindParam(':categoryId', $categoryId, PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    $category = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if($category){
+        echo json_encode(['data' => $category]);
+    }else{
         http_response_code(404);
     }
 }

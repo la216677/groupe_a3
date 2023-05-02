@@ -29,14 +29,14 @@
         <div>
           <p class="center-text">{{product.Product_Name}}</p>
         </div>
-        <button (click)="addBasket(product)">Appuyez</button>
+        <button (click)="addBasket(product)" class="btn btn-outline-secondary">Ajouter au panier</button>
       </div>
     </div>
   </div>
   <div class="panier-box">
     <div class="panier">
       <h2>Panier</h2>
-      <table class="table">
+      <table class="table table-bordered">
         <thead class="thead-light">
           <tr>
             <th scope="col">Produit</th>
@@ -51,11 +51,7 @@
             <td>{{product[1]}}</td>
             <td>{{product[0].Product_Sale_Price_TVAC}}</td>
             <td>
-              <a (click)="deleteBasket(product[0],product[1])">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                </svg>
-              </a>
+              <button (click)="deleteBasket(product[0],product[1])" type="button" class="btn-close" aria-label="Close"></button>
             </td>
           </tr>
           <tr>
@@ -74,7 +70,7 @@
         </tbody>
       </table>
       </div>
-      <button (click)="postBasket()">Confirmer commande</button>
+      <button (click)="postBasket()" class="btn btn-outline-success">Confirmer commande</button>
   </div>
 </div>
 

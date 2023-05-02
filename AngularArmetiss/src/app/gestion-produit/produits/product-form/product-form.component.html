@@ -30,12 +30,13 @@
         <div class="input-box">
           <span class="details">Prix HTVA</span>
           <input
-            type="number"
+            type="text"
             placeholder="Entrer un prix"
             required
             [(ngModel)]="product.Product_Sale_Price_HTVA"
             name="productPrice"
             #productPrice="ngModel"
+            step="0.01"
           />
           <div
             class="error"
@@ -143,7 +144,6 @@
       [ngClass]="{'disabled-button': !productForm.form.valid}">
 
     </div>
-
   </form>
 </div>
 </div>

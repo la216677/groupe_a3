@@ -1,4 +1,10 @@
-<h2>Commande effectué</h2>
-<button (click)="genererPdf()">Imprimer une facture</button>
-<button>Imprimer un ticket</button>
+<div class="center">
+  <h2>Commande effectué</h2>
+  <div class="btn-group" role="group" aria-label="Basic outlined example">
+    <button (click)="genererPdf()" type="button" class="btn btn-outline-primary">Imprimer une facture</button>
+    <button type="button" class="btn btn-outline-primary">Imprimer un ticket</button>
+    <button (click)="goToVentes()" type="button" class="btn btn-outline-primary">Retour a la vente</button>
+    <button (click)="goToAccueil()" type="button" class="btn btn-outline-primary">Retour a l'accueil</button>
+  </div>
+</div>
 

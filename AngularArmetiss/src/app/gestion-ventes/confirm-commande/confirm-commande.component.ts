@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Panier } from '../models/panier';
 import { Client } from '../models/client';
 
@@ -12,7 +12,7 @@ export class ConfirmCommandeComponent implements OnInit{
   panier:Panier;
   client:Client;
 
-  constructor(private route:ActivatedRoute){}
+  constructor(private route:ActivatedRoute, private router:Router){}
 
   ngOnInit(): void {
     const confirmId:string|null=this.route.snapshot.paramMap.get('id');
@@ -38,5 +38,13 @@ export class ConfirmCommandeComponent implements OnInit{
     //A completer
 
   }
+
+  goToVentes(){
+    this.router.navigate(['/ventes']);
+  }
+  goToAccueil(){
+    this.router.navigate(['/menu']);
+  }
+
 
 }

@@ -138,14 +138,16 @@ export class ListProductComponent implements OnInit{
   }
 
   postBasket(){
+
     let client=document.getElementById("selectClient") as HTMLSelectElement;
-    let clientId:string=client.value;
-    let clientData:Client|null;
-    let panier:Panier;
-    if(clientId=="-1"){
-      clientData=null;
+    let clientId: string=client.value;
+    let clientData: Client|null;
+    let panier: Panier;
+
+    if(clientId == "-1"){
+      clientData = null;
     }else{
-      clientData=this.clientList[+clientId-1];
+      clientData = this.clientList[+clientId - 1];
     }
 
     panier={
@@ -154,32 +156,31 @@ export class ListProductComponent implements OnInit{
       client:clientId
     };
 
-    fetch('http://localhost/test/server/gestion-ventes/addBasket.php', {
-      method: 'POST',
-      body: JSON.stringify(panier),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Erreur de réponse du serveur');
-      }
-      return response.json();
-    })
-    .then(data => {
-      const lastId: number = data;
-      console.log(lastId);
-      this.router.navigate(['/ventes/confirm',lastId, {bask:JSON.stringify(panier),donnees:JSON.stringify(clientData)}]);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-
     console.table(clientData);
     console.table(panier);
 
-
-
+    if (panier.basket.length > 0) {
+      fetch('http://localhost/test/server/gestion-ventes/addBasket.php', {
+        method: 'POST',
+        body: JSON.stringify(panier),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erreur de réponse du serveur');
+        }
+        return response.json();
+      })
+      .then(data => {
+        const lastId: number = data;
+        console.log(lastId);
+        this.router.navigate(['/ventes/confirm',lastId, {bask:JSON.stringify(panier),donnees:JSON.stringify(clientData)}]);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    }
   }
 }

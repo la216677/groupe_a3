@@ -7,9 +7,9 @@ if (isset($_GET['categoryId'])) {
     try {
 
         // Prépare la requête
-        $sql = "DELETE FROM Category  WHERE ID_Category = ?";
-        $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("i", $categoryId);
+        $sql = "DELETE FROM Category  WHERE ID_Category = :categoryId";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam("categoryId", $categoryId);
 
         // Exécute la requête
         $result = $stmt->execute();
@@ -21,9 +21,6 @@ if (isset($_GET['categoryId'])) {
             $data = array('message' => 'failed');
             echo json_encode($data);
         }
-
-        // Ferme la connexion à la base de données
-        $mysqli->close();
 
     } catch (Exception $e) {
         // Gère les exceptions

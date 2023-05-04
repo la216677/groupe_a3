@@ -3,15 +3,19 @@
 include_once('../database.php');
 
 if(isset($_GET['userId'])){
-    $userId = mysqli_real_escape_string($mysqli, $_GET['userId']);
-    $sql = "SELECT * FROM Users WHERE Id_User = '$userId'";
-    $result = mysqli_query($mysqli, $sql);
-    
-    if($result){
-        $user = mysqli_fetch_assoc($result);
-        echo json_encode(['data'=>$user]);
-    }
-    else{
+    $userId = $_GET['userId'];
+    $sql = "SELECT * FROM Users WHERE Id_User = :userId";
+    $stmt=$pdo->prepare($sql);
+    $stmt->bindParam(":userId",$userId,PDO::PARAM_INT);
+
+    if($stmt->execute()){
+        $user=$stmt->fetch(PDO::FETCH_ASSOC);
+        if($user){
+            echo json_encode(['data' => $user]);
+        }else{
+            http_response_code(404);
+        }
+    }else{
         http_response_code(404);
     }
 }

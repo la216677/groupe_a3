@@ -7,23 +7,17 @@ if (isset($_GET['productId'])) {
     try {
 
         // Prépare la requête
-        $sql = "DELETE FROM Product WHERE ID_Product = ?";
-        $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("i", $productId);
+        $sql = "DELETE FROM Product WHERE ID_Product = :productId";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(":productId", $productId);
 
-        // Exécute la requête
-        $result = $stmt->execute();
-
-        if ($result) {
+        if ($stmt->execute()) {
             $data = array('message' => 'success');
             echo json_encode($data);
         } else {
             $data = array('message' => 'failed');
             echo json_encode($data);
         }
-
-        // Ferme la connexion à la base de données
-        $mysqli->close();
 
     } catch (Exception $e) {
         // Gère les exceptions

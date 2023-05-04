@@ -5,19 +5,23 @@ include_once('../database.php');
 $roles = [];
 $sql = "SELECT * FROM Role";
 
-if($result = mysqli_query($mysqli,$sql))
-{
-  $i = 0;
-  while($row = mysqli_fetch_assoc($result))
-  {
-    $roles[$i]['ID_Role']    = $row['ID_Role'];
-    $roles[$i]['Role'] = $row['Role'];
-    $i++;
+try{
+  $stmt=$pdo->prepare($sql);
+
+  $stmt->execute();
+
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  foreach($result as $row){
+    $roles[]=array(
+      'ID_Role'=>$row['ID_Role'],
+      'Role'=>$row['Role']
+    );
   }
     
   echo json_encode(['data'=>$roles]);
 }
-else
+catch(PDOException $e)
 {
   http_response_code(404);
 }

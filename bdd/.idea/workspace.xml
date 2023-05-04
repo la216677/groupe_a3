@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c103fc1-65c4-442b-b378-b267af3cb7f2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-historique/histo.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-historique/histo.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-produit/produits/product-form/product-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-produit/produits/product-form/product-form.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/confirm-commande/confirm-commande.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/confirm-commande/confirm-commande.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/confirm-commande/confirm-commande.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/confirm-commande/confirm-commande.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/confirm-commande/confirm-commande.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/confirm-commande/confirm-commande.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/gestion.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/gestion.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/list-product/list-product.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/list-product/list-product.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/list-product/list-product.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-ventes/list-product/list-product.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bfd7ead6-efc2-41d1-b1a5-ba1df2db8d8b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bfd7ead6-efc2-41d1-b1a5-ba1df2db8d8b.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="0c103fc1-65c4-442b-b378-b267af3cb7f2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

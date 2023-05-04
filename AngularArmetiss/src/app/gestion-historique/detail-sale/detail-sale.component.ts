@@ -19,7 +19,7 @@ export class DetailSaleComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    this.saleId =this.route.snapshot.paramMap.get('id');
+    this.saleId=this.route.snapshot.paramMap.get('id');
     this.getProductList();
   }
 

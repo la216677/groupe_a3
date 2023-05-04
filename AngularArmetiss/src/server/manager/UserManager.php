@@ -34,4 +34,19 @@ class UserManager
     }
     return $result;
   }
+
+  public function getUserInfo($user){
+    $sql = "SELECT Id_User FROM Users WHERE User_Email_Address = :user";
+    try{
+      $select=$this->db->prepare($sql);
+      $params=array(
+        'user' => $user
+      );
+      $select->execute($params);
+      $userInfo = $select->fetch(PDO::FETCH_ASSOC);
+    }catch(PDOException $e){
+      $select->closeCursor();
+    }
+    return $userInfo['Id_User'];
+  }
 }

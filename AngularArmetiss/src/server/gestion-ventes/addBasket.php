@@ -9,7 +9,7 @@
   //Extraire les données reçues
   $sale_price = isset($dataReceived['totalPrice']) ? trim($dataReceived['totalPrice']) : null;
   $baskets = isset($dataReceived['basket']) ? $dataReceived['basket'] : null;
-  $userId = 1; //Id de l'user a récuperer une fois que la connexion sera effectué
+  $userId = isset($dataReceived['user']) ? trim($dataReceived['user']) : null;; //Id de l'user a récuperer une fois que la connexion sera effectué
   $clientId = isset($dataReceived['client']) ? trim($dataReceived['client']) : null;
 
   try {
@@ -45,7 +45,7 @@
       // Valider la transaction
       $pdo->commit();
 
-      $response = array('last_id' => $last_insert_id);
+      $response = $last_insert_id;
       $data = array('message' => 'success');
       echo json_encode($response);
     }else{

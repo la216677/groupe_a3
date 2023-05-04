@@ -9,32 +9,16 @@ import { Client } from '../models/client';
   styleUrls: ['./confirm-commande.component.css']
 })
 export class ConfirmCommandeComponent implements OnInit{
-  panier:Panier;
-  client:Client;
+  idConfirm:string|null;
 
   constructor(private route:ActivatedRoute, private router:Router){}
 
   ngOnInit(): void {
-    const confirmId:string|null=this.route.snapshot.paramMap.get('id');
-
-    const panierJson=this.route.snapshot.paramMap.get('bask')!;
-    const clientJson=this.route.snapshot.paramMap.get('donnees')!;
-    this.panier=JSON.parse(panierJson);
-    this.client=JSON.parse(clientJson);
+    this.idConfirm=this.route.snapshot.paramMap.get('id');
   }
 
   genererPdf() {
-    console.table(this.client);
-    console.table(this.panier);
-
-    const tableData:[number, string, number, number, number][] = [];
-    this.panier.basket.forEach((item,index) => {
-      const product = item[0];
-      const quantity = item[1];
-      const totalPrice = product.Product_Sale_Price_TVAC * quantity;
-      tableData.push([index + 1, product.Product_Name, product.Product_Sale_Price_TVAC, quantity, totalPrice]);
-    });
-
+    console.log(this.idConfirm);
     //A completer
 
   }

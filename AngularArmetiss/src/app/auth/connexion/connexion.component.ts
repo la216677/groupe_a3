@@ -31,15 +31,17 @@ export class ConnexionComponent {
 
     console.log(login, password);
     this.api.login(login, password).subscribe({
-      next: () => {
+      next: (response) => {
         console.log('ok');
+        const userId = response.id;
         this.cookieService.set('connected', '1');
+        this.cookieService.set('userId',userId);
         this.router.navigate(['home']);
         this.flag = true;
       },
       error: () => {
         console.log("ko");
-        this.errorMsg = 'Le nom ou le mot de passe est inccorect';
+        this.errorMsg = 'Le nom ou le mot de passe est incorect';
       },
     });
   }

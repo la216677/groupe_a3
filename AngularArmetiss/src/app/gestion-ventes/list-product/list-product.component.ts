@@ -6,6 +6,7 @@ import { CategoryService } from 'src/app/gestion-produit/service/category.servic
 import { Client } from '../models/client';
 import { Panier } from '../models/panier';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-list-product',
@@ -29,7 +30,8 @@ export class ListProductComponent implements OnInit{
   constructor(
     private gestionService:GestionService,
     private categoryService: CategoryService,
-    private router:Router
+    private router:Router,
+    private cookieService: CookieService
     ){}
 
   ngOnInit(){
@@ -143,6 +145,7 @@ export class ListProductComponent implements OnInit{
     let clientId: string=client.value;
     let clientData: Client|null;
     let panier: Panier;
+    let userId=this.cookieService.get('userId');
 
     if(clientId == "-1"){
       clientData = null;
@@ -153,7 +156,8 @@ export class ListProductComponent implements OnInit{
     panier={
       basket:this.baskets,
       totalPrice:this.totalPrice,
-      client:clientId
+      client:clientId,
+      user:userId
     };
 
     console.table(clientData);
@@ -175,8 +179,7 @@ export class ListProductComponent implements OnInit{
       })
       .then(data => {
         const lastId: number = data;
-        console.log(lastId);
-        this.router.navigate(['/ventes/confirm',lastId, {bask:JSON.stringify(panier),donnees:JSON.stringify(clientData)}]);
+        this.router.navigate(['/ventes/confirm',lastId]);
       })
       .catch(error => {
         console.log(error);

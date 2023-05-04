@@ -4,4 +4,5 @@ export class Panier{
   basket:[Product, number][];
   totalPrice:number;
   client:string;
+  user:string;
 }

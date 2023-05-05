@@ -21,7 +21,7 @@
     ></app-card-page>
   </div>
   <div class="button">
-    <button class="gestut" (click)="goToUser()">Gestion utilisateur</button>
+    <button *ngIf="roleId == '3'" class="gestut" (click)="goToUser()">Gestion utilisateur</button>
     <button class="logout" (click)="logout()">Déconnexion</button>
   </div>
 </div>

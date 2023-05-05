@@ -6,6 +6,7 @@ import { ProductService } from '../service/product.service';
 import { CategoryService } from '../service/category.service';
 import { Category } from '../models/category';
 import { DeleteProductComponent } from './delete-product/delete-product.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-produits',
@@ -22,17 +23,20 @@ export class ProduitsComponent implements OnInit {
   selectedCategory: number = 0 ; // Catégorie sélectionnée dans le menu déroulant
   searchTerm: string; // Terme de recherche
 
+  roleId=this.cookieService.get('roleId');
+
   constructor(
     private router: Router,
     private productService: ProductService,
     private modalService: BsModalService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private cookieService:CookieService
   ) {}
 
   ngOnInit() {
     this.getProduct();
     this.getCategory();
-}
+  }
 
 
   //on récupère tout les produits de la db

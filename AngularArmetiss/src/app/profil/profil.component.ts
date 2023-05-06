@@ -12,6 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class ProfilComponent implements OnInit {
 
   user: User;
+  roleStr: string = "";
   constructor(
     private cookieService: CookieService,
     private userService: UserService
@@ -19,6 +20,7 @@ export class ProfilComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
+    this.getRole();
     console.log(this.user);
   }
 
@@ -37,6 +39,17 @@ export class ProfilComponent implements OnInit {
   }
 
 
+    getRole(){
+      var role: string = this.cookieService.get('roleId');
+      var roleInt : number = parseInt(role);
+
+      if(roleInt == 1)
+        this.roleStr = "Vendeur";
+      else if(roleInt == 2)
+        this.roleStr = "Responsable";
+      else if(roleInt == 3)
+        this.roleStr = "Administrateur";
+    }
     nom = "Doe";
     prenom = "John";
     email = "doe.john@gmail.com";

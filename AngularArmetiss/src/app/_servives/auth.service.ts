@@ -10,26 +10,6 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   constructor(private http: HttpClient) { }
 
-  getContacts(id?: number): Observable<Users[] | Users> {
-    if (id) {
-      return this.http.get<Users>(`${environment.apiLoginUrl}?id=${id}`);
-    } else {
-      return this.http.get<Users[]>(environment.apiLoginUrl);
-    }
-  }
-
-  addContact(users: Users): Observable<Users> {
-    return this.http.post<Users>(environment.apiLoginUrl, users);
-  }
-
-  updateContact(users: Users): Observable<Users> {
-    return this.http.put<Users>(environment.apiLoginUrl, users);
-  }
-
-  deleteContact(id: number): Observable<any> {
-    return this.http.delete(`${environment.apiLoginUrl}?id=${id}`);
-  }
-
   login(login: string, password: string): Observable<any> {
     var formData: any = new FormData();
     formData.append('login', login);

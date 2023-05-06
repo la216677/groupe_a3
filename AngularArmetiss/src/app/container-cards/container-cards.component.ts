@@ -29,6 +29,8 @@ export class ContainerCardsComponent {
 
   logout(){
     this.cookieService.delete('connected');
+    this.cookieService.delete('userId');
+    this.cookieService.delete('roleId');
     this.router.navigate(['/connexion']);
 
   }

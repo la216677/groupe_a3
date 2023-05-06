@@ -8,6 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./container-cards.component.css']
 })
 export class ContainerCardsComponent {
+  roleId=this.cookieService.get('roleId');
   constructor(private router:Router, private cookieService: CookieService){}
 
   goToProduct(){

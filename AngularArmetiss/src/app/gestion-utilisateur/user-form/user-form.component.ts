@@ -5,6 +5,7 @@ import { Role } from '../models/role';
 import { User } from '../models/user';
 import { UserService } from '../user.service';
 import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-user-form',
@@ -26,7 +27,8 @@ export class UserFormComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-     private router: Router,
+    private router: Router,
+    private cookieService: CookieService
      ) {}
 
   /*
@@ -61,8 +63,12 @@ export class UserFormComponent implements OnInit {
       this.userService.addUser(this.user)
       .subscribe(()=>this.router.navigate(['/users']));
     } else {
+      if(this.user.Id_User==+this.cookieService.get('userId')){
+        this.cookieService.set('roleId', this.user.Id_Role.toString());
+      }
       this.userService.updateUser(this.user)
       .subscribe(()=>this.router.navigate(['/users']));
+
     }
     setTimeout(() => { //on bloque le bouton pendant 5 seconde après un click
       this.boutonDesactive = false;

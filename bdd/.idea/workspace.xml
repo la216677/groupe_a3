@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c103fc1-65c4-442b-b378-b267af3cb7f2" name="Changes" comment="" />
+    <list default="true" id="0c103fc1-65c4-442b-b378-b267af3cb7f2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/auth/connexion/connexion.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/auth/connexion/connexion.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/container-cards/container-cards.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/container-cards/container-cards.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/container-cards/container-cards.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/container-cards/container-cards.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-historique/histo-sale/histo-sale.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-historique/histo-sale/histo-sale.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-historique/histo-sale/histo-sale.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-historique/histo-sale/histo-sale.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-historique/histo-sale/histo-sale.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-historique/histo-sale/histo-sale.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-historique/histo.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-historique/histo.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-produit/produits/produits.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-produit/produits/produits.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-produit/produits/produits.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-produit/produits/produits.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-utilisateur/list-user/list-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-utilisateur/list-user/list-user.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-utilisateur/user-form/user-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../AngularArmetiss/src/app/gestion-utilisateur/user-form/user-form.component.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -6,7 +6,7 @@
           <h2>Gestion <b>de produit</b></h2>
         </div>
         <div class="col-sm-6">
-          <button (click)="goToAddProduct()" class="btn btn-success">
+          <button *ngIf="roleId != '1'" (click)="goToAddProduct()" class="btn btn-success">
             <i class="material-icons">&#xE147;</i>
             <span>Ajouter un produit</span>
           </button>
@@ -61,10 +61,10 @@
           <td>
             <div class="button-wrapper">
               <div class="col-sm-6">
-                <button (click)="goToEditProduct(product.Id_Product)" class="btn btn-sm btn-primary"><i class="material-icons" title="Modifier">&#xE254;</i></button>
+                <button *ngIf="roleId != '1'" (click)="goToEditProduct(product.Id_Product)" class="btn btn-sm btn-primary"><i class="material-icons" title="Modifier">&#xE254;</i></button>
               </div>
               <div class="col-sm-6">
-                <button (click)="openConfirmationDeleteModal(product.Id_Product)" class="btn btn-sm btn-danger"><i class="material-icons" title="Supprimer">&#xE872;</i></button>
+                <button *ngIf="roleId != '1'" (click)="openConfirmationDeleteModal(product.Id_Product)" class="btn btn-sm btn-danger"><i class="material-icons" title="Supprimer">&#xE872;</i></button>
               </div>
             </div>
           </td>

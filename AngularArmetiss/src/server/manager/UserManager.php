@@ -35,6 +35,7 @@ class UserManager
     return $result;
   }
 
+
   public function getUserInfo($user){
     $sql = "SELECT Id_User FROM Users WHERE User_Email_Address = :user";
     try{

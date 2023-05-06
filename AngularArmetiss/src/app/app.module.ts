@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { GestionVentesModule } from './gestion-ventes/gestion-ventes.module';
 import { GestionHistoriqueModule } from './gestion-historique/gestion-historique.module';
+import { ProfilComponent } from './profil/profil.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { GestionHistoriqueModule } from './gestion-historique/gestion-historique
     ProfileDropdownComponent,
     CardPageComponent,
     AddStockComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProfilComponent
 
   ],
   imports: [

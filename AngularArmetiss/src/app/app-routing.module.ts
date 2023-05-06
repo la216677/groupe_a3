@@ -9,6 +9,7 @@ import { HistoSaleComponent } from './gestion-historique/histo-sale/histo-sale.c
 import { DetailSaleComponent } from './gestion-historique/detail-sale/detail-sale.component';
 import { AuthentificattionGuard } from '../app/auth/authentificattion.guard';
 import { ListUserComponent } from './gestion-utilisateur/list-user/list-user.component';
+import { ProfilComponent } from './profil/profil.component';
 
 const routes: Routes = [
   { path: 'ventes', component: VentesComponent, canActivate: [AuthentificattionGuard] },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'historique/:id', component: DetailSaleComponent, canActivate: [AuthentificattionGuard] },
   { path: 'menu', component: ContainerCardsComponent, canActivate: [AuthentificattionGuard] },
   { path: 'produits', component: ProduitsComponent, canActivate: [AuthentificattionGuard] },
+  { path: 'profil', component: ProfilComponent, canActivate: [AuthentificattionGuard] },
   { path: 'home', component: ContainerCardsComponent, canActivate: [AuthentificattionGuard] },
   { path: 'user', component: ListUserComponent, canActivate: [AuthentificattionGuard] },
   { path: '', loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)},

@@ -5,6 +5,7 @@
   flex-direction: column;
   width: 100%;
   height: 88vh;
+  padding-bottom: 10%;
 }
 
 .container-info{

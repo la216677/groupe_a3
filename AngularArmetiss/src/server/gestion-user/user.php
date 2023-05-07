@@ -5,8 +5,9 @@ require_once('../manager/UserManager.php');
 
 $userManager = new UserManager($pdo);
 if (isset($_POST['login']) && isset($_POST['password'])) {
-  $auth = $userManager->getUser($_POST['login'], $_POST['password']);
-
+  $mdp = $userManager->getMdp($_POST['login']);
+  // $auth = $userManager->getUser($_POST['login'], $_POST['password']);
+  $auth = $userManager->getUser($_POST['login'],password_verify($_POST['password'],$mdp) );
 
   if ($auth) {
     http_response_code(200);

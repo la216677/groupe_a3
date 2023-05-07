@@ -17,14 +17,14 @@ if(isset($postdata) && !empty($postdata)){
   $activity = trim($request->User_Activity);
   $role = trim($request->Id_Role);
 
-  $sql = "UPDATE Users SET 
-            User_Last_Name = :last_name, 
-            User_First_Name = :first_name, 
-            User_Email_Address = :email, 
-            User_BirthDate = :birthDate, 
-            User_Password = :pwd, 
-            User_Activity = :activity, 
-            Id_Role = :roles 
+  $sql = "UPDATE Users SET
+            User_Last_Name = :last_name,
+            User_First_Name = :first_name,
+            User_Email_Address = :email,
+            User_BirthDate = :birthDate,
+            User_Password = :pwd,
+            User_Activity = :activity,
+            Id_Role = :roles
           WHERE Id_User = :id";
 
   $stmt=$pdo->prepare($sql);
@@ -32,7 +32,7 @@ if(isset($postdata) && !empty($postdata)){
   $stmt->bindParam(":first_name", $first_name);
   $stmt->bindParam(":email", $email);
   $stmt->bindParam(":birthDate", $birthDate);
-  $stmt->bindParam(":pwd", $pwd);
+  $stmt->bindParam(":pwd", password_hash($pwd, PASSWORD_DEFAULT));
   $stmt->bindParam(":activity", $activity);
   $stmt->bindParam(":roles", $role);
   $stmt->bindParam(":id", $id);

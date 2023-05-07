@@ -97,6 +97,12 @@ export class UserService {
     );
   }
 
+  getMdp(login: string): Observable<any> {
+    var formData: any = new FormData();
+    formData.append('login', login);
+    return this.http.post(`${environment.apiLoginUrl}`, formData);
+  }
+
   private handleError(error: Error, errorValue: any) {
     console.error(error);
     return of(errorValue); //le of permet de transformer une donnée simple en flux de données, observable qui emmet la donnée en param

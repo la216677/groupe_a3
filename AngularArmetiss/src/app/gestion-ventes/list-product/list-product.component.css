@@ -62,11 +62,38 @@ div img{
   width: 20%;
   position: fixed;
   right: 2%;
-  margin-top: 3%;
+  top: 15%;
+  height: 80vh;
 }
 
 .btn-confirm{
   margin-top: 10%;
+}
+
+.thead-light{
+  background-color: #232b42;
+  color: white;
+  border: #232b42 groove 1px;
+  border-radius: 5px;
+  border-collapse: collapse;
+}
+
+td{
+  color: #232b42;
+  font-weight: bold;
+}
+
+.btnclose{
+  color: rgb(161, 32, 32);
+  background-color: #fff;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 37%;
+}
+
+.thead-light th{
+  color: white;
 }
 
 table{
@@ -75,6 +102,10 @@ table{
   overflow-y: auto;
   white-space: nowrap;
   height: 60vh;
+  margin-top: 20%;
+  border: #232b42 groove 1px;
+  border-radius: 5px;
+
 }
 
 th{

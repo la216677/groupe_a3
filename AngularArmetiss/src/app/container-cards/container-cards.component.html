@@ -9,6 +9,7 @@
       (click)="goToProduct()"
       title="Gestion produit"
       urlImage="assets/bottle.png"
+      *ngIf="roleId == '3' || roleId == '2'"
     ></app-card-page>
     <app-card-page
       title="Gestion du stock"

@@ -89,7 +89,7 @@ export class ListProductComponent implements OnInit{
     if (this.selectedCategory == 0) {
       this.filteredProductList = this.products; // Si aucune catégorie n'est sélectionnée, afficher tous les produits
     } else {
-      this.filteredProductList = this.products.filter(product => product.Id_Category === this.selectedCategory); // Filtrer les produits par catégorie
+      this.filteredProductList = this.products.filter(product => product.Id_Category == this.selectedCategory); // Filtrer les produits par catégorie
     }
   }
 

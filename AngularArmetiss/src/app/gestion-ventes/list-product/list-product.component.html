@@ -1,18 +1,16 @@
 <div class="container">
   <div class="table-wrapper">
-    <nav class="navbar navbar-light bg-light">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label for="categorySelect">Catégorie :</label>
-        <select id="categorySelect" class="form-control" [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+    <nav class="nav-bar">
+    <div class="">
+      <div class="">
+        <select id="categorySelect" class="select" [(ngModel)]="selectedCategory" (change)="filterByCategory()">
           <option selected value="0">Toutes les catégories</option>
           <option *ngFor="let category of categoryList" [value]="category.ID_Category">{{ category.Category_Name }}</option>
         </select>
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-2">
       <div class="form-group">
-        <label for="searchInput">Recherche :</label>
         <input id="searchInput" type="text" class="form-control" placeholder="Rechercher un produit..." [(ngModel)]="searchTerm" (input)="filterProducts()" >
       </div>
     </div>
@@ -23,19 +21,18 @@
   <div class="box">
     <div class="flex">
       <div class="card" *ngFor="let product of filteredProductList">
-        <div>
+        <div class="img">
           <img class="product_image" src='../../../assets/{{product.Product_Image_URL}}'>
         </div>
         <div>
           <p class="center-text">{{product.Product_Name}}</p>
         </div>
-        <button (click)="addBasket(product)" class="btn btn-outline-secondary">Ajouter au panier</button>
+        <img class="btn-cart" (click)="addBasket(product)" src="../../../assets/shopping_cart_PNG38.png" alt="">
       </div>
     </div>
   </div>
   <div class="panier-box">
     <div class="panier">
-      <h2>Panier</h2>
       <table class="table table-bordered">
         <thead class="thead-light">
           <tr>
@@ -70,7 +67,7 @@
         </tbody>
       </table>
       </div>
-      <button (click)="postBasket()" class="btn btn-outline-success">Confirmer commande</button>
+      <button (click)="postBasket()" class="btn btn-outline-success btn-confirm">Confirmer commande</button>
   </div>
 </div>
 

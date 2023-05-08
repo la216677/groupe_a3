@@ -1,5 +1,4 @@
 import { Component,OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { User } from '../gestion-utilisateur/models/user';
 import { UserService } from '../gestion-utilisateur/user.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -11,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ProfilComponent implements OnInit {
 
-  user: User;
+  user: User | undefined;
   roleStr: string = "";
   constructor(
     private cookieService: CookieService,
@@ -21,7 +20,6 @@ export class ProfilComponent implements OnInit {
   ngOnInit() {
     this.getUser();
     this.getRole();
-    console.log(this.user);
   }
 
   getUser(){

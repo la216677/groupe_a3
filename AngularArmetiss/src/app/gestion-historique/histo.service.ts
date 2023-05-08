@@ -27,4 +27,12 @@ export class HistoService {
       })
     );
   }
+
+  getSaleListByUser(userId:string|null){
+    return this.http.get<Sale[]>(`${this.baseUrl}getSaleByUser.php?id=${userId}`).pipe(
+      map((res: any) => {
+        return res['data'];
+      })
+    );
+  }
 }

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="containeur">
   <div class="container-cards">
     <app-card-page
       (click)="goToVentes()"
@@ -9,10 +9,12 @@
       (click)="goToProduct()"
       title="Gestion produit"
       urlImage="assets/bottle.png"
+      *ngIf="roleId == '3' || roleId == '2'"
     ></app-card-page>
     <app-card-page
       title="Gestion du stock"
       urlImage="assets/stock.png"
+      (click)="goToStock()"
     ></app-card-page>
     <app-card-page
       (click)="goToHisto()"
@@ -21,7 +23,7 @@
     ></app-card-page>
   </div>
   <div class="button">
-    <button class="gestut" (click)="goToUser()">Gestion utilisateur</button>
+    <button *ngIf="roleId == '3'" class="gestut" (click)="goToUser()">Gestion utilisateur</button>
     <button class="logout" (click)="logout()">Déconnexion</button>
   </div>
 </div>

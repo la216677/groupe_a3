@@ -27,7 +27,7 @@ if(isset($postdata) && !empty($postdata)){
   $stmt->bindParam(':first_name', $first_name);
   $stmt->bindParam(':email', $email);
   $stmt->bindParam(':birthDate', $birthDate);
-  $stmt->bindParam(':pwd', $pwd);
+  $stmt->bindParam(':pwd',password_hash($pwd, PASSWORD_DEFAULT));
   $stmt->bindParam(':activity', $activity);
   $stmt->bindParam(':roles', $role);
 

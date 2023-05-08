@@ -1,34 +1,29 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GestionService } from '../gestion.service';
+import { GestionStockService } from '../gestion-stock.service';
 import { Product } from 'src/app/gestion-produit/models/product';
 import { Category } from 'src/app/gestion-produit/models/category';
 import { CategoryService } from 'src/app/gestion-produit/service/category.service';
-import { Client } from '../models/client';
-import { Panier } from '../models/panier';
+
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
-  selector: 'app-list-product',
+  selector: 'app-list-stock',
   templateUrl: './list-product.component.html',
   styleUrls: ['./list-product.component.css']
 })
 export class ListProductComponent implements OnInit{
   products:Product[]; //Liste des produit
 
-  totalPrice:number=0; //Prix du total de la commande
-  totalPriceRounded=""; //Arrondi
 
   categoryList: Category[]; //List des catégories
-  clientList: Client[]; //Liste des clients
-  baskets:[Product, number][]=[]; //Panier avec quantité
 
   filteredProductList: Product[]; // Liste des produits filtrés
   selectedCategory: number = 0 ; // Catégorie sélectionnée dans le menu déroulant
   searchTerm: string; // Terme de recherche
 
   constructor(
-    private gestionService:GestionService,
+    private gestionStockService:GestionStockService,
     private categoryService: CategoryService,
     private router:Router,
     private cookieService: CookieService
@@ -37,11 +32,10 @@ export class ListProductComponent implements OnInit{
   ngOnInit(){
     this.getProducts();
     this.getCategory();
-    this.getClient();
   }
 
   getProducts(){
-    this.gestionService.getProductList()
+    this.gestionStockService.getProductList()
     .subscribe(
       (data: Product[]) => {
         this.products = data;
@@ -69,20 +63,6 @@ export class ListProductComponent implements OnInit{
     );
   }
 
-  getClient(){
-    this.gestionService.getClientList()
-    .subscribe(
-      (data: Client[]) => {
-        this.clientList = data;
-      },
-      //en cas d'erreur on affiche le msg dans la console
-      (err) => {
-        console.log(err);
-      }
-
-    );
-    console.table(this.clientList);
-  }
 
   // Fonction pour filtrer les produits par catégorie
   filterByCategory() {
@@ -106,84 +86,6 @@ export class ListProductComponent implements OnInit{
     } else {
       this.selectedCategory = 0;
       this.filteredProductList = this.products; // Si aucun terme de recherche n'est saisi, afficher tous les produits
-    }
-  }
-
-  addBasket(product:Product){
-    let index = -1;
-    for (let i = 0; i < this.baskets.length; i++) {
-      if (this.baskets[i][0] === product) {
-        index = i;
-        break;
-      }
-    }
-
-    if (index !== -1) {
-      this.baskets[index][1]++;
-    } else { // Sinon, ajouter le produit au tableau avec une quantité initiale de 1
-      this.baskets.push([product, 1]);
-    }
-    this.totalPrice+=+product.Product_Sale_Price_TVAC;
-    this.totalPriceRounded=this.totalPrice.toFixed(2);
-    console.table(this.baskets);
-  }
-
-  deleteBasket(product:Product,quantite:number){
-    for (let i = 0; i < this.baskets.length; i++) {
-      if (this.baskets[i][0] === product) {
-        this.baskets.splice(i, 1);
-        break;
-      }
-    }
-    this.totalPrice-=+product.Product_Sale_Price_TVAC*quantite;
-    this.totalPriceRounded=this.totalPrice.toFixed(2);
-  }
-
-  postBasket(){
-
-    let client=document.getElementById("selectClient") as HTMLSelectElement;
-    let clientId: string=client.value;
-    let clientData: Client|null;
-    let panier: Panier;
-    let userId=this.cookieService.get('userId');
-
-    if(clientId == "-1"){
-      clientData = null;
-    }else{
-      clientData = this.clientList[+clientId - 1];
-    }
-
-    panier={
-      basket:this.baskets,
-      totalPrice:this.totalPrice,
-      client:clientId,
-      user:userId
-    };
-
-    console.table(clientData);
-    console.table(panier);
-
-    if (panier.basket.length > 0) {
-      fetch('http://localhost/test/server/gestion-ventes/addBasket.php', {
-        method: 'POST',
-        body: JSON.stringify(panier),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Erreur de réponse du serveur');
-        }
-        return response.json();
-      })
-      .then(data => {
-        const lastId: number = data;
-        this.router.navigate(['/ventes/confirm',lastId]);
-      })
-      .catch(error => {
-        console.log(error);
-      });
     }
   }
 }

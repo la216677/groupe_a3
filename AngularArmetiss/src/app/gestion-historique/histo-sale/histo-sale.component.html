@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="table-wrapper">
+  <div class="table-wrapper" *ngIf="saleList?.length !== 0">
     <div class="table-title">
       <div class="row">
         <div class="col-sm-6">
@@ -29,5 +29,8 @@
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="center-text" *ngIf="saleList?.length === 0">
+    <p>Il n'y a aucune ventes à afficher</p>
   </div>
 </div>

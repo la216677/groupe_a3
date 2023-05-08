@@ -3,4 +3,5 @@
 export const environment = {
   apiLoginUrl: `${apiEndpoint}/user.php`,
   apiGetUser: `${apiEndpoint}/user.php`,
+  apiGetId: `${apiEndpoint}/getId.php`,
 };

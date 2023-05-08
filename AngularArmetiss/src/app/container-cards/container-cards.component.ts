@@ -8,6 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./container-cards.component.css']
 })
 export class ContainerCardsComponent {
+  roleId=this.cookieService.get('roleId');
   constructor(private router:Router, private cookieService: CookieService){}
 
   goToProduct(){
@@ -26,8 +27,13 @@ export class ContainerCardsComponent {
     this.router.navigate(['/user']);
   }
 
+  goToStock(){
+    this.router.navigate(['/gestionStock']);
+  }
   logout(){
     this.cookieService.delete('connected');
+    this.cookieService.delete('userId');
+    this.cookieService.delete('roleId');
     this.router.navigate(['/connexion']);
 
   }

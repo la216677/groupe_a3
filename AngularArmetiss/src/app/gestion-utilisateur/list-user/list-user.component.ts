@@ -5,6 +5,7 @@ import { Role } from '../models/role';
 import { User } from '../models/user';
 import { UserService } from '../user.service';
 import { ConfirmDeleteComponent } from '../confirm-delete/confirm-delete.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -24,13 +25,16 @@ export class ListUserComponent implements OnInit {
   constructor(
     private router: Router,
     private userService: UserService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private cookieService : CookieService
   ) {}
 
   ngOnInit() {
     this.getUser();
     this.getRole();
-
+    if(this.cookieService.get('roleId')!="3"){
+      this.router.navigate(['menu']);
+    }
   }
 
 

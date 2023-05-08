@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Sale } from '../models/sale';
 import { HistoService} from '../histo.service'
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-histo-sale',
@@ -11,14 +12,23 @@ import { Router } from '@angular/router';
 export class HistoSaleComponent implements OnInit{
 
   saleList:Sale[];
+  userId:string;
+  roleId:string;
 
   constructor(
     private histoService:HistoService,
-    private router:Router
+    private router:Router,
+    private cookieService : CookieService
   ){}
 
   ngOnInit(): void {
-    this.getSaleList();
+    this.userId=this.cookieService.get('userId');
+    this.roleId=this.cookieService.get('roleId');
+    if(+this.roleId!=1){
+      this.getSaleList();
+    }else{
+      this.getSaleListById();
+    }
   }
 
   getSaleList(){
@@ -26,7 +36,20 @@ export class HistoSaleComponent implements OnInit{
     .subscribe(
       (data: Sale[]) => {
         this.saleList = data;
-        console.table(this.saleList);
+      },
+      //en cas d'erreur on affiche le msg dans la console
+      (err) => {
+        console.log(err);
+      }
+
+    );
+  }
+
+  getSaleListById(){
+    this.histoService.getSaleListByUser(this.userId)
+    .subscribe(
+      (data: Sale[]) => {
+        this.saleList = data;
       },
       //en cas d'erreur on affiche le msg dans la console
       (err) => {

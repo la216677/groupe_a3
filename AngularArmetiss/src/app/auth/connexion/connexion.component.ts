@@ -34,8 +34,11 @@ export class ConnexionComponent {
       next: (response) => {
         console.log('ok');
         const userId = response.id;
+        const roleId = response.role;
+        console.log(roleId);
         this.cookieService.set('connected', '1');
         this.cookieService.set('userId',userId);
+        this.cookieService.set('roleId',roleId);
         this.router.navigate(['home']);
         this.flag = true;
       },

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-profile-dropdown',
@@ -7,7 +9,11 @@ import { Component } from '@angular/core';
 })
 export class ProfileDropdownComponent {
 
+  constructor(private router:Router, private cookieService: CookieService){}
+
+  goToProfile() {
+    this.router.navigate(['/profil']);
+}
+
 
 }
-export { Component };
-

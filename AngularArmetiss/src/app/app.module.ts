@@ -13,7 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProfileDropdownComponent } from './profile-dropdown/profile-dropdown.component';
 import { CardPageComponent } from './card-page/card-page.component';
 import { UserFormComponent } from './gestion-utilisateur/user-form/user-form.component';
-import { AddStockComponent } from './gestion-produit/gestion-stock/add-stock-form/add-stock.component';
+import { AddStockComponent } from './gestion-stock/add-stock-form/add-stock.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { GestionVentesModule } from './gestion-ventes/gestion-ventes.module';

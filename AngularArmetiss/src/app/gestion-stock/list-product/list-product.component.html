@@ -20,8 +20,12 @@
         <div class="img">
           <img class="product_image" src='../../../assets/{{product.Product_Image_URL}}'>
         </div>
-        <div>
-          <p class="center-text">{{product.Product_Name}}</p>
+        <p class="center-text">{{product.Product_Name}}</p>
+        <div class="bottom-stock">
+
+          <p class="center-text">Dispo : {{product.Product_Quantity}}</p>
+          <button class="btnAddStock" (click)="goToAddStock(product.Id_Product)">+</button>
+
         </div>
       </div>
     </div>

@@ -1,27 +1,48 @@
 <?php
 
-include_once('../database.php');
+require_once('../database.php');
+require_once('../manager/UserManager.php');
 
-$postdata = file_get_contents("php://input");
+$userManager = new UserManager($pdo);
+if ((isset($_POST['quantity']) && !empty($_POST['quantity'])) && (isset($_POST['price']) && !empty($_POST['price'])) && (isset($_POST['purchaseDate']) && !empty($_POST['purchaseDate'])) && (isset($_POST['provider']) && !empty($_POST['provider'])) && (isset($_POST['id']) && !empty($_POST['id']))) {
+try {
+  $quantity = trim($_POST['quantity']);
+  $price =  trim($_POST['price']);
+  $purchaseDate =  trim($_POST['purchaseDate']);
+  $provider =  trim($_POST['provider']);
+  $id =  trim($_POST['id']);
 
-if(isset($postdata) && !empty($postdata)){
+  $time = strtotime($purchaseDate);
 
-    $request = json_decode($postdata);
+  $purchaseDateOk = date('Y-m-d',$time);
 
-    $quantity = trim($request->Stock_Quantity);
-    $price = trim($request->Stock_Purchase_Price_HTVA);
-    $purchaseDate = trim($request->Stock_Date);
-    $provider = trim($request->Stock_Provider);
+  $sql = "INSERT INTO Stock(Stock_Quantity, Stock_Date, Stock_Purchase_Price_HTVA, Stock_Purchase_Price_TVAC, Id_Product, Stock_Provider)
+    VALUES ( :quantity, :purchaseDate, :priceHtva, :priceTva, :id ,:provider)";
 
-    $sql = "INSERT INTO Stock(Stock_Quantity, >Stock_Purchase_Price_HTVA, Stock_Date, Stock_Provider)
-    VALUES ('$quantity', '$price', '$email', '$purchaseDate', '$provider')";
+  $stmt=$pdo->prepare($sql);
 
-    if($mysqli->query($sql)){
-        $data = array('message' => 'success');
-        echo json_encode($data);
-    } else{
-        $data = array('message' => 'failed');
-        echo json_encode($data);
-    }
+  $stmt->bindParam(':quantity', $quantity);
+  $stmt->bindParam(':purchaseDate', $purchaseDateOk);
+  $stmt->bindParam(':priceHtva', $price);
+  $stmt->bindParam(':priceTva', $price);
+  $stmt->bindParam(':id', $id);
+  $stmt->bindParam(':provider', $provider);
+
+  if($stmt->execute()){
+    $data = array('message' => 'success');
+
+    echo json_encode($data);
+    http_response_code(200);
+  } else{
+    $data = array('message' => 'failed');
+    echo json_encode($data);
+
+    http_response_code(400);
+  }
+}
+  catch (Exception $e) {
+    http_response_code(400);
+  }
+
 }
 ?>

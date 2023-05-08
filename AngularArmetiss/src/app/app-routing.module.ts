@@ -11,6 +11,7 @@ import { AuthentificattionGuard } from '../app/auth/authentificattion.guard';
 import { ListUserComponent } from './gestion-utilisateur/list-user/list-user.component';
 import { ProfilComponent } from './profil/profil.component';
 import { ListProductComponent } from './gestion-stock/list-product/list-product.component';
+import { AddStockComponent } from './gestion-stock/add-stock-form/add-stock.component';
 
 const routes: Routes = [
   { path: 'ventes', component: VentesComponent, canActivate: [AuthentificattionGuard] },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'produits', component: ProduitsComponent, canActivate: [AuthentificattionGuard] },
   { path: 'profil', component: ProfilComponent, canActivate: [AuthentificattionGuard] },
   { path: 'gestionStock', component: ListProductComponent, canActivate: [AuthentificattionGuard] },
+  { path: 'add-stock/:id', component: AddStockComponent, canActivate: [AuthentificattionGuard] },
   { path: 'home', component: ContainerCardsComponent, canActivate: [AuthentificattionGuard] },
   { path: 'user', component: ListUserComponent, canActivate: [AuthentificattionGuard] },
   { path: '', loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)},

@@ -1,0 +1,47 @@
+<h4>Ajouter stock</h4>
+
+<form class="form-add-stock">
+    <span>Quantité</span>
+    <br>
+    <input
+    type="text"
+    id="purchaseQuantity"
+    name="purchaseQuantity"
+    [(ngModel)]="form.quantity"
+    #purchaseQuantity="ngModel"
+    autofocus
+    required="">
+    <br>
+    <span>Prix/article</span>
+    <br>
+    <input
+    type="text"
+    id="price"
+    name="price"
+    [(ngModel)]="form.price"
+    #purchaseQuantity="ngModel"
+    required="">
+    <br>
+    <span>Date d'achat</span>
+    <br>
+    <input
+    type="date"
+    id="purchaseDate"
+    name="purchaseDate"
+    [(ngModel)]="form.purchaseDate"
+    #purchaseQuantity="ngModel"
+    required="">
+    <br>
+    <span>Fournisseur</span>
+    <br>
+    <input
+    type="text"
+    id="provider"
+    name="provider"
+    [(ngModel)]="form.provider"
+    #purchaseQuantity="ngModel"
+    required="">
+    <br>
+
+    <button (click)="addStock()">Ajouter stock</button>
+</form>

@@ -1,10 +1,11 @@
-.card{
+.card {
+  position: relative;
   width: 18%;
-  margin:3%;
+  margin: 3%;
   border: black solid 1px;
 }
 
-.nav-bar{
+.nav-bar {
   width: 100%;
   height: 8vh;
   display: flex;
@@ -12,19 +13,18 @@
   justify-content: space-between;
 }
 
-.img{
+.img {
   margin: 7% 0%;
 }
 
-.btn-cart{
+.btn-cart {
   max-width: 12%;
   max-height: 7vh;
   cursor: pointer;
   margin: 0 20%;
 }
 
-
-.select{
+.select {
   color: #7a828a;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -32,31 +32,31 @@
   padding: 4% 8%;
 }
 
-.center-text{
+.center-text {
   text-align: center;
 }
 
-.flex{
+.flex {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
 }
 
-.product_image{
-  max-width:100%;
-  max-height:100%;
+.product_image {
+  max-width: 100%;
+  max-height: 100%;
 }
 
-div img{
+div img {
   width: 100px;
   margin: auto;
   display: block;
 }
 
-.box{
+.box {
   width: 80%;
 }
-.panier-box{
+.panier-box {
   display: flex;
   flex-direction: column;
   width: 20%;
@@ -66,11 +66,11 @@ div img{
   height: 80vh;
 }
 
-.btn-confirm{
+.btn-confirm {
   margin-top: 10%;
 }
 
-.thead-light{
+.thead-light {
   background-color: #232b42;
   color: white;
   border: #232b42 groove 1px;
@@ -78,12 +78,12 @@ div img{
   border-collapse: collapse;
 }
 
-td{
+td {
   color: #232b42;
   font-weight: bold;
 }
 
-.btnclose{
+.btnclose {
   color: rgb(161, 32, 32);
   background-color: #fff;
   border: none;
@@ -92,11 +92,11 @@ td{
   padding: 0 37%;
 }
 
-.thead-light th{
+.thead-light th {
   color: white;
 }
 
-table{
+table {
   display: block;
   margin: auto;
   overflow-y: auto;
@@ -105,23 +105,43 @@ table{
   margin-top: 20%;
   border: #232b42 groove 1px;
   border-radius: 5px;
-
 }
 
-th{
+th {
   color: #232b42;
 }
 
-.panier{
+.panier {
   margin: auto;
   border-radius: 10px;
 }
 
-img{
+img {
   width: 120px;
   height: 180px;
 }
 
-.container{
+.container {
   min-width: 100%;
+}
+
+.btnAddStock {
+  position: absolute;
+  background-color: green;
+  color: white;
+  border: green;
+  border-radius: 50%;
+  top: -10px;
+  right: -10px;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.bottom-stock {
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-around;
 }

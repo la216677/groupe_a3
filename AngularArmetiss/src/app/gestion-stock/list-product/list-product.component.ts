@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GestionStockService } from '../gestion-stock.service';
 import { Product } from 'src/app/gestion-produit/models/product';
 import { Category } from 'src/app/gestion-produit/models/category';
 import { CategoryService } from 'src/app/gestion-produit/service/category.service';
+import { ProductService } from 'src/app/gestion-produit/service/product.service';
 
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -25,6 +26,7 @@ export class ListProductComponent implements OnInit{
   constructor(
     private gestionStockService:GestionStockService,
     private categoryService: CategoryService,
+    private productService: ProductService,
     private router:Router,
     private cookieService: CookieService
     ){}
@@ -35,7 +37,7 @@ export class ListProductComponent implements OnInit{
   }
 
   getProducts(){
-    this.gestionStockService.getProductList()
+    this.productService.getProductList()
     .subscribe(
       (data: Product[]) => {
         this.products = data;
@@ -46,6 +48,10 @@ export class ListProductComponent implements OnInit{
         console.log(err);
       }
     );
+  }
+
+  goToAddStock(idProduct: number){
+    this.router.navigate(['/add-stock',idProduct]);
   }
 
   //on récupère tout les catégorie de la db

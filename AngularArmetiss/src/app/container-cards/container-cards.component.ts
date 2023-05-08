@@ -27,6 +27,9 @@ export class ContainerCardsComponent {
     this.router.navigate(['/user']);
   }
 
+  goToStock(){
+    this.router.navigate(['/gestionStock']);
+  }
   logout(){
     this.cookieService.delete('connected');
     this.cookieService.delete('userId');

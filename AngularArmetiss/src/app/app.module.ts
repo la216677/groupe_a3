@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { GestionVentesModule } from './gestion-ventes/gestion-ventes.module';
 import { GestionHistoriqueModule } from './gestion-historique/gestion-historique.module';
+import { GestionStockModule } from './gestion-stock/gestion-stock.module';
 import { ProfilComponent } from './profil/profil.component';
 
 
@@ -42,8 +43,8 @@ import { ProfilComponent } from './profil/profil.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     GestionVentesModule,
-    GestionHistoriqueModule
-
+    GestionHistoriqueModule,
+    GestionStockModule
   ],
   providers: [],
   bootstrap: [AppComponent]

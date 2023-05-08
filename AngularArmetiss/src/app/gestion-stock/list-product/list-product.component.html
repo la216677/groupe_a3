@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="table-wrapper">
+    <nav class="nav-bar">
+    <div class="">
+      <div class="">
+        <select id="categorySelect" class="select" [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+          <option selected value="0">Toutes les catégories</option>
+          <option *ngFor="let category of categoryList" [value]="category.ID_Category">{{ category.Category_Name }}</option>
+        </select>
+      </div>
+    </div>
+
+  </nav>
+  </div>
+</div>
+<div class="flex">
+  <div class="box">
+    <div class="flex">
+      <div class="card" *ngFor="let product of filteredProductList">
+        <div class="img">
+          <img class="product_image" src='../../../assets/{{product.Product_Image_URL}}'>
+        </div>
+        <div>
+          <p class="center-text">{{product.Product_Name}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

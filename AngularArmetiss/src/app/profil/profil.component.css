@@ -1,26 +1,50 @@
-.container{
+
+.containeur{
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 100%;
   height: 88vh;
-  padding-bottom: 10%;
 }
 
 .container-info{
-  border: 1px solid #232b42;
-  border-radius: 5px;
-  background-color: #fff;
+
+  width: 50%;
 }
 
 table{
-  border-collapse: separate;
-  border-spacing: 100px 20px;
+  width: 100%;
+  border-collapse: collapse;
+  border: #232b42 1px solid;
 }
 
-h1{
-  margin-bottom: 5%;
+thead{
+  background-color: #232b42;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
 }
 
+thead th{
+  color: #fff;
+  text-align: center;
+  font-size: 30px;
+  padding: 10px;
+}
 
+th, td{
+  padding: 10px;
+  text-align: left;
+  font-size: 25px;
+  color: #232b42;
+}
+
+th{
+  font-weight: bold;
+}
+
+td{
+  font-weight: normal;
+}

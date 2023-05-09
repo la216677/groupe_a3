@@ -4,6 +4,42 @@ require_once('../database.php');
 require_once('../manager/UserManager.php');
 
 $userManager = new UserManager($pdo);
+
+$sql = "SELECT TVA_Rate FROM TVA WHERE TVA_Rate_Name = :tva";
+
+$tva = 0;
+
+try{
+
+  $nameTva = "TVA-générale";
+
+  $stmt=$pdo->prepare($sql);
+
+  $stmt->bindValue(':tva', $nameTva, PDO::PARAM_STR);
+
+  if($stmt->execute()){
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach($result as $row){
+      $tvaString = $row['TVA_Rate'];
+      $tva = floatval($tvaString);
+      $tva += 1 ;
+    }
+
+    http_response_code(200);
+  } else{
+    http_response_code(400);
+  }
+
+
+
+}
+catch(PDOException $e)
+{
+  http_response_code(404);
+}
+
+
 if ((isset($_POST['quantity']) && !empty($_POST['quantity'])) && (isset($_POST['price']) && !empty($_POST['price'])) && (isset($_POST['purchaseDate']) && !empty($_POST['purchaseDate'])) && (isset($_POST['provider']) && !empty($_POST['provider'])) && (isset($_POST['id']) && !empty($_POST['id']))) {
 try {
   $quantity = trim($_POST['quantity']);
@@ -24,7 +60,7 @@ try {
   $stmt->bindParam(':quantity', $quantity);
   $stmt->bindParam(':purchaseDate', $purchaseDateOk);
   $stmt->bindParam(':priceHtva', $price);
-  $stmt->bindParam(':priceTva', $price);
+  $stmt->bindValue(':priceTva', $price*$tva);
   $stmt->bindParam(':id', $id);
   $stmt->bindParam(':provider', $provider);
 

@@ -29,10 +29,18 @@ export class AddStockComponent {
   id = this.route.snapshot.paramMap.get('id');
   // Do something with the id and other parameters
 
-
+  boolAddStock = 0;
 
   addStock() {
-    this.gestionStockService.addStock(this.form.quantity, this.form.price, this.form.purchaseDate, this.form.provider ,this.id).subscribe();
+    this.gestionStockService.addStock(this.form.quantity, this.form.price, this.form.purchaseDate, this.form.provider ,this.id).subscribe(success => {
+      if (success) {
+        this.boolAddStock = 1;
+        console.log("success");
+      } else {
+        this.boolAddStock = -1;
+        console.log("error");
+      }
+    });
 
 
   }

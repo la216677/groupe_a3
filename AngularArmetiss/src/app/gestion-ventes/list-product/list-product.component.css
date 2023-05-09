@@ -83,12 +83,20 @@ div img{
   border-collapse: collapse;
 }
 
+#selectionnezClient{
+  display: none;
+}
+
 #produit{
-  width: 45%;
+  width: 70%;
 }
 
 #total{
   text-align: center;
+}
+
+#selectClient{
+  width: 100%;
 }
 td{
   color: #232b42;

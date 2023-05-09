@@ -86,16 +86,16 @@
             <td id="total">{{ totalPriceRounded }}€</td>
           </tr>
           <tr>
-            <td scope="row" colspan="3">Client :</td>
-            <td>
+            <td id="selectClient" colspan="4">
               <select class="form-control" id="selectClient">
-                <option selected value="-1">Liste des client</option>
+                <option id="selectionnezClient" selected >Selectionnez le client</option>
                 <option
                   *ngFor="let client of clientList"
                   [value]="client.ID_Client"
                 >
-                  {{ client.Client_Name }}
+                  {{ client.Client_Name + '&nbsp;' + client.Client_Last_Name + ' &nbsp; "' + client.Client_Email + '"'}}
                 </option>
+                <option>Pas inscrit</option>
               </select>
             </td>
           </tr>

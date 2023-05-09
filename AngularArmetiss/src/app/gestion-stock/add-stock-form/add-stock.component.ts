@@ -26,6 +26,8 @@ export class AddStockComponent {
     private gestionStockService: GestionStockService
   ) {}
 
+
+
   id = this.route.snapshot.paramMap.get('id');
   // Do something with the id and other parameters
 
@@ -41,7 +43,16 @@ export class AddStockComponent {
         console.log("error");
       }
     });
+  }
 
+  UpdateProductQuantity(){
+    this.gestionStockService.updateProductQuantity(this.id).subscribe()
+  };
 
+  callAll(){
+    this.addStock();
+    this.UpdateProductQuantity();
   }
 }
+
+

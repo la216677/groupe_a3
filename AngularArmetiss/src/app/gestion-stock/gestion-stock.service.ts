@@ -10,10 +10,6 @@ import { Form } from '@angular/forms';
 })
 export class GestionStockService {
 
-  baseUrl:string= "http://localhost/test/server/gestion-ventes/";
-  baseUrlProd:string= "http://localhost/test/server/gestion-produit/";
-
-
   constructor(private http:HttpClient){
 
   }
@@ -29,4 +25,9 @@ export class GestionStockService {
 
   }
 
+  public updateProductQuantity(idProduct: String | null): Observable<any> {
+    var formData: any = new FormData();
+    formData.append('idProduct', idProduct);
+    return this.http.post(`${environment.apiGetStockProduct}`, formData);
+}
 }

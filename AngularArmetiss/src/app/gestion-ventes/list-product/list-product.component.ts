@@ -31,7 +31,7 @@ export class ListProductComponent implements OnInit{
     private gestionService:GestionService,
     private categoryService: CategoryService,
     private router:Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
     ){}
 
   ngOnInit(){

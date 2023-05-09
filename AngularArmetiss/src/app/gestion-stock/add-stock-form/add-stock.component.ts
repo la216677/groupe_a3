@@ -38,6 +38,7 @@ export class AddStockComponent {
       if (success) {
         this.boolAddStock = 1;
         console.log("success");
+        this.UpdateProductQuantity()
       } else {
         this.boolAddStock = -1;
         console.log("error");
@@ -48,11 +49,6 @@ export class AddStockComponent {
   UpdateProductQuantity(){
     this.gestionStockService.updateProductQuantity(this.id).subscribe()
   };
-
-  callAll(){
-    this.addStock();
-    this.UpdateProductQuantity();
-  }
 }
 
 

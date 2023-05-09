@@ -8,14 +8,14 @@ if(isset($postdata) && !empty($postdata)){
   //extraire les données
   $request = json_decode($postdata);
 
-  $id_Category = mysqli_real_escape_string($mysqli, trim($request->ID_Category));
+  $id_Category = trim($request->ID_Category);
   $category_Name = trim($request->Category_Name);
   $category_Description = trim($request->Category_Description);
   $category_Visibility = trim($request->Category_Visibility);
 
 
-  $sql = "UPDATE Category SET 
-            Category_Name = :category_Name, 
+  $sql = "UPDATE Category SET
+            Category_Name = :category_Name,
             Category_Description = :category_Description,
             Category_Visibility = :category_Visibility
           WHERE ID_Category = :id_Category";

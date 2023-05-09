@@ -1,16 +1,25 @@
 <div class="container">
   <div class="table-wrapper">
     <nav class="nav-bar">
-    <div class="">
       <div class="">
-        <select id="categorySelect" class="select" [(ngModel)]="selectedCategory" (change)="filterByCategory()">
-          <option selected value="0">Toutes les catégories</option>
-          <option *ngFor="let category of categoryList" [value]="category.ID_Category">{{ category.Category_Name }}</option>
-        </select>
+        <div class="">
+          <select
+            id="categorySelect"
+            class="select"
+            [(ngModel)]="selectedCategory"
+            (change)="filterByCategory()"
+          >
+            <option selected value="0">Toutes les catégories</option>
+            <option
+              *ngFor="let category of categoryList"
+              [value]="category.ID_Category"
+            >
+              {{ category.Category_Name }}
+            </option>
+          </select>
+        </div>
       </div>
-    </div>
-
-  </nav>
+    </nav>
   </div>
 </div>
 <div class="flex">
@@ -18,26 +27,39 @@
     <div class="flex">
       <div class="card" *ngFor="let product of filteredProductList">
         <div class="img">
-          <img class="product_image" src='../../../assets/{{product.Product_Image_URL}}'>
+          <img
+            class="product_image"
+            src="../../../assets/{{ product.Product_Image_URL }}"
+          />
         </div>
         <div>
-          <p class="center-text">{{product.Product_Name}}</p>
+          <p class="center-text">{{ product.Product_Name }}</p>
         </div>
-        <img class="btn-cart" (click)="addBasket(product)" src="../../../assets/shopping_cart_PNG38.png" alt="">
+        <img
+          class="btn-cart"
+          (click)="addBasket(product)"
+          src="../../../assets/shopping_cart_PNG38.png"
+          alt=""
+        />
       </div>
     </div>
   </div>
   <div class="panier-box">
+    <div class="form-group">
+      <input
+        id="searchInput"
+        type="text"
+        class="form-control"
+        placeholder="Rechercher un produit..."
+        [(ngModel)]="searchTerm"
+        (input)="filterProducts()"
+      />
+    </div>
     <div class="panier">
-      <div class="">
-        <div class="form-group">
-          <input id="searchInput" type="text" class="form-control" placeholder="Rechercher un produit..." [(ngModel)]="searchTerm" (input)="filterProducts()" >
-        </div>
-      </div>
-      <table class="table table-bordered">
+      <table class="table">
         <thead class="thead-light">
           <tr>
-            <th scope="col">Produit</th>
+            <th id="produit" scope="col">Produit</th>
             <th scope="col">Quantité</th>
             <th scope="col">Prix</th>
             <th scope="col"></th>
@@ -45,31 +67,43 @@
         </thead>
         <tbody>
           <tr *ngFor="let product of baskets">
-            <th scope="row">{{product[0].Product_Name}}</th>
-            <td>{{product[1]}}</td>
-            <td>{{product[0].Product_Sale_Price_TVAC}}</td>
+            <th scope="row">{{ product[0].Product_Name }}</th>
+            <td>{{ product[1] }}</td>
+            <td>{{ product[0].Product_Sale_Price_TVAC }}</td>
             <td>
-              <button (click)="deleteBasket(product[0],product[1])" type="button" class="btnclose" aria-label="Close">X</button>
+              <button
+                (click)="deleteBasket(product[0], product[1])"
+                type="button"
+                class="btnclose"
+                aria-label="Close"
+              >
+                X
+              </button>
             </td>
           </tr>
           <tr>
             <td scope="row" colspan="3">Total :</td>
-            <td>{{totalPriceRounded}}€</td>
+            <td id="total">{{ totalPriceRounded }}€</td>
           </tr>
           <tr>
             <td scope="row" colspan="3">Client :</td>
             <td>
-              <select class="form-control" id="selectClient" >
+              <select class="form-control" id="selectClient">
                 <option selected value="-1">Liste des client</option>
-                <option *ngFor="let client of clientList" [value]="client.ID_Client">{{ client.Client_Name }}</option>
+                <option
+                  *ngFor="let client of clientList"
+                  [value]="client.ID_Client"
+                >
+                  {{ client.Client_Name }}
+                </option>
               </select>
             </td>
           </tr>
         </tbody>
       </table>
-      </div>
-      <button (click)="postBasket()" class="btn btn-outline-success btn-confirm">Confirmer commande</button>
+    </div>
+    <button (click)="postBasket()" class="btn btn-outline-success btn-confirm">
+      Confirmer commande
+    </button>
   </div>
 </div>
-
-

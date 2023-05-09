@@ -1,5 +1,5 @@
 .card{
-  width: 18%;
+  width: 260px;
   margin:3%;
   border: black solid 1px;
 }
@@ -54,16 +54,21 @@ div img{
 }
 
 .box{
-  width: 80%;
+  width: 70%;
+}
+@media screen and (max-width: 1020px) {
+  .box{
+    width: 59%;
+  }
 }
 .panier-box{
   display: flex;
   flex-direction: column;
-  width: 20%;
   position: fixed;
   right: 2%;
   top: 15%;
-  height: 80vh;
+  min-width: 400px;
+  max-height: 84vh;
 }
 
 .btn-confirm{
@@ -78,6 +83,13 @@ div img{
   border-collapse: collapse;
 }
 
+#produit{
+  width: 45%;
+}
+
+#total{
+  text-align: center;
+}
 td{
   color: #232b42;
   font-weight: bold;
@@ -98,11 +110,10 @@ td{
 
 table{
   display: block;
-  margin: auto;
   overflow-y: auto;
   white-space: nowrap;
   height: 60vh;
-  margin-top: 20%;
+  margin-top: 10%;
   border: #232b42 groove 1px;
   border-radius: 5px;
 
@@ -113,7 +124,6 @@ th{
 }
 
 .panier{
-  margin: auto;
   border-radius: 10px;
 }
 

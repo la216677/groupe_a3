@@ -8,6 +8,7 @@ import { Panier } from '../models/panier';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
+
 @Component({
   selector: 'app-list-product',
   templateUrl: './list-product.component.html',
@@ -26,6 +27,7 @@ export class ListProductComponent implements OnInit{
   filteredProductList: Product[]; // Liste des produits filtrés
   selectedCategory: number = 0 ; // Catégorie sélectionnée dans le menu déroulant
   searchTerm: string; // Terme de recherche
+  selectedClient: any;
 
   constructor(
     private gestionService:GestionService,
@@ -141,8 +143,8 @@ export class ListProductComponent implements OnInit{
 
   postBasket(){
 
-    let client=document.getElementById("selectClient") as HTMLSelectElement;
-    let clientId: string=client.value;
+    let client= this.selectedClient;
+    let clientId = client;
     let clientData: Client|null;
     let panier: Panier;
     let userId=this.cookieService.get('userId');

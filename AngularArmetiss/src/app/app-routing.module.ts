@@ -12,6 +12,7 @@ import { ListUserComponent } from './gestion-utilisateur/list-user/list-user.com
 import { ProfilComponent } from './profil/profil.component';
 import { ListProductComponent } from './gestion-stock/list-product/list-product.component';
 import { AddStockComponent } from './gestion-stock/add-stock-form/add-stock.component';
+import { HistoriqueStockComponent } from './gestion-stock/historique-stock/historique-stock.component';
 
 const routes: Routes = [
   { path: 'ventes', component: VentesComponent, canActivate: [AuthentificattionGuard] },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'add-stock/:id', component: AddStockComponent, canActivate: [AuthentificattionGuard] },
   { path: 'home', component: ContainerCardsComponent, canActivate: [AuthentificattionGuard] },
   { path: 'user', component: ListUserComponent, canActivate: [AuthentificattionGuard] },
+  { path: 'historique-stock', component: HistoriqueStockComponent, canActivate: [AuthentificattionGuard]},
   { path: '', loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)},
   { path: '**', component: PageNotFoundComponent },
 

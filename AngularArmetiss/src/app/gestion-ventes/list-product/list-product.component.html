@@ -87,8 +87,9 @@
           </tr>
           <tr>
             <td id="selectClient" colspan="4">
+              <p class="titleSelectp">Listes des clients :</p>
               <select class="form-control" id="selectClient" [(ngModel)]="selectedClient">
-                <option value="-1" id="selectionnezClient" selected>Selectionnez le client</option>
+                <option value="-1" id="selectionnezClient" class="titleSelect" selected></option>
                 <option value="-1">Pas inscrit</option>
                 <option class="forClient" *ngFor="let client of clientList" [value]="client.ID_Client">
                   <span>{{ client.Client_Name }} </span>

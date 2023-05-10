@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
+import { Stock } from '../gestion-produit/models/stock';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { Form } from '@angular/forms';
 
@@ -9,6 +10,8 @@ import { Form } from '@angular/forms';
   providedIn: 'root'
 })
 export class GestionStockService {
+
+  baseUrlStock:string= "http://localhost/test/server/gestion-stock/";
 
   constructor(private http:HttpClient){
 
@@ -37,5 +40,12 @@ public updateAllProductQuantity(id: String | null): Observable<any> {
   return this.http.post(`${environment.apiGetAllStockProduct}`, formData);
 }
 
+public getHistoriqueStock(id: number): Observable<any> {
+  return this.http.get<Stock[]>(`${this.baseUrlStock}getStock.php?id=${id}`).pipe(
+    map((res: any) => {
+      return res['data'];
+    })
+  );
 
+}
 }

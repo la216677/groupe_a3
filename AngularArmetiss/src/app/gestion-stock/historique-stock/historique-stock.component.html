@@ -14,20 +14,19 @@
           <th>Fournisseur </th>
           <th>Date</th>
           <th>Quantité</th>
-          <th>Prix</th>
           <th>HTVA</th>
           <th>TVAC</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr >
+        <tr *ngFor="let stock of stockList">
           <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{ stock.Stock_provider }}</td>
+          <td>{{ stock.Stock_Date }}</td>
+          <td>{{ stock.Stock_Quantity }}</td>
+          <td>{{ stock.Stock_Purchase_Price_HTVA }}</td>
+          <td>{{ stock.Stock_Purchase_Price_TVAC }}</td>
           <td></td>
         </tr>
       </tbody>

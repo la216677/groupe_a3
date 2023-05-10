@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'add-stock/:id', component: AddStockComponent, canActivate: [AuthentificattionGuard] },
   { path: 'home', component: ContainerCardsComponent, canActivate: [AuthentificattionGuard] },
   { path: 'user', component: ListUserComponent, canActivate: [AuthentificattionGuard] },
-  { path: 'historique-stock', component: HistoriqueStockComponent, canActivate: [AuthentificattionGuard]},
+  { path: 'historique-stock/:id', component: HistoriqueStockComponent, canActivate: [AuthentificattionGuard]},
   { path: '', loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)},
   { path: '**', component: PageNotFoundComponent },
 

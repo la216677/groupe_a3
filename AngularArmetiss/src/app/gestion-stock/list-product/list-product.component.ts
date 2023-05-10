@@ -4,6 +4,7 @@ import { Product } from 'src/app/gestion-produit/models/product';
 import { Category } from 'src/app/gestion-produit/models/category';
 import { CategoryService } from 'src/app/gestion-produit/service/category.service';
 import { ProductService } from 'src/app/gestion-produit/service/product.service';
+import { ActivatedRoute } from '@angular/router';
 
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -26,18 +27,24 @@ export class ListProductComponent implements OnInit{
   idProduct: String;
 
   constructor(
-    private gestionStockService:GestionStockService,
     private categoryService: CategoryService,
     private productService: ProductService,
     private router:Router,
-    private cookieService: CookieService,
+    private route: ActivatedRoute,
+    private gestionStockService: GestionStockService,
     ){}
+    id: String | null;
 
   ngOnInit(){
     this.getProducts();
     this.getCategory();
 
-  }
+    this.route.queryParams.subscribe(params => {
+      this.id = params['id'];
+  });
+
+  this.gestionStockService.updateProductQuantity(this.id).subscribe();
+}
 
   getProducts(){
     this.productService.getProductList()

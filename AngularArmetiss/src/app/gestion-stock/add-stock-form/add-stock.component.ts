@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Stock } from '../../gestion-produit/models/stock';
 import { CookieService } from 'ngx-cookie-service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { GestionStockService } from '../gestion-stock.service';
 import { Product } from 'src/app/gestion-produit/models/product';
 
@@ -24,10 +25,9 @@ export class AddStockComponent{
   constructor(
     private route: ActivatedRoute,
     private cookieService: CookieService,
-    private gestionStockService: GestionStockService
+    private gestionStockService: GestionStockService,
+    private router: Router
   ) {}
-
-
 
   id = this.route.snapshot.paramMap.get('id');
   // Do something with the id and other parameters
@@ -39,7 +39,8 @@ export class AddStockComponent{
       if (success) {
         this.boolAddStock = 1;
         console.log("success");
-        this.UpdateProductQuantity()
+        this.UpdateProductQuantity();
+        this.goToListProduct();
       } else {
         this.boolAddStock = -1;
         console.log("error");
@@ -51,9 +52,8 @@ export class AddStockComponent{
     this.gestionStockService.updateProductQuantity(this.id).subscribe()
   };
 
-  UpdateAllProductQuantity(id: string | null){
-    this.gestionStockService.updateAllProductQuantity(id).subscribe()
-  };
+  goToListProduct(){
+    this.router.navigate(['/gestionStock'],{ queryParams: { id: String } });
 }
 
-
+}

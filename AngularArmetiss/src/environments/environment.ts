@@ -8,4 +8,5 @@ export const environment = {
   apiGetId: `${apiEndpoint}/getId.php`,
   apiAddStock: `${apiAddStock}/gestion-stock/addStock.php`,
   apiGetStockProduct: `${apiGetStockProduct}/gestion-stock/updateProductQuantity.php`,
+  apiGetAllStockProduct: `${apiGetStockProduct}/gestion-stock/updateAllProductQuantity.php`,
 };

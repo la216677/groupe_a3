@@ -30,4 +30,10 @@ export class GestionStockService {
     formData.append('idProduct', idProduct);
     return this.http.post(`${environment.apiGetStockProduct}`, formData);
 }
+
+public updateAllProductQuantity(id: String | null): Observable<any> {
+  var formData: any = new FormData();
+  formData.append('idProduct', id);
+  return this.http.post(`${environment.apiGetAllStockProduct}`, formData);
+}
 }

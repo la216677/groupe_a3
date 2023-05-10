@@ -11,7 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-list-stock',
   templateUrl: './list-product.component.html',
-  styleUrls: ['./list-product.component.css']
+  styleUrls: ['./list-product.component.css'],
 })
 export class ListProductComponent implements OnInit{
   products:Product[]; //Liste des produit
@@ -23,17 +23,20 @@ export class ListProductComponent implements OnInit{
   selectedCategory: number = 0 ; // Catégorie sélectionnée dans le menu déroulant
   searchTerm: string; // Terme de recherche
 
+  idProduct: String;
+
   constructor(
     private gestionStockService:GestionStockService,
     private categoryService: CategoryService,
     private productService: ProductService,
     private router:Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
     ){}
 
   ngOnInit(){
     this.getProducts();
     this.getCategory();
+
   }
 
   getProducts(){

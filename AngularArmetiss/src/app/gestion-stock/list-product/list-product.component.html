@@ -16,13 +16,12 @@
 <div class="flex">
   <div class="box">
     <div class="flex">
-      <div class="card" *ngFor="let product of filteredProductList">
+      <div class="card" *ngFor="let product of filteredProductList" >
         <div class="img">
           <img class="product_image" src='../../../assets/{{product.Product_Image_URL}}'>
         </div>
         <p class="center-text">{{product.Product_Name}}</p>
         <div class="bottom-stock">
-
           <p class="center-text">Dispo : {{product.Product_Quantity}}</p>
           <button class="btnAddStock" (click)="goToAddStock(product.Id_Product)">+</button>
 
@@ -32,4 +31,5 @@
   </div>
 </div>
 
+<!-- {{updateProduct(""+product.Id_Product)}} -->
 

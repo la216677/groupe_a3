@@ -6,9 +6,10 @@ $postdata = file_get_contents("php://input");
 
 if(isset($postdata) && !empty($postdata)){
 
+
   // Extraire les données
   $request = json_decode($postdata);
-
+  echo json_encode($request);
   $product_Name = trim($request->Product_Name);
   $product_Sale_Price_HTVA = trim($request->Product_Sale_Price_HTVA);
   $product_Sale_Price_TVAC = trim($request->Product_Sale_Price_TVAC);

@@ -4,7 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { GestionStockService } from '../gestion-stock.service';
-import { Product } from 'src/app/gestion-produit/models/product';
+
 
 @Component({
   selector: 'app-add-stock',
@@ -20,7 +20,6 @@ export class AddStockComponent{
     provider : ''
 
   }
-
 
   constructor(
     private route: ActivatedRoute,

@@ -1,28 +1,40 @@
 <div class="containeur">
 <h4>Ajouter stock</h4>
 
-<form class="form-add-stock">
+<form #addStockForm="ngForm" class="form-add-stock">
     <span>Quantité</span>
     <br>
     <input
-    type="text"
+    type="number"
     id="purchaseQuantity"
     name="purchaseQuantity"
     [(ngModel)]="form.quantity"
     #purchaseQuantity="ngModel"
     autofocus
-    required="">
-    <br>
+    required
+    [min]="0"
+    >
+    <div *ngIf="purchaseQuantity.invalid && (purchaseQuantity.dirty || purchaseQuantity.touched)" class="error">
+      <div *ngIf="purchaseQuantity.errors?.['required']">
+        La quantité entrée est invalide
+      </div>
+    </div>
+
     <span>Prix/article</span>
-    <br>
+
     <input
-    type="text"
+    type="number"
     id="price"
     name="price"
     [(ngModel)]="form.price"
-    #purchaseQuantity="ngModel"
-    required="">
-    <br>
+    #priceQuantity="ngModel"
+    required=""
+    [min]="0">
+    <div *ngIf="priceQuantity.invalid && (priceQuantity.dirty || priceQuantity.touched)" class="error">
+      <div *ngIf="priceQuantity.errors?.['required']">
+        Le prix entré est invalide
+      </div>
+    </div>
     <span>Date d'achat</span>
     <br>
     <input
@@ -30,21 +42,31 @@
     id="purchaseDate"
     name="purchaseDate"
     [(ngModel)]="form.purchaseDate"
-    #purchaseQuantity="ngModel"
+    #dateQuantity="ngModel"
     required="">
-    <br>
+    <div *ngIf="dateQuantity.invalid && (dateQuantity.dirty || dateQuantity.touched)" class="error">
+      <div *ngIf="dateQuantity.errors?.['required']">
+        Le date entrée est invalide
+      </div>
+    </div>
+
     <span>Fournisseur</span>
-    <br>
+
     <input
     type="text"
     id="provider"
     name="provider"
     [(ngModel)]="form.provider"
-    #purchaseQuantity="ngModel"
+    #fournQuantity="ngModel"
     required="">
-    <br>
+    <div *ngIf="fournQuantity.invalid && (fournQuantity.dirty || fournQuantity.touched)" class="error">
+      <div *ngIf="fournQuantity.errors?.['required']">
+        Le fournisseur entré invalide
+      </div>
+    </div>
 
-    <button (click)="addStock()">Ajouter stock</button>
+
+    <button (click)="addStock()" [disabled]="!addStockForm.form.valid">Ajouter stock</button>
 
     <h1 *ngIf="boolAddStock == 1" >Stock ajouté</h1>
     <h1 *ngIf="boolAddStock == -1" >Erreur</h1>

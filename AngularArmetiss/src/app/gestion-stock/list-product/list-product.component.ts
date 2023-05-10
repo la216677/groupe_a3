@@ -97,4 +97,10 @@ export class ListProductComponent implements OnInit{
       this.filteredProductList = this.products; // Si aucun terme de recherche n'est saisi, afficher tous les produits
     }
   }
+
+  goToHistory(id:number){
+    this.router.navigate([`historique-stock/${id}`]);
+  }
+
+
 }

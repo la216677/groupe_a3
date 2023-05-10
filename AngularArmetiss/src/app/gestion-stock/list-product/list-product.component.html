@@ -16,7 +16,7 @@
 <div class="flex">
   <div class="box">
     <div class="flex">
-      <div class="card" *ngFor="let product of filteredProductList" >
+      <div class="card" *ngFor="let product of filteredProductList" (click)="goToHistory(product.Id_Product)" >
         <div class="img">
           <img class="product_image" src='../../../assets/{{product.Product_Image_URL}}'>
         </div>

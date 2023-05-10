@@ -36,4 +36,6 @@ public updateAllProductQuantity(id: String | null): Observable<any> {
   formData.append('idProduct', id);
   return this.http.post(`${environment.apiGetAllStockProduct}`, formData);
 }
+
+
 }

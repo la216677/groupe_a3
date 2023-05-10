@@ -81,12 +81,12 @@ export class ListUserComponent implements OnInit {
 
   //Aller a la page d'ajout
   goToAddUser(){
-    this.router.navigate(['users/add'])
+    this.router.navigate(['users/add']);
   }
 
   //aller a la page d'edit
   goToEditUser(id:number){
-    this.router.navigate([`users/edit/${id}`])
+    this.router.navigate([`users/edit/${id}`]);
   }
 
 

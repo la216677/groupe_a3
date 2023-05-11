@@ -6,18 +6,33 @@ $postdata = file_get_contents("php://input");
 
 if(isset($postdata) && !empty($postdata)){
 
-
   // Extraire les données
   $request = json_decode($postdata);
+
   echo json_encode($request);
   $product_Name = trim($request->Product_Name);
   $product_Sale_Price_HTVA = trim($request->Product_Sale_Price_HTVA);
-  $product_Sale_Price_TVAC = trim($request->Product_Sale_Price_TVAC);
+  $id_TVA = trim($request->Id_TVA);
+
+  $tva_rateFloat = 0.0;
+  $sql = "SELECT TVA_Rate from TVA where ID_TVA = :id";
+  $stmt = $pdo->prepare($sql);
+  $stmt->bindParam(':id', $id_TVA);
+  if($stmt->execute()){
+    $tva = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach($tva as $tva)
+    {
+      $tva_rate = $tva['TVA_Rate'];
+      $tva_rateFloat = floatval($tva_rate);
+    }
+
+  }
+
+  $product_Sale_Price_TVAC = trim($product_Sale_Price_HTVA*($tva_rateFloat+1.00));
   $product_Description = trim($request->Product_Description);
   $product_Quantity = 0;
   $product_Image_URL = trim($request->Product_Image_URL);
   $product_Visibility = trim($request->Product_Visibility);
-  $id_TVA = trim($request->Id_TVA);
   $id_Category = trim($request->Id_Category);
 
   // Vérifier si l'image est nulle ou vide

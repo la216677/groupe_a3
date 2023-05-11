@@ -112,22 +112,26 @@ export class ListProductComponent implements OnInit{
   }
 
   addBasket(product:Product){
-    let index = -1;
-    for (let i = 0; i < this.baskets.length; i++) {
-      if (this.baskets[i][0] === product) {
-        index = i;
-        break;
+    if(product.Product_Quantity>0){
+      let index = -1;
+      for (let i = 0; i < this.baskets.length; i++) {
+        if (this.baskets[i][0] === product) {
+          index = i;
+          break;
+        }
       }
+      --product.Product_Quantity;
+      if (index !== -1) {
+        this.baskets[index][1]++;
+      } else { // Sinon, ajouter le produit au tableau avec une quantité initiale de 1
+        this.baskets.push([product, 1]);
+      }
+      this.totalPrice+=+product.Product_Sale_Price_TVAC;
+      this.totalPriceRounded=this.totalPrice.toFixed(2);
+      console.table(this.baskets);
     }
+    console.log(product.Product_Quantity)
 
-    if (index !== -1) {
-      this.baskets[index][1]++;
-    } else { // Sinon, ajouter le produit au tableau avec une quantité initiale de 1
-      this.baskets.push([product, 1]);
-    }
-    this.totalPrice+=+product.Product_Sale_Price_TVAC;
-    this.totalPriceRounded=this.totalPrice.toFixed(2);
-    console.table(this.baskets);
   }
 
   deleteBasket(product:Product,quantite:number){
@@ -139,6 +143,7 @@ export class ListProductComponent implements OnInit{
     }
     this.totalPrice-=+product.Product_Sale_Price_TVAC*quantite;
     this.totalPriceRounded=this.totalPrice.toFixed(2);
+    product.Product_Quantity+=quantite;
   }
 
   postBasket(){

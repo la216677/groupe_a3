@@ -35,11 +35,12 @@
         <div>
           <p class="center-text">{{ product.Product_Name }}</p>
         </div>
-        <img
-          class="btn-cart"
-          (click)="addBasket(product)"
-          src="../../../assets/shopping_cart_PNG38.png"
-          alt=""
+        <p *ngIf="product.Product_Quantity == 0" class="center-text text-danger">Rupture de stock</p>
+        <img *ngIf="product.Product_Quantity > 0"
+        class="btn-cart"
+        (click)="addBasket(product)"
+        src="../../../assets/shopping_cart_PNG38.png"
+        alt=""
         />
       </div>
     </div>

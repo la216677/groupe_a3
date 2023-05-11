@@ -23,7 +23,7 @@ try {
   // Insérer une nouvelle vente
   $stmt = $pdo->prepare("INSERT INTO Sale (Sale_Price, Sale_Date, Id_User, Id_Client) VALUES (:sale_price, CURDATE(), :userId, IF(:clientId = '-1', NULL, :clientId))");
   $stmt->bindParam(':clientId', $clientId, PDO::PARAM_INT);
-  $stmt->bindParam(':sale_price', $sale_price, PDO::PARAM_INT);
+  $stmt->bindParam(':sale_price', $sale_price);
   $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
 
   if ($stmt->execute()) {

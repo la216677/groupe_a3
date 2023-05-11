@@ -2,3 +2,17 @@
   text-align: center;
   font-size: 24px;
 }
+
+thead{
+  background-color: #232b42;
+  color: white;
+}
+
+.title{
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: #232b42;
+}

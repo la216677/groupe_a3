@@ -1,4 +1,7 @@
 <header>
     <img (click)="goToMenu()" src="assets/Logo_ARMETISS.svg" alt="Logo_ARMETISS" id="Logo_ARMETISS">
-    <div class="profile"><app-profile-dropdown></app-profile-dropdown></div>
+    <div class="containeur-logo">
+      <div *ngIf="connected" class="profile"><app-profile-dropdown></app-profile-dropdown></div>
+      <i *ngIf="connected" (click)="logout()" class="logoutLogo pi pi-sign-out"></i>
+    </div>
   </header>

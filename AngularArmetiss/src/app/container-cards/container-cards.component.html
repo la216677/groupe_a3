@@ -12,18 +12,21 @@
       *ngIf="roleId == '3' || roleId == '2'"
     ></app-card-page>
     <app-card-page
+      *ngIf="roleId == '3' || roleId == '2'"
       title="Gestion du stock"
       urlImage="assets/stock.png"
       (click)="goToStock()"
+    ></app-card-page>
+    <app-card-page
+    *ngIf="roleId == '3'"
+      title="Gestion utilisateur"
+      urlImage="assets/user-plus-svgrepo-com.svg"
+      (click)="goToUser()"
     ></app-card-page>
     <app-card-page
       (click)="goToHisto()"
       title="Historique"
       urlImage="assets/history.png"
     ></app-card-page>
-  </div>
-  <div class="button">
-    <button *ngIf="roleId == '3'" class="gestut" (click)="goToUser()">Gestion utilisateur</button>
-    <button class="logout" (click)="logout()">Déconnexion</button>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { HeaderService } from 'src/app/header/header.service';
 
 @Component({
   selector: 'app-container-cards',
@@ -9,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ContainerCardsComponent {
   roleId=this.cookieService.get('roleId');
-  constructor(private router:Router, private cookieService: CookieService){}
+  constructor(private router:Router, private cookieService: CookieService,private headerService: HeaderService){}
 
   goToProduct(){
     this.router.navigate(['/produits']);
@@ -35,6 +36,7 @@ export class ContainerCardsComponent {
     this.cookieService.delete('userId');
     this.cookieService.delete('roleId');
     this.router.navigate(['/connexion']);
+    this.headerService.addData(false);
 
   }
 }

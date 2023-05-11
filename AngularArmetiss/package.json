@@ -24,6 +24,7 @@
     "ngx-bootstrap": "^10.2.0",
     "ngx-cookie-service": "^15.0.0",
     "pdfmake": "^0.2.7",
+    "primeicons": "^6.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

@@ -87,8 +87,12 @@
             <td id="total">{{ totalPriceRounded }}€</td>
           </tr>
           <tr>
+            <td class="clientTd"><p class="titleSelectp">Listes des clients :</p></td>
+            <td  class="clientTd" colspan="3"><button (click)="goToClient()" class="btn-add-client">Ajouter client</button></td>
+          </tr>
+          <tr>
             <td id="selectClient" colspan="4">
-              <p class="titleSelectp">Listes des clients :</p>
+
 
               <select class="form-control" id="selectClient" [(ngModel)]="selectedClient">
                 <option value="-1" id="selectionnezClient" class="titleSelect" selected></option>

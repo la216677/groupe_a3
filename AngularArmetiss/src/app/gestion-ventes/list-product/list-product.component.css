@@ -23,21 +23,6 @@
   margin: 0 20%;
 }
 
-.btn-add-client{
-  position: absolute;
-  right: 130px;
-  top:167px;
-  background-color: #198754;
-  color: white;
-  border: 1px solid #198754;
-  border-radius: 10px;
-  padding: 4px 8px;
-}
-
-.btn-add-client:hover{
-  background-color: #0d6e3d;
-  border: 1px solid #0d6e3d;
-}
 
 .select{
   color: #7a828a;
@@ -158,4 +143,22 @@ img{
 
 .container{
   min-width: 100%;
+}
+
+
+.clientTd{
+  border-bottom: none;
+}
+
+.btn-add-client{
+  background-color: #198754;
+  color: white;
+  border: 1px solid #198754;
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+
+.btn-add-client:hover{
+  background-color: #0d6e3d;
+  border: 1px solid #0d6e3d;
 }

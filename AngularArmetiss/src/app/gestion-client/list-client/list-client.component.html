@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>Gestion <b>d'utilisateur</b></h2>
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>
+          </th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Email</th>
+          <th>numéro téléphone</th>
+          <th>Adresse</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of ClientList">
+          <td>
+          </td>
+          <td>{{ client.Client_Last_Name }}</td>
+          <td>{{ client.Client_Name }}</td>
+          <td>{{ client.Client_Email }}</td>
+          <td>{{ client.Client_NumTel}}</td>
+          <td>{{ client.Client_Adresse}}</td>
+          <td>
+            <div class="button-wrapper">
+              <div class="marginButton col-sm-6">
+                <button (click)="goToEditClient(client.ID_Client)" class="btn btn-sm btn-primary"><i class="material-icons" title="Modifier">&#xE254;</i></button>
+              </div>
+              <div class="col-sm-6">
+                <button (click)="openConfirmationDeleteModal(client.ID_Client)" class="btn btn-sm btn-danger"><i class="material-icons" title="Supprimer">&#xE872;</i></button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

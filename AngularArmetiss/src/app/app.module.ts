@@ -20,6 +20,11 @@ import { GestionVentesModule } from './gestion-ventes/gestion-ventes.module';
 import { GestionHistoriqueModule } from './gestion-historique/gestion-historique.module';
 import { GestionStockModule } from './gestion-stock/gestion-stock.module';
 import { ProfilComponent } from './profil/profil.component';
+import { AddClientComponent } from './gestion-client/add-client/add-client.component';
+import { ClientFormComponent } from './gestion-client/client-form/client-form.component';
+import { ConfirmDeleteComponent } from './gestion-client/confirm-delete/confirm-delete.component';
+import { ListClientComponent } from './gestion-client/list-client/list-client.component';
+import { EditClientComponent } from './gestion-client/edit-client/edit-client.component';
 
 
 @NgModule({
@@ -31,7 +36,12 @@ import { ProfilComponent } from './profil/profil.component';
     CardPageComponent,
     AddStockComponent,
     PageNotFoundComponent,
-    ProfilComponent
+    ProfilComponent,
+    AddClientComponent,
+    ClientFormComponent,
+    ConfirmDeleteComponent,
+    ListClientComponent,
+    EditClientComponent
 
   ],
   imports: [

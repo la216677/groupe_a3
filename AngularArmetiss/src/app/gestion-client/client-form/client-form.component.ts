@@ -1,0 +1,78 @@
+import { Component, Input, ViewChild, OnInit} from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Client } from 'src/app/gestion-ventes/models/client';
+import { ClientService } from '../client.service';
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: 'app-client-form',
+  templateUrl: './client-form.component.html',
+  styleUrls: ['./client-form.component.css']
+})
+export class ClientFormComponent implements OnInit {
+
+  @Input() client: Client ; // on attend un objet user en entrée
+  @ViewChild('clientForm') clientForm: NgForm; //va nous permettre de vérifier le form
+  isAddForm: boolean; // pour verifier si nous somme dans un formulaire d'ajout
+  editMode:boolean = false;
+
+  emailExists: boolean = false;
+  boutonDesactive: boolean;
+
+
+  constructor(
+    private clientService: ClientService,
+    private router: Router,
+     ) {}
+
+
+  ngOnInit() {
+    this.isAddForm = this.router.url.includes('add');
+  }
+
+  /*
+  *Validation du form
+  */
+  onSubmit(){
+    this.boutonDesactive = true;
+    if(this.isAddForm){
+      this.clientService.addClient(this.client)
+      .subscribe(()=>this.router.navigate(['/client']));
+    } else {
+      this.clientService.updateClient(this.client)
+      .subscribe(()=>this.router.navigate(['/client']));
+
+    }
+    setTimeout(() => { //on bloque le bouton pendant 5 seconde après un click
+      this.boutonDesactive = false;
+    }, 5000);
+
+  }
+
+  /*
+  * on vérifie si l'email existe deja
+  */
+
+  checkOriginalEmail(email: string): boolean {
+    return email === this.client.Client_Email;
+  }
+
+  checkEmailExists(email: string): Observable<boolean> {
+    return this.clientService.checkEmailExists(email);
+  }
+
+  checkEmail(email: string) {
+    if (this.checkOriginalEmail(email)) {
+      this.emailExists = false;
+    } else {
+      this.checkEmailExists(email).subscribe(
+        (exists: boolean) => {
+          this.emailExists = exists;
+        }
+      );
+    }
+  }
+
+
+  }

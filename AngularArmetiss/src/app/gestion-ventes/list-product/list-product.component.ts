@@ -193,4 +193,8 @@ export class ListProductComponent implements OnInit{
       });
     }
   }
+
+  goToClient(){
+    this.router.navigate(['/clients']);
+  }
 }

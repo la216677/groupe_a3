@@ -13,6 +13,11 @@ import { ProfilComponent } from './profil/profil.component';
 import { ListProductComponent } from './gestion-stock/list-product/list-product.component';
 import { AddStockComponent } from './gestion-stock/add-stock-form/add-stock.component';
 import { HistoriqueStockComponent } from './gestion-stock/historique-stock/historique-stock.component';
+import { AddClientComponent } from './gestion-client/add-client/add-client.component';
+import { ClientFormComponent } from './gestion-client/client-form/client-form.component';
+import { ConfirmDeleteComponent } from './gestion-client/confirm-delete/confirm-delete.component';
+import { ListClientComponent } from './gestion-client/list-client/list-client.component';
+import { EditClientComponent } from './gestion-client/edit-client/edit-client.component';
 
 const routes: Routes = [
   { path: 'ventes', component: VentesComponent, canActivate: [AuthentificattionGuard] },
@@ -27,6 +32,9 @@ const routes: Routes = [
   { path: 'home', component: ContainerCardsComponent, canActivate: [AuthentificattionGuard] },
   { path: 'user', component: ListUserComponent, canActivate: [AuthentificattionGuard] },
   { path: 'historique-stock/:id', component: HistoriqueStockComponent, canActivate: [AuthentificattionGuard]},
+  { path: 'clients', component: ListClientComponent, canActivate: [AuthentificattionGuard]},
+  { path: 'clients/add', component: AddClientComponent, canActivate: [AuthentificattionGuard]},
+  { path: 'clients/edit/:id', component: EditClientComponent, canActivate: [AuthentificattionGuard]},
   { path: '', loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)},
   { path: '**', component: PageNotFoundComponent },
 

@@ -31,9 +31,9 @@
 }
 
 .logout{
-  background-color: #232b42;
+  background-color: rgb(175, 20, 20);
   color: #ffffff;
-  border: 1px solid #232b42;
+  border: 1px solid rgb(175, 20, 20);
 }
 
 button{

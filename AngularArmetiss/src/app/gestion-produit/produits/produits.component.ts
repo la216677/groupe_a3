@@ -125,5 +125,9 @@ export class ProduitsComponent implements OnInit {
     this.router.navigate(['produits/add']);
   }
 
+    //pour aller a la page categorie
+    goToCategorie(){
+      this.router.navigate(['categories']);
+    }
 
 }

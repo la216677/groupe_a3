@@ -48,3 +48,26 @@ header {
 .logoutLogo:hover{
   color: white;
 }
+
+
+.gobackArrow{
+  cursor: pointer;
+  color: #ffffff47;
+  transition: all 0.3s ease-in-out;
+  font-size: 50px;
+}
+
+.gobackArrow:hover{
+  color: white;
+}
+
+.goback{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 40px;
+  top: 0;
+  height: 12vh;
+}

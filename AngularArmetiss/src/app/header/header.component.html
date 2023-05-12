@@ -1,4 +1,5 @@
 <header>
+  <div class="goback" *ngIf="connected && flagGoBackArrow" (click)="goBack()"><i class="gobackArrow pi pi-arrow-left "></i></div>
     <img (click)="goToMenu()" src="assets/Logo_ARMETISS.svg" alt="Logo_ARMETISS" id="Logo_ARMETISS">
     <div class="containeur-logo">
       <div *ngIf="connected" class="profile"><app-profile-dropdown></app-profile-dropdown></div>

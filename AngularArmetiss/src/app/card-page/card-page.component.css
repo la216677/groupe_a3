@@ -1,15 +1,17 @@
 .card {
     display: flex;
+    flex-direction: column;
     color: white;
     background-color: #232B42;
-    width: 200px;
-    height: 200px;
+    width: 230px;
+    height: 230px;
     border-radius: 5%;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    margin: 20px 30px;
 }
 
 .card:hover {
@@ -21,3 +23,4 @@
     padding: 5%;
     margin: 0%;
 }
+

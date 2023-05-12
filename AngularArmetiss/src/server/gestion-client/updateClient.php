@@ -15,17 +15,11 @@ if(isset($postdata) && !empty($postdata)){
   $numTel = trim($request->Client_NumTel);
   $adresse = trim($request->Client_Adresse);
 
-  $sql = "UPDATE Client SET
-            Client_Last_Name = :last_name,
-            Client_Name = :name,
-            Client_Email = :email,
-            Client_NumTel = :numTel,
-            Client_Adresse = :adresse,
-          WHERE ID_Client = :id";
+  $sql = "UPDATE Client SET Client_Name = :names, Client_Last_Name = :lastname, Client_Email = :email, Client_NumTel = :numTel, Client_Adresse = :adresse WHERE ID_Client = :id";
 
   $stmt=$pdo->prepare($sql);
-  $stmt->bindParam(":last_name", $last_name);
-  $stmt->bindParam(":first_name", $first_name);
+  $stmt->bindParam(":names", $first_name);
+  $stmt->bindParam(":lastname", $last_name);
   $stmt->bindParam(":email", $email);
   $stmt->bindParam(":numTel", $numTel);
   $stmt->bindParam(":adresse", $adresse);

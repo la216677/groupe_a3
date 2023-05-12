@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class ClientFormComponent implements OnInit {
 
-  @Input() client: Client ; // on attend un objet user en entrée
+  @Input() client: Client ; // on attend un objet client en entrée
   @ViewChild('clientForm') clientForm: NgForm; //va nous permettre de vérifier le form
   isAddForm: boolean; // pour verifier si nous somme dans un formulaire d'ajout
   editMode:boolean = false;
@@ -38,10 +38,11 @@ export class ClientFormComponent implements OnInit {
     this.boutonDesactive = true;
     if(this.isAddForm){
       this.clientService.addClient(this.client)
-      .subscribe(()=>this.router.navigate(['/client']));
+      .subscribe(()=>this.router.navigate(['/clients']));
     } else {
+      console.log(this.client);
       this.clientService.updateClient(this.client)
-      .subscribe(()=>this.router.navigate(['/client']));
+      .subscribe(()=>this.router.navigate(['/clients']));
 
     }
     setTimeout(() => { //on bloque le bouton pendant 5 seconde après un click

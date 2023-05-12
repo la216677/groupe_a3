@@ -47,6 +47,14 @@ border: none;
 outline: none !important;
 margin-left: 10px;
 }
+.btn-success{
+  height: 50px;
+  width: 180px;
+}
+.edit .btn-danger{
+  height: 50px;
+  width: 180px;
+}
 .table-title .btn i {
 float: left;
 font-size: 21px;

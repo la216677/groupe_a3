@@ -94,7 +94,7 @@ export class ProduitsComponent implements OnInit {
     if (this.selectedCategory == 0) {
       this.filteredProductList = this.productList; // Si aucune catégorie n'est sélectionnée, afficher tous les produits
     } else {
-      this.filteredProductList = this.productList.filter(product => product.Id_Category === this.selectedCategory); // Filtrer les produits par catégorie
+      this.filteredProductList = this.productList.filter(product => product.Id_Category == this.selectedCategory); // Filtrer les produits par catégorie
     }
   }
 

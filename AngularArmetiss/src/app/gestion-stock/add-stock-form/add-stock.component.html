@@ -1,6 +1,9 @@
 <div class="containeur">
-<h4>Ajouter stock</h4>
-
+  <h4>Ajouter stock</h4>
+<div class="box">
+<div class="img">
+  <img class="product_image" src='../../../../assets/{{url}}'>
+</div>
 <form #addStockForm="ngForm" class="form-add-stock">
     <span>Quantité</span>
     <br>
@@ -71,4 +74,5 @@
     <h1 *ngIf="boolAddStock == 1" >Stock ajouté</h1>
     <h1 *ngIf="boolAddStock == -1" >Erreur</h1>
 </form>
+</div>
 </div>

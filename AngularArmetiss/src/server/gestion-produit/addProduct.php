@@ -37,16 +37,13 @@ if(isset($postdata) && !empty($postdata)){
 
   // Vérifier si l'image est nulle ou vide
   if (!empty($product_Image_URL)) {
-    $product_Image_URL = "'$product_Image_URL'"; // Encadrer la valeur avec des quotes simples
+    $product_Image_URL = "$product_Image_URL"; // Encadrer la valeur avec des quotes simples
   } else {
     $product_Image_URL = "NULL"; // Définir la valeur comme NULL si elle est nulle ou vide
   }
 
   // Construire la requête SQL en excluant la colonne Product_Image_URL si elle est nulle ou vide
-  $sql = "INSERT INTO Product(Product_Name, Product_Sale_Price_HTVA, Product_Sale_Price_TVAC, Product_Description, Product_Quantity, Product_Visibility, Id_TVA, Id_Category";
-  $sql .= $product_Image_URL !== "NULL" ? ", Product_Image_URL)" : ")";
-  $sql .= " VALUES (:product_Name, :product_Sale_Price_HTVA, :product_Sale_Price_TVAC, :product_Description, :product_Quantity, :product_Visibility, :id_TVA, :id_Category";
-  $sql .= $product_Image_URL !== "NULL" ? ", $product_Image_URL)" : ")";
+  $sql = "INSERT INTO Product(Product_Name, Product_Sale_Price_HTVA, Product_Sale_Price_TVAC, Product_Description, Product_Quantity, Product_Visibility, Id_TVA, Id_Category,Product_Image_URL) VALUES (:product_Name, :product_Sale_Price_HTVA, :product_Sale_Price_TVAC, :product_Description, :product_Quantity, :product_Visibility, :id_TVA, :id_Category,:product_Image_URL)";
 
   // Préparer la requête PDO
   $stmt = $pdo->prepare($sql);
@@ -59,7 +56,7 @@ if(isset($postdata) && !empty($postdata)){
   $stmt->bindParam(':id_TVA', $id_TVA);
   $stmt->bindParam(':id_Category', $id_Category);
 
-  if($product_Image_URL !== "NULL") {
+  if($product_Image_URL != "NULL") {
     $stmt->bindParam(':product_Image_URL', $product_Image_URL);
   }
 

@@ -43,4 +43,12 @@ public getHistoriqueStock(id: number): Observable<any> {
   );
 
 }
+
+getImg(id: string | null) {
+  return this.http.get(`${environment.apiGetImg}?id=${id}`).pipe(
+    map((res: any) => {
+      return res['data'];
+    })
+  );;
+}
 }

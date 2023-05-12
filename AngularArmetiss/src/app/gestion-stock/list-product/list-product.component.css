@@ -2,8 +2,14 @@
   position: relative;
   min-width: 250px;
   margin: 3%;
-  border: black solid 1px;
+  border: 1px solid #232b42;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .nav-bar {

@@ -11,7 +11,7 @@ import { GestionStockService } from '../gestion-stock.service';
   templateUrl: './add-stock.component.html',
   styleUrls: ['./add-stock.component.css'],
 })
-export class AddStockComponent{
+export class AddStockComponent implements OnInit{
 
   form = {
     quantity: '',
@@ -31,6 +31,9 @@ export class AddStockComponent{
   id = this.route.snapshot.paramMap.get('id');
   // Do something with the id and other parameters
 
+  ngOnInit() {
+    this.getImg(this.id);
+  }
   boolAddStock = 0;
 
   addStock() {
@@ -54,5 +57,18 @@ export class AddStockComponent{
   goToListProduct(){
     this.router.navigate(['/gestionStock'],{ queryParams: { id: String } });
 }
+  url: string;
+  getImg(id: string | null) {
+    return this.gestionStockService.getImg(id).subscribe(
+      (data: any) => {
+        this.url = data;
+      },
+      //en cas d'erreur on affiche le msg dans la console
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
 
 }

@@ -15,7 +15,10 @@ header {
     margin-bottom: 0.2%;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+}
 
+#Logo_ARMETISS:hover {
+    scale: 1.05;
 }
 
 .containeur-logo{
@@ -33,8 +36,13 @@ header {
 .profile {
     width: 50px;
     cursor: pointer;
+    filter: opacity(0.32);
+    transition: all 0.3s ease-in-out;
 }
 
+.profile:hover {
+    filter: opacity(1);
+}
 
 .logoutLogo{
   font-size: 50px;

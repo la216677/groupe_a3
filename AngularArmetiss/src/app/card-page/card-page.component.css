@@ -14,6 +14,7 @@
 
 .card:hover {
   box-shadow: rgba(0, 0, 0, 0.678) 0px 25px 50px -12px;
+  scale: 1.1;
 }
 .card img {
     width: 70%;

@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { Client } from 'src/app/gestion-ventes/models/client';
 import { ClientService } from '../client.service';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-client-form',
@@ -19,12 +22,16 @@ export class ClientFormComponent implements OnInit {
 
   emailExists: boolean = false;
   boutonDesactive: boolean;
-
-
+  url: string;
   constructor(
     private clientService: ClientService,
     private router: Router,
-     ) {}
+    private route: ActivatedRoute,
+    private cookieService : CookieService,
+    private location: Location
+     ) {
+
+     }
 
 
   ngOnInit() {
@@ -36,13 +43,15 @@ export class ClientFormComponent implements OnInit {
   */
   onSubmit(){
     this.boutonDesactive = true;
-    if(this.isAddForm){
-      this.clientService.addClient(this.client)
-      .subscribe(()=>this.router.navigate(['/clients']));
-    } else {
+    if (this.isAddForm) {
+      this.clientService.addClient(this.client).subscribe(() => {
+        this.location.back();
+      });
+    }
+   else {
       console.log(this.client);
       this.clientService.updateClient(this.client)
-      .subscribe(()=>this.router.navigate(['/clients']));
+      .subscribe(()=>this.location.back());
 
     }
     setTimeout(() => { //on bloque le bouton pendant 5 seconde après un click

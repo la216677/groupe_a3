@@ -195,6 +195,6 @@ export class ListProductComponent implements OnInit{
   }
 
   goToClient(){
-    this.router.navigate(['/clients']);
+    this.router.navigate(['/clients/add']);
   }
 }

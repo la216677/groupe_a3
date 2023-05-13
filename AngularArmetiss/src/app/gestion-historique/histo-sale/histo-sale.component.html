@@ -22,8 +22,8 @@
         <tr *ngFor="let sale of saleList" (click)="goToDetailSale(sale)">
           <td></td>
           <td>{{ sale.Id_Sale }}</td>
-          <td>{{ sale.Id_Client}}</td>
-          <td>{{ sale.Id_User}}</td>
+          <td>{{ sale.Client_Name }} {{ sale.Client_Name }} ({{ sale.Id_Client}})</td>
+          <td>{{ sale.User_Last_Name}} {{ sale.User_First_Name }} ({{ sale.Id_User }})</td>
           <td>{{ sale.Sale_Date }}</td>
           <td>{{ sale.Sale_Price }}€</td>
         </tr>

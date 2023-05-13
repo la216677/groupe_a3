@@ -25,6 +25,7 @@ import { ClientFormComponent } from './gestion-client/client-form/client-form.co
 import { ConfirmDeleteComponent } from './gestion-client/confirm-delete/confirm-delete.component';
 import { ListClientComponent } from './gestion-client/list-client/list-client.component';
 import { EditClientComponent } from './gestion-client/edit-client/edit-client.component';
+import { CardPageVenteComponent } from './card-page-vente/card-page-vente.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { EditClientComponent } from './gestion-client/edit-client/edit-client.co
     HeaderComponent,
     ProfileDropdownComponent,
     CardPageComponent,
+    CardPageVenteComponent,
     AddStockComponent,
     PageNotFoundComponent,
     ProfilComponent,

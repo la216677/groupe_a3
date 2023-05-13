@@ -31,6 +31,10 @@ export class ContainerCardsComponent {
   goToStock(){
     this.router.navigate(['/gestionStock']);
   }
+
+  goToClient(){
+    this.router.navigate(['/clients']);
+  }
   logout(){
     this.cookieService.delete('connected');
     this.cookieService.delete('userId');

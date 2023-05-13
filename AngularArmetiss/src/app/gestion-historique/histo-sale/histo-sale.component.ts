@@ -24,7 +24,7 @@ export class HistoSaleComponent implements OnInit{
   ngOnInit(): void {
     this.userId=this.cookieService.get('userId');
     this.roleId=this.cookieService.get('roleId');
-    if(+this.roleId!=1){
+    if(this.roleId=="3"){
       this.getSaleList();
     }else{
       this.getSaleListById();

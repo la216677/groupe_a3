@@ -11,7 +11,7 @@ if(isset($postdata) && !empty($postdata)){
 
   echo json_encode($request);
   $product_Name = trim($request->Product_Name);
-  $product_Sale_Price_HTVA = trim($request->Product_Sale_Price_HTVA);
+  $product_Sale_Price_TVAC = trim($request->Product_Sale_Price_TVAC);
   $id_TVA = trim($request->Id_TVA);
 
   $tva_rateFloat = 0.0;
@@ -28,7 +28,7 @@ if(isset($postdata) && !empty($postdata)){
 
   }
 
-  $product_Sale_Price_TVAC = trim($product_Sale_Price_HTVA*($tva_rateFloat+1.00));
+  $product_Sale_Price_HTVA = trim($product_Sale_Price_TVAC / (1+$tva_rateFloat));
   $product_Description = trim($request->Product_Description);
   $product_Quantity = 0;
   $product_Image_URL = trim($request->Product_Image_URL);

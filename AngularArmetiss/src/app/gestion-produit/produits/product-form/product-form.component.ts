@@ -69,11 +69,9 @@ export class ProductFormComponent implements OnInit{
       this.product.Product_Image_URL = null; // Définir la valeur comme null si elle est nulle ou vide
     }
     if(this.isAddForm){
-      this.calculateTVAC();
       this.productService.addProduct(this.product)
       .subscribe(()=>this.router.navigate(['/produits']));
     }else{
-      this.calculateTVAC();
       this.productService.updateProduct(this.product)
       .subscribe(()=>this.router.navigate(['/produits']));
 
@@ -82,25 +80,5 @@ export class ProductFormComponent implements OnInit{
       this.boutonDesactive = false;
     }, 5000);
 
-  }
-
-  calculateTVAC(){
-
-    const selectedTVA = this.product.Id_TVA;
-    const tvaRate = this.tvaList.find(tva => tva.ID_TVA === selectedTVA);
-
-    if (tvaRate) {
-      const tvaPercentage = tvaRate.TVA_Rate;
-      const productPriceHTVA = this.product.Product_Sale_Price_HTVA;
-
-      if(!isNaN(productPriceHTVA)){
-        const tvaAmount = productPriceHTVA * (tvaPercentage);
-        const productPriceTVAC = +productPriceHTVA+tvaAmount;
-        this.product.Product_Sale_Price_TVAC = productPriceTVAC;
-      }else{
-        console.error('Le prix HTVA entré n\'est pas un nombre valide.');
-        return;
-      }
-    }
   }
 }

@@ -25,23 +25,31 @@
 <div class="flex">
   <div class="box">
     <div class="flex">
-      <div class="card" *ngFor="let product of filteredProductList">
-        <div class="img">
+      <div *ngFor="let product of filteredProductList">
+        <div class="card" *ngIf="product.Product_Visibility">
+          <div class="img">
+            <img
+              class="product_image"
+              src="../../../assets/{{ product.Product_Image_URL }}"
+            />
+          </div>
+          <div>
+            <p class="center-text">{{ product.Product_Name }}</p>
+          </div>
+          <p
+            *ngIf="product.Product_Quantity == 0"
+            class="center-text text-danger"
+          >
+            Rupture de stock
+          </p>
           <img
-            class="product_image"
-            src="../../../assets/{{ product.Product_Image_URL }}"
+            *ngIf="product.Product_Quantity > 0"
+            class="btn-cart"
+            (click)="addBasket(product)"
+            src="../../../assets/shopping_cart_PNG38.png"
+            alt=""
           />
         </div>
-        <div>
-          <p class="center-text">{{ product.Product_Name }}</p>
-        </div>
-        <p *ngIf="product.Product_Quantity == 0" class="center-text text-danger">Rupture de stock</p>
-        <img *ngIf="product.Product_Quantity > 0"
-        class="btn-cart"
-        (click)="addBasket(product)"
-        src="../../../assets/shopping_cart_PNG38.png"
-        alt=""
-        />
       </div>
     </div>
   </div>
@@ -78,7 +86,7 @@
                 class="btnclose"
                 aria-label="Close"
               >
-              X
+                X
               </button>
             </td>
           </tr>
@@ -87,26 +95,40 @@
             <td id="total">{{ totalPriceRounded }}€</td>
           </tr>
           <tr>
-            <td class="clientTd"><p class="titleSelectp">Listes des clients :</p></td>
-            <td  class="clientTd" colspan="3"><button (click)="goToClient()" class="btn-add-client">Ajouter client</button></td>
+            <td class="clientTd">
+              <p class="titleSelectp">Listes des clients :</p>
+            </td>
+            <td class="clientTd" colspan="3">
+              <button (click)="goToClient()" class="btn-add-client">
+                Ajouter client
+              </button>
+            </td>
           </tr>
           <tr>
             <td id="selectClient" colspan="4">
-
-
-              <select class="form-control" id="selectClient" [(ngModel)]="selectedClient">
-                <option value="-1" id="selectionnezClient" class="titleSelect" selected></option>
+              <select
+                class="form-control"
+                id="selectClient"
+                [(ngModel)]="selectedClient"
+              >
+                <option
+                  value="-1"
+                  id="selectionnezClient"
+                  class="titleSelect"
+                  selected
+                ></option>
                 <option value="-1">Pas inscrit</option>
-                <option class="forClient" *ngFor="let client of clientList" [value]="client.ID_Client">
+                <option
+                  class="forClient"
+                  *ngFor="let client of clientList"
+                  [value]="client.ID_Client"
+                >
                   <span>{{ client.Client_Name }} </span>
                   <span>{{ client.Client_Last_Name }} </span>
                   <span>"{{ client.Client_Email }}"</span>
                   <span>{{ client.ID_Client }}</span>
                 </option>
               </select>
-
-
-
             </td>
           </tr>
         </tbody>

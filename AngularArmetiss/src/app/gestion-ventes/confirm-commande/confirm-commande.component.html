@@ -1,10 +1,36 @@
+
 <div class="center">
-  <h2>Commande effectué</h2>
+  <h2 >Récapitulatif de la commande</h2>
+  <div class="table-center">
+    <table id="htmlData" class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th>N°Produit</th>
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>Prix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let saleProduct of saleProductList">
+          <td></td>
+          <td>{{ saleProduct.Id_Product }}</td>
+          <td>{{ saleProduct.Product_Name }}</td>
+          <td>{{ saleProduct.Quantity }}</td>
+          <td>{{ saleProduct.Sale_Price }}€</td>
+        </tr>
+        <tr>
+          <td colspan="4"><b>Total</b></td>
+          <td>{{ totalCommande }}€</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <div class="btn-group" role="group" aria-label="Basic outlined example">
-    <button (click)="genererPdf()" type="button" class="btn btn-outline-primary">Imprimer une facture</button>
+    <button (click)="openPDF()" type="button" class="btn btn-outline-primary">Imprimer une facture</button>
     <button type="button" class="btn btn-outline-primary">Imprimer un ticket</button>
     <button (click)="goToVentes()" type="button" class="btn btn-outline-primary">Retour a la vente</button>
     <button (click)="goToAccueil()" type="button" class="btn btn-outline-primary">Retour a l'accueil</button>
   </div>
 </div>
-

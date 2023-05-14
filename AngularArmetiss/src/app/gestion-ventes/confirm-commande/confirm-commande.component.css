@@ -1,7 +1,52 @@
 .center {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  min-height: calc(100vh - 100px);
+  height: 88vh;
+  width: 100%;
+}
+
+.table-center{
+  height: 60vh;
+  width: 80%;
+}
+
+h2{
+  margin-bottom: 40px;
+}
+
+.logo-blue{
+  width: 25%;
+}
+
+.ticket-containeur{
+  height: 3508px;
+  width: 2480px;
+  align-items: center;
+  justify-content: center;
+}
+
+.ticket{
+  display: flex;
+  height: 3400px;
+  width: 2300px;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content{
+  width: 80%;
+}
+
+.table{
+  font-size: 21px;
+  border: 1px solid black;
 }

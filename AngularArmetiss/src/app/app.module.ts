@@ -26,6 +26,7 @@ import { ConfirmDeleteComponent } from './gestion-client/confirm-delete/confirm-
 import { ListClientComponent } from './gestion-client/list-client/list-client.component';
 import { EditClientComponent } from './gestion-client/edit-client/edit-client.component';
 import { CardPageVenteComponent } from './card-page-vente/card-page-vente.component';
+import { addClientModalComponent } from './gestion-client/addClientModal/addClientModal.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { CardPageVenteComponent } from './card-page-vente/card-page-vente.compon
     ClientFormComponent,
     ConfirmDeleteComponent,
     ListClientComponent,
-    EditClientComponent
+    EditClientComponent,
+    addClientModalComponent
 
   ],
   imports: [

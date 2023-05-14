@@ -1,0 +1,167 @@
+<div class="modal-containeur">
+  <div class="modals">
+    <div class="modal-header">
+      <h4 class="modal-title">Ajout utilisateur</h4>
+      <button
+        type="button"
+        class="btn btn-danger"
+        aria-label="close"
+        (click)="cancel()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit)="onSubmit()" #clientForm="ngForm">
+        <div class="user-details">
+
+
+          <!-- Nom -->
+          <div class="left">
+          <div class="input-box">
+            <span class="details">Nom</span>
+            <input
+              type="text"
+              placeholder="Entrer un nom"
+              required
+              pattern="^[a-zA-ZÀ-ÿ\- ']*$"
+              [(ngModel)]="client.Client_Last_Name"
+              name="last_name"
+              #last_name="ngModel"
+            />
+
+            <div
+              class="error"
+              [hidden]="!last_name || last_name.valid || last_name.pristine"
+            >
+              <span *ngIf="last_name.errors?.['required']"
+                >Le nom est requis.</span
+              >
+              <span *ngIf="last_name.errors?.['pattern']"
+                >Le nom ne peut pas contenir de chiffres ou de caractères.</span
+              >
+            </div>
+          </div>
+
+          <!-- Prénom -->
+
+          <div class="input-box">
+            <span class="details">Prénom</span>
+            <input
+              type="text"
+              placeholder="Entrer un prénom"
+              required
+              pattern="^[a-zA-ZÀ-ÿ\- ']*$"
+              [(ngModel)]="client.Client_Name"
+              name="first_name"
+              #first_name="ngModel"
+            />
+
+            <div
+              class="error"
+              [hidden]="!first_name || first_name.valid || first_name.pristine"
+            >
+              <span *ngIf="first_name.errors?.['required']"
+                >Le prénom est requis.</span
+              >
+              <span *ngIf="first_name.errors?.['pattern']"
+                >Le prénom ne peut pas contenir de chiffres ou de
+                caractères.</span
+              >
+            </div>
+          </div>
+
+          <!-- Email -->
+
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input
+              type="email"
+              placeholder="Entrer un email"
+              required
+              [(ngModel)]="client.Client_Email"
+              name="email"
+              (ngModelChange)="checkEmail(client.Client_Email)"
+              #email="ngModel"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            />
+
+            <div
+              class="error"
+              [hidden]="!email || email.valid || email.pristine"
+            >
+              <span *ngIf="email.errors?.['required']"
+                >L'adresse e-mail est requise.</span
+              >
+              <span *ngIf="email.errors?.['pattern']"
+                >L'adresse e-mail doit être valide.</span
+              >
+            </div>
+
+            <div *ngIf="emailExists" class="error">
+              L'adressse e-mail existe déjà
+            </div>
+          </div>
+        </div>
+          <!-- Date de naissance -->
+        <div class="right">
+          <div class="input-box">
+            <span class="details">Numéro de téléphone</span>
+            <input
+              type="text"
+              placeholder="Numéro de téléphone"
+              required
+              [(ngModel)]="client.Client_NumTel"
+              name="numTel"
+              #numTel="ngModel"
+            />
+
+            <div
+              class="error"
+              [hidden]="!numTel || numTel.valid || numTel.pristine"
+            >
+              <span *ngIf="numTel.errors?.['required']"
+                >Le numéro de téle-éphone est requis.</span
+              >
+            </div>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Adresse</span>
+            <input
+              type="text"
+              placeholder="Adresse"
+              required
+              [(ngModel)]="client.Client_Adresse"
+              name="adresse"
+              #adresse="ngModel"
+            />
+
+            <div
+              class="error"
+              [hidden]="!adresse || adresse.valid || adresse.pristine"
+            >
+              <span *ngIf="adresse.errors?.['required']"
+                >L'adresse est requise'</span
+              >
+            </div>
+          </div>
+        </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-cancel" (click)="cancel()">
+        Annuler
+      </button>
+      <button
+        [disabled]="boutonDesactive"
+        type="button"
+        class="btn btn-succes"
+        (click)="confirm()"
+      >
+        Ajouter
+      </button>
+    </div>
+  </div>
+</div>

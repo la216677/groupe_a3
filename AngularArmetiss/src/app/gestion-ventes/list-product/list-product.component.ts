@@ -7,6 +7,8 @@ import { Client } from '../models/client';
 import { Panier } from '../models/panier';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { addClientModalComponent } from 'src/app/gestion-client/addClientModal/addClientModal.component';
 
 
 @Component({
@@ -29,6 +31,9 @@ export class ListProductComponent implements OnInit{
   searchTerm: string; // Terme de recherche
   selectedClient: any;
 
+  modalRef: BsModalRef;
+
+
   modalVisible = false;
 
   constructor(
@@ -36,6 +41,7 @@ export class ListProductComponent implements OnInit{
     private categoryService: CategoryService,
     private router:Router,
     private cookieService: CookieService,
+    private modalService: BsModalService,
     ){}
 
     confirmerCommande() {
@@ -258,4 +264,16 @@ export class ListProductComponent implements OnInit{
   goToClient(){
     this.router.navigate(['/clients/add']);
   }
+
+  openAddClientModal() {
+
+    this.modalRef = this.modalService.show(addClientModalComponent); // on envoie l'id au modal
+    if (this.modalRef) { //on verifie si il existe pour eviter des erreur
+      //lorsque le modal est fermer on raffraichi la liste d'utilisateur
+      this.modalRef.onHidden?.subscribe(() => {
+        this.getClient();
+      });
+    }
+  }
+
 }

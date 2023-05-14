@@ -99,7 +99,7 @@
               <p class="titleSelectp">Listes des clients :</p>
             </td>
             <td class="clientTd" colspan="3">
-              <button (click)="goToClient()" class="btn-add-client">
+              <button (click)="openAddClientModal()" class="btn-add-client">
                 Ajouter client
               </button>
             </td>
@@ -135,6 +135,7 @@
           </tr>
         </tbody>
       </table>
+
     </div>
     <button (click)="confirmerCommande()" class="btn btn-outline-success btn-confirm">
       Confirmer commande

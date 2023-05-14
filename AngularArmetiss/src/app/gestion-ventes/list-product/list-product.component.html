@@ -136,8 +136,17 @@
         </tbody>
       </table>
     </div>
-    <button (click)="postBasket()" class="btn btn-outline-success btn-confirm">
+    <button (click)="confirmerCommande()" class="btn btn-outline-success btn-confirm">
       Confirmer commande
     </button>
+    <div class="modal" [ngClass]="{'visible': modalVisible}">
+      <div class="modal-content">
+        <p class="msg-valid">Êtes-vous sûr(e) de vouloir confirmer votre commande ?</p>
+        <div class="button">
+        <button class="btn-annuler" (click)="annuler()">Annuler</button>
+        <button class="btn-confirmer" (click)="confirmer()">Confirmer</button>
+      </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -29,12 +29,73 @@ export class ListProductComponent implements OnInit{
   searchTerm: string; // Terme de recherche
   selectedClient: any;
 
+  modalVisible = false;
+
   constructor(
     private gestionService:GestionService,
     private categoryService: CategoryService,
     private router:Router,
     private cookieService: CookieService,
     ){}
+
+    confirmerCommande() {
+      if(this.baskets.length>0)
+      {
+        this.modalVisible = true;
+      }
+    }
+
+    annuler() {
+      this.modalVisible = false;
+    }
+
+    confirmer() {
+    let client= this.selectedClient;
+    let clientId = client;
+    let clientData: Client|null;
+    let panier: Panier;
+    let userId=this.cookieService.get('userId');
+
+    if(clientId == "-1"){
+      clientData = null;
+    }else{
+      clientData = this.clientList[+clientId - 1];
+    }
+
+    panier={
+      basket:this.baskets,
+      totalPrice:this.totalPrice,
+      client:clientId,
+      user:userId
+    };
+
+    console.table(clientData);
+    console.table(panier);
+
+    if (panier.basket.length > 0) {
+      fetch('http://localhost/test/server/gestion-ventes/addBasket.php', {
+        method: 'POST',
+        body: JSON.stringify(panier),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erreur de réponse du serveur');
+        }
+        return response.json();
+      })
+      .then(data => {
+        const lastId: number = data;
+        this.router.navigate(['/ventes/confirm',lastId]);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    }
+      this.modalVisible = false;
+    }
 
   ngOnInit(){
     this.getProducts();

@@ -113,7 +113,7 @@ td{
   border: none;
   font-size: 18px;
   font-weight: bold;
-  padding: 0 37%;
+  padding: 0 ;
 }
 
 .thead-light th{
@@ -166,4 +166,81 @@ img{
 .btn-add-client:hover{
   background-color: #0d6e3d;
   border: 1px solid #0d6e3d;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+
+}
+
+.modal.visible {
+  display: block;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  height: 30%;
+  justify-content: space-between;
+}
+
+button {
+  margin: 0 10px;
+}
+
+.msg-valid{
+  font-size: 24px;
+  color: #232b42;
+}
+
+.btn-confirmer{
+  background-color: #198754;
+  color: white;
+  border: 1px solid #198754;
+  border-radius: 6px;
+  padding: 6px 8px;
+  width: 50%;
+  height: 50px;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-confirmer:hover{
+  background-color: #0d6e3d;
+  border: 1px solid #0d6e3d;
+  scale: 1.01;
+}
+
+.btn-annuler{
+  background-color: #dc3545;
+  color: white;
+  border: 1px solid #dc3545;
+  border-radius: 6px;
+  padding: 6px 8px;
+  width: 50%;
+  height: 50px;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-annuler:hover{
+  background-color: #a71d2a;
+  border: 1px solid #a71d2a;
+  scale: 1.01;
+}
+
+.button{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
 }

@@ -101,6 +101,21 @@ export class ListUserComponent implements OnInit {
       this.filteredUserList = this.userList; // Si aucun terme de recherche n'est saisi, afficher tous les produits
     }
   }
+
+  sortDirection = 1;
+
+  sort(column: keyof User) {
+    this.userList = this.userList.sort((a: User, b: User) => {
+      if (a[column] < b[column]) {
+        return -1 * this.sortDirection;
+      } else if (a[column] > b[column]) {
+        return 1 * this.sortDirection;
+      } else {
+        return 0;
+      }
+    });
+    this.sortDirection = this.sortDirection * -1;
+  }
   //Aller a la page d'ajout
   goToAddUser(){
     this.router.navigate(['users/add']);

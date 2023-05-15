@@ -26,6 +26,9 @@ export class ListProductComponent implements OnInit{
 
   idProduct: String;
 
+  totalRecords:number;
+  page:number=1;
+
   constructor(
     private categoryService: CategoryService,
     private productService: ProductService,
@@ -52,6 +55,7 @@ export class ListProductComponent implements OnInit{
       (data: Product[]) => {
         this.products = data;
         this.filteredProductList = this.products;
+        this.totalRecords = data.length;
       },
       //en cas d'erreur on affiche le msg dans la console
       (err) => {

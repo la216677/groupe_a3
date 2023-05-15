@@ -14,6 +14,7 @@ import { DeleteProductComponent } from './produits/delete-product/delete-product
 import { AddProductComponent } from './produits/add-product/add-product.component';
 import { ProductFormComponent } from './produits/product-form/product-form.component';
 import { EditProductComponent } from './produits/edit-product/edit-product.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const productManagementRoot : Routes = [
   { path: 'categories', component: CategoriesComponent},
@@ -38,7 +39,8 @@ const productManagementRoot : Routes = [
     CommonModule,
     FormsModule,
     ModalModule.forRoot(),
-    RouterModule.forChild(productManagementRoot)
+    RouterModule.forChild(productManagementRoot),
+    NgxPaginationModule
   ],
   providers: [
     CategoryService,

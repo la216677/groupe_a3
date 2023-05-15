@@ -27,6 +27,7 @@ import { ListClientComponent } from './gestion-client/list-client/list-client.co
 import { EditClientComponent } from './gestion-client/edit-client/edit-client.component';
 import { CardPageVenteComponent } from './card-page-vente/card-page-vente.component';
 import { addClientModalComponent } from './gestion-client/addClientModal/addClientModal.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { addClientModalComponent } from './gestion-client/addClientModal/addClie
     BrowserAnimationsModule,
     GestionVentesModule,
     GestionHistoriqueModule,
-    GestionStockModule
+    GestionStockModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

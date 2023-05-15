@@ -17,6 +17,9 @@ export class CategoriesComponent implements OnInit {
   categoryList: Category[];
   modalRef: BsModalRef;
 
+  totalRecords:number;
+  page:number=1;
+
   constructor(
     private router: Router,
     private categoryService: CategoryService,
@@ -34,6 +37,7 @@ export class CategoriesComponent implements OnInit {
       .subscribe(
         (data: Category[]) => {
           this.categoryList = data;
+          this.totalRecords = this.categoryList.length;
         },
         //en cas d'erreur on affiche le msg dans la console
         (err) => {

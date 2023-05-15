@@ -24,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let category of categoryList">
+        <tr *ngFor="let category of categoryList | paginate: {id: 'listing_pagination', itemsPerPage: 10, currentPage: page,totalItems: totalRecords}">
           <td></td>
           <td>{{ category.Category_Name }}</td>
           <td>{{ category.Category_Description }}</td>
@@ -50,6 +50,9 @@
         </tr>
       </tbody>
     </table>
+  </div>
+  <div>
+    <pagination-controls id="listing_pagination" [maxSize]=5 [directionLinks]=true [previousLabel]="'Précédent'" [nextLabel]="'Suivant'" (pageChange)="page = $event"></pagination-controls>
   </div>
 </div>
 

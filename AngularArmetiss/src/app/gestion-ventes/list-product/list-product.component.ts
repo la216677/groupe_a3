@@ -36,6 +36,9 @@ export class ListProductComponent implements OnInit{
 
   modalVisible = false;
 
+  totalRecords:number;
+  page:number=1;
+
   constructor(
     private gestionService:GestionService,
     private categoryService: CategoryService,
@@ -115,6 +118,7 @@ export class ListProductComponent implements OnInit{
       (data: Product[]) => {
         this.products = data;
         this.filteredProductList = this.products;
+        this.totalRecords = this.products.length;
       },
       //en cas d'erreur on affiche le msg dans la console
       (err) => {

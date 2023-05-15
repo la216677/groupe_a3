@@ -27,6 +27,19 @@ export class HistoriqueStockComponent implements OnInit {
     } else {
     }
   }
+  sortDirection: number = 1;
+  sort(column: keyof Stock) {
+    this.stockList = this.stockList.sort((a: Stock, b: Stock) => {
+      if (a[column] < b[column]) {
+        return -1 * this.sortDirection;
+      } else if (a[column] > b[column]) {
+        return 1 * this.sortDirection;
+      } else {
+        return 0;
+      }
+    });
+    this.sortDirection = this.sortDirection * -1;
+  }
 
   getHistoriqueStock(id: number) {
     this.gestionStockService.getHistoriqueStock(id).subscribe((res) => {

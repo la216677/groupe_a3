@@ -4,6 +4,7 @@ import { HistoService} from '../histo.service'
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
+
 @Component({
   selector: 'app-histo-sale',
   templateUrl: './histo-sale.component.html',
@@ -32,6 +33,22 @@ export class HistoSaleComponent implements OnInit{
       this.getSaleListById();
     }
   }
+
+  sortDirection = 1;
+
+  sort(column: keyof Sale) {
+    this.saleList = this.saleList.sort((a: Sale, b: Sale) => {
+      if (a[column] < b[column]) {
+        return -1 * this.sortDirection;
+      } else if (a[column] > b[column]) {
+        return 1 * this.sortDirection;
+      } else {
+        return 0;
+      }
+    });
+    this.sortDirection = this.sortDirection * -1;
+  }
+
 
   getSaleList(){
     this.histoService.getSaleList()

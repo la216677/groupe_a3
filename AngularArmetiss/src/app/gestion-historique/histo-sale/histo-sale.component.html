@@ -11,18 +11,18 @@
       <thead>
         <tr>
           <th class="right-top"></th>
-          <th>N°Commande</th>
-          <th>Client</th>
-          <th>Vendeur</th>
-          <th>Date</th>
-          <th>Prix total</th>
+          <th >N°Commande &nbsp; &nbsp; <i (click)="sort('Id_Sale')" class="pi pi-sort-alt"></i></th>
+          <th >Client &nbsp; &nbsp; <i (click)="sort('Client_Name')" class="pi pi-sort-alt"></i></th>
+          <th >Vendeur &nbsp; &nbsp; <i (click)="sort('User_Last_Name')" class="pi pi-sort-alt"></i></th>
+          <th >Date &nbsp; &nbsp; <i (click)="sort('Sale_Date')" class="pi pi-sort-alt"></i></th>
+          <th >Prix total</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let sale of saleList | paginate: {id: 'listing_pagination', itemsPerPage: 10, currentPage: page,totalItems: totalRecords}" (click)="goToDetailSale(sale)">
           <td></td>
           <td>{{ sale.Id_Sale }}</td>
-          <td *ngIf="sale.Id_Client">{{ sale.Client_Name }} {{ sale.Client_Name }} ({{ sale.Id_Client }})</td>
+          <td *ngIf="sale.Id_Client">{{ sale.Client_Name }} {{ sale.Client_Last_Name }} ({{ sale.Id_Client }})</td>
           <td *ngIf="!sale.Id_Client"></td>
           <td>{{ sale.User_Last_Name}} {{ sale.User_First_Name }} ({{ sale.Id_User }})</td>
           <td>{{ sale.Sale_Date }}</td>

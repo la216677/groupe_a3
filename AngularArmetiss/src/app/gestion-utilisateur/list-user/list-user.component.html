@@ -2,11 +2,21 @@
   <div class="table-wrapper">
     <div class="table-title">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <h2>Gestion <b>d'utilisateur</b></h2>
         </div>
-        <div class="col-sm-6">
-          <button (click)="goToAddUser()" class="btn btn-success"
+        <div class="grp-user-head col-sm-12">
+          <div class="form-group">
+            <input
+              id="searchInput"
+              type="text"
+              class="form-control"
+              placeholder="Rechercher un utilisateur"
+              [(ngModel)]="searchTerm"
+              (input)="filterUsers()"
+            />
+          </div>
+          <button (click)="goToAddUser()" class="btn-add-user"
             ><i class="material-icons">&#xE147;</i>
             <span>Ajouter un utilisateur</span></button
           >
@@ -27,28 +37,54 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of userList | paginate: {id: 'listing_pagination', itemsPerPage: 10, currentPage: page,totalItems: totalRecords}">
-          <td>
-          </td>
-          <td>{{ user.User_Last_Name }}</td>
-          <td>{{ user.User_First_Name }}</td>
-          <td>{{ user.User_Email_Address }}</td>
-          <td>
-            {{ getRoleName(user.Id_Role) }}
-          </td>
-          <td *ngIf="user.User_Activity == true">Actif</td>
-          <td *ngIf="user.User_Activity == false">Inactif</td>
-          <td>
-            <div class="button-wrapper">
-              <div class="marginButton col-sm-6">
-                <button (click)="goToEditUser(user.Id_User)" class="btn btn-sm btn-primary"><i class="material-icons" title="Modifier">&#xE254;</i></button>
+        <ng-container *ngIf="flag">
+          <tr *ngFor="let user of filteredUserList | paginate: {id: 'listing_pagination', itemsPerPage: 10, currentPage: page, totalItems: totalRecords}">
+            <td>
+            </td>
+            <td>{{ user.User_Last_Name }}</td>
+            <td>{{ user.User_First_Name }}</td>
+            <td>{{ user.User_Email_Address }}</td>
+            <td>
+              {{ getRoleName(user.Id_Role) }}
+            </td>
+            <td *ngIf="user.User_Activity == true">Actif</td>
+            <td *ngIf="user.User_Activity == false">Inactif</td>
+            <td>
+              <div class="button-wrapper">
+                <div class="marginButton col-sm-6">
+                  <button (click)="goToEditUser(user.Id_User)" class="btn btn-sm btn-primary"><i class="material-icons" title="Modifier">&#xE254;</i></button>
+                </div>
+                <div class="col-sm-6">
+                  <button (click)="openConfirmationDeleteModal(user.Id_User)" class="btn btn-sm btn-danger"><i class="material-icons" title="Supprimer">&#xE872;</i></button>
+                </div>
               </div>
-              <div class="col-sm-6">
-                <button (click)="openConfirmationDeleteModal(user.Id_User)" class="btn btn-sm btn-danger"><i class="material-icons" title="Supprimer">&#xE872;</i></button>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="!flag">
+          <tr *ngFor="let user of userList | paginate: {id: 'listing_pagination', itemsPerPage: 10, currentPage: page, totalItems: totalRecords}">
+            <td>
+            </td>
+            <td>{{ user.User_Last_Name }}</td>
+            <td>{{ user.User_First_Name }}</td>
+            <td>{{ user.User_Email_Address }}</td>
+            <td>
+              {{ getRoleName(user.Id_Role) }}
+            </td>
+            <td *ngIf="user.User_Activity == true">Actif</td>
+            <td *ngIf="user.User_Activity == false">Inactif</td>
+            <td>
+              <div class="button-wrapper">
+                <div class="marginButton col-sm-6">
+                  <button (click)="goToEditUser(user.Id_User)" class="btn btn-sm btn-primary"><i class="material-icons" title="Modifier">&#xE254;</i></button>
+                </div>
+                <div class="col-sm-6">
+                  <button (click)="openConfirmationDeleteModal(user.Id_User)" class="btn btn-sm btn-danger"><i class="material-icons" title="Supprimer">&#xE872;</i></button>
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
+            </td>
+          </tr>
+        </ng-container>
       </tbody>
     </table>
   </div>

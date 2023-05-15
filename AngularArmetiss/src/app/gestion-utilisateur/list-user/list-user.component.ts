@@ -24,6 +24,11 @@ export class ListUserComponent implements OnInit {
   totalRecords:number;
   page:number=1;
 
+  searchTerm: string; // Terme de recherche
+  filteredUserList: User[]; // Liste des produits filtrés
+
+  flag: boolean;
+
   constructor(
     private router: Router,
     private userService: UserService,
@@ -34,6 +39,7 @@ export class ListUserComponent implements OnInit {
   ngOnInit() {
     this.getUser();
     this.getRole();
+    this.flag = false;
     if(this.cookieService.get('roleId')!="3"){
       this.router.navigate(['menu']);
     }
@@ -81,7 +87,20 @@ export class ListUserComponent implements OnInit {
     return role ? role.Role : '';
   }
 
+  filterUsers() {
+    this.flag = true;
+    if (this.searchTerm) {
+      // Si un terme de recherche est saisi
+      this.filteredUserList = this.userList.filter(
+        user => user.User_First_Name.toLowerCase().replace(/ /, "-").includes(this.searchTerm.toLowerCase().replace(/ /, "-")) // replace(/ /, "-") remplace les tirer par des espaces
+        || user.User_Last_Name.toLowerCase().replace(/ /, "-").includes(this.searchTerm.toLowerCase().replace(/ /, "-"))
+        || user.User_Email_Address.toLowerCase().replace(/ /, "-").includes(this.searchTerm.toLowerCase().replace(/ /, "-"))
 
+        ); // Filtrer les produits par terme de recherche avec correspondance insensible à la casse et aux espaces
+    } else {
+      this.filteredUserList = this.userList; // Si aucun terme de recherche n'est saisi, afficher tous les produits
+    }
+  }
   //Aller a la page d'ajout
   goToAddUser(){
     this.router.navigate(['users/add']);

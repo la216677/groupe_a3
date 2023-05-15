@@ -17,6 +17,7 @@
   height: 8vh;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -190,4 +191,9 @@ img {
 .pagination-page.active {
   background-color: #232b42;
   color: #fff;
+}
+
+.form-control{
+  width: 100%;
+  margin: 0 100px 0 0;
 }

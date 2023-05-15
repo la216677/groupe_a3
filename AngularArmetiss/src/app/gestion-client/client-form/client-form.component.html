@@ -69,7 +69,7 @@
             required
             [(ngModel)]="client.Client_Email"
             name="email"
-            (ngModelChange)="checkEmail(client.Client_Email)"
+            (ngModelChange)="checkEmailExists(client.Client_Email)"
             #email="ngModel"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           />

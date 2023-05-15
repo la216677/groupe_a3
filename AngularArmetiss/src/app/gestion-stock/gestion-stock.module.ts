@@ -4,6 +4,7 @@ import { ListProductComponent } from './list-product/list-product.component';
 import { StockComponent } from './stock/stock.component';
 import { FormsModule } from '@angular/forms';
 import { HistoriqueStockComponent } from './historique-stock/historique-stock.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -16,7 +17,8 @@ import { HistoriqueStockComponent } from './historique-stock/historique-stock.co
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ]
 })
 export class GestionStockModule { }

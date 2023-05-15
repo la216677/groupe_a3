@@ -20,6 +20,10 @@ export class ListClientComponent implements OnInit {
   ClientList: Client[];
 
 
+  totalRecords:number;
+  page:number=1;
+
+
   constructor(
     private router: Router,
     private clientService: ClientService,
@@ -38,6 +42,7 @@ export class ListClientComponent implements OnInit {
     .subscribe(
       (data: Client[]) => {
         this.ClientList = data;
+        this.totalRecords = data.length;
       },
       //en cas d'erreur on affiche le msg dans la console
       (err) => {

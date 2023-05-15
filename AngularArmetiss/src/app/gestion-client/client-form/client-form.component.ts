@@ -64,25 +64,18 @@ export class ClientFormComponent implements OnInit {
   * on vérifie si l'email existe deja
   */
 
-  checkOriginalEmail(email: string): boolean {
-    return email === this.client.Client_Email;
-  }
-
-  checkEmailExists(email: string): Observable<boolean> {
-    return this.clientService.checkEmailExists(email);
-  }
-
-  checkEmail(email: string) {
-    if (this.checkOriginalEmail(email)) {
-      this.emailExists = false;
-    } else {
-      this.checkEmailExists(email).subscribe(
-        (exists: boolean) => {
+  checkEmailExists(email: string){
+    const regex = new RegExp('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$');
+    if (regex.test(email)) {
+      this.clientService
+        .checkEmailExists(email)
+        .subscribe((exists: boolean) => {
           this.emailExists = exists;
-        }
-      );
-    }
+          this.boutonDesactive = exists;
+        });
+      } else {
+        this.boutonDesactive = true;
+      }
   }
-
 
   }

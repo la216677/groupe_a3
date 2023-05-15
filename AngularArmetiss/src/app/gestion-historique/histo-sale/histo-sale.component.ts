@@ -14,6 +14,8 @@ export class HistoSaleComponent implements OnInit{
   saleList:Sale[];
   userId:string;
   roleId:string;
+  totalRecords:number;
+  page:number=1;
 
   constructor(
     private histoService:HistoService,
@@ -36,6 +38,7 @@ export class HistoSaleComponent implements OnInit{
     .subscribe(
       (data: Sale[]) => {
         this.saleList = data;
+        this.totalRecords = data.length;
       },
       //en cas d'erreur on affiche le msg dans la console
       (err) => {
@@ -50,6 +53,7 @@ export class HistoSaleComponent implements OnInit{
     .subscribe(
       (data: Sale[]) => {
         this.saleList = data;
+        this.totalRecords = data.length;
       },
       //en cas d'erreur on affiche le msg dans la console
       (err) => {

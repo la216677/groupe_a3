@@ -26,7 +26,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let client of ClientList">
+        <tr *ngFor="let client of ClientList | paginate: {id: 'listing_pagination', itemsPerPage: 10, currentPage: page,totalItems: totalRecords}">
           <td>
           </td>
           <td>{{ client.Client_Last_Name }}</td>
@@ -47,5 +47,8 @@
         </tr>
       </tbody>
     </table>
+  </div>
+  <div>
+    <pagination-controls id="listing_pagination" [maxSize]=5 [directionLinks]=true [previousLabel]="'Précédent'" [nextLabel]="'Suivant'" (pageChange)="page = $event"></pagination-controls>
   </div>
 </div>

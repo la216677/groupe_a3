@@ -4,7 +4,7 @@ import { ListProductComponent } from './list-product/list-product.component';
 import { VentesComponent } from './ventes/ventes.component';
 import { FormsModule } from '@angular/forms';
 import { ConfirmCommandeComponent } from './confirm-commande/confirm-commande.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -15,7 +15,8 @@ import { ConfirmCommandeComponent } from './confirm-commande/confirm-commande.co
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ]
 })
 export class GestionVentesModule { }

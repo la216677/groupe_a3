@@ -21,6 +21,8 @@ export class ListUserComponent implements OnInit {
   userList: User[];
   roles: Role[];
 
+  totalRecords:number;
+  page:number=1;
 
   constructor(
     private router: Router,
@@ -44,6 +46,7 @@ export class ListUserComponent implements OnInit {
     .subscribe(
       (data: User[]) => {
         this.userList = data;
+        this.totalRecords = data.length;
       },
       //en cas d'erreur on affiche le msg dans la console
       (err) => {

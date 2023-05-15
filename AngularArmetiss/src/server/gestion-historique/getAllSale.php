@@ -7,7 +7,7 @@ $idUser = null;
 $i = 0;
 
 $sale = [];
-$sqlRequest1 = "SELECT * FROM Sale";
+$sqlRequest1 = "SELECT * from Sale order by Sale_Date DESC";
 
 $stmt1 = $pdo->prepare($sqlRequest1);
 $stmt1->execute();

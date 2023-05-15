@@ -9,6 +9,7 @@ import { ListUserComponent } from './list-user/list-user.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { RouterModule, Routes } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const userRoutes: Routes = [
   { path: 'users', component: ListUserComponent},
@@ -29,7 +30,8 @@ const userRoutes: Routes = [
     CommonModule,
     FormsModule,
     ModalModule.forRoot(),
-    RouterModule.forChild(userRoutes)
+    RouterModule.forChild(userRoutes),
+    NgxPaginationModule
   ],
   providers: [UserService]
 })

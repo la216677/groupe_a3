@@ -25,6 +25,11 @@ export class ProduitsComponent implements OnInit {
 
   roleId=this.cookieService.get('roleId');
 
+
+  totalRecordsProduct:number;
+  totalRecordsCategory:number;
+  page:number=1;
+
   constructor(
     private router: Router,
     private productService: ProductService,
@@ -46,6 +51,7 @@ export class ProduitsComponent implements OnInit {
       (data: Product[]) => {
         this.productList = data;
         this.filteredProductList = this.productList; // Affecter la liste de produits filtrés à la liste de produits à afficher initialement
+        this.totalRecordsProduct = this.productList.length;
       },
       //en cas d'erreur on affiche le msg dans la console
       (err) => {
@@ -60,6 +66,7 @@ export class ProduitsComponent implements OnInit {
     .subscribe(
       (data: Category[]) => {
         this.categoryList = data;
+        this.totalRecordsCategory = this.categoryList.length;
       },
       //en cas d'erreur on affiche le msg dans la console
       (err) => {

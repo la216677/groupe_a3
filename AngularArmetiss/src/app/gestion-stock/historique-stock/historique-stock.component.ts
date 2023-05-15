@@ -11,7 +11,9 @@ import { Stock } from '../stock';
 export class HistoriqueStockComponent implements OnInit {
   constructor(private gestionStockService: GestionStockService, private route : ActivatedRoute) {}
 
-  stockList: Stock[] | undefined;
+  stockList: Stock[];
+  totalRecords:number;
+  page:number=1;
 
   ngOnInit() {
     const productId: number = Number(this.route.snapshot.paramMap.get('id'));
@@ -19,10 +21,10 @@ export class HistoriqueStockComponent implements OnInit {
       this.gestionStockService.getHistoriqueStock(productId)
       .subscribe((data: Stock[]) => {
         this.stockList = data;
+        this.totalRecords = data.length;
       });
 
     } else {
-      this.stockList = undefined;
     }
   }
 

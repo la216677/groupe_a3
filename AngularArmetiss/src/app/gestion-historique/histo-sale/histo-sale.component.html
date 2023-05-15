@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let sale of saleList" (click)="goToDetailSale(sale)">
+        <tr *ngFor="let sale of saleList | paginate: {id: 'listing_pagination', itemsPerPage: 10, currentPage: page,totalItems: totalRecords}" (click)="goToDetailSale(sale)">
           <td></td>
           <td>{{ sale.Id_Sale }}</td>
           <td *ngIf="sale.Id_Client">{{ sale.Client_Name }} {{ sale.Client_Name }} ({{ sale.Id_Client }})</td>
@@ -30,6 +30,9 @@
         </tr>
       </tbody>
     </table>
+    <div>
+      <pagination-controls id="listing_pagination" [maxSize]=5 [directionLinks]=true [previousLabel]="'Précédent'" [nextLabel]="'Suivant'" (pageChange)="page = $event"></pagination-controls>
+    </div>
   </div>
   <div class="center-text" *ngIf="saleList?.length === 0">
     <p>Il n'y a aucune ventes à afficher</p>

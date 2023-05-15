@@ -4,6 +4,7 @@ import { HistoSaleComponent } from './histo-sale/histo-sale.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { DetailSaleComponent } from './detail-sale/detail-sale.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -15,7 +16,8 @@ import { DetailSaleComponent } from './detail-sale/detail-sale.component';
   imports: [
     CommonModule,
     FormsModule,
-    BrowserModule
+    BrowserModule,
+    NgxPaginationModule
   ]
 })
 export class GestionHistoriqueModule { }

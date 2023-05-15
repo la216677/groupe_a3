@@ -22,6 +22,9 @@ export class ListClientComponent implements OnInit {
 
   totalRecords:number;
   page:number=1;
+  flag: boolean;
+  searchTerm: string; // Terme de recherche
+  filteredClienList: Client[]; // Liste des produits filtrés
 
 
   constructor(
@@ -33,6 +36,7 @@ export class ListClientComponent implements OnInit {
 
   ngOnInit() {
     this.getClient();
+    this.flag = false;
   }
 
 
@@ -50,6 +54,35 @@ export class ListClientComponent implements OnInit {
       }
 
     );
+  }
+
+  filterUsers() {
+    this.flag = true;
+    if (this.searchTerm) {
+      // Si un terme de recherche est saisi
+      this.filteredClienList = this.ClientList.filter(
+        client => client.Client_Name.toLowerCase().replace(/ /, "-").includes(this.searchTerm.toLowerCase().replace(/ /, "-")) // replace(/ /, "-") remplace les tirer par des espaces
+        || client.Client_Last_Name.toLowerCase().replace(/ /, "-").includes(this.searchTerm.toLowerCase().replace(/ /, "-"))
+        || client.Client_Email.toLowerCase().replace(/ /, "-").includes(this.searchTerm.toLowerCase().replace(/ /, "-"))
+        || client.Client_NumTel.toLowerCase().replace(/ /, "-").includes(this.searchTerm.toLowerCase().replace(/ /, "-"))
+
+        ); // Filtrer les produits par terme de recherche avec correspondance insensible à la casse et aux espaces
+    } else {
+      this.filteredClienList = this.ClientList; // Si aucun terme de recherche n'est saisi, afficher tous les produits
+    }
+  }
+  sortDirection: number = 1;
+  sort(column: keyof Client) {
+    this.ClientList = this.ClientList.sort((a: Client, b: Client) => {
+      if (a[column] < b[column]) {
+        return -1 * this.sortDirection;
+      } else if (a[column] > b[column]) {
+        return 1 * this.sortDirection;
+      } else {
+        return 0;
+      }
+    });
+    this.sortDirection = this.sortDirection * -1;
   }
 
   //Aller a la page d'ajout

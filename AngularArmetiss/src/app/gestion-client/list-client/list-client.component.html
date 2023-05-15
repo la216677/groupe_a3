@@ -2,11 +2,21 @@
   <div class="table-wrapper">
     <div class="table-title">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <h2>Gestion client</h2>
         </div>
-        <div class="col-sm-6">
-          <button (click)="goToAddClient()" class="btn btn-success"
+        <div class="grp-user-head col-sm-12">
+          <div class="form-group">
+            <input
+              id="searchInput"
+              type="text"
+              class="form-control"
+              placeholder="Rechercher un utilisateur"
+              [(ngModel)]="searchTerm"
+              (input)="filterUsers()"
+            />
+          </div>
+          <button (click)="goToAddClient()" class="btn-add-user"
             ><i class="material-icons">&#xE147;</i>
             <span>Ajouter un utilisateur</span></button>
         </div>
@@ -17,15 +27,37 @@
         <tr>
           <th>
           </th>
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Email</th>
-          <th>numéro téléphone</th>
-          <th>Adresse</th>
+          <th>Nom <i (click)="sort('Client_Last_Name')" class="pi pi-sort-alt"></i></th>
+          <th>Prénom  <i (click)="sort('Client_Name')" class="pi pi-sort-alt"></i></th>
+          <th>Email <i (click)="sort('Client_Email')" class="pi pi-sort-alt"></i></th>
+          <th>numéro téléphone <i (click)="sort('Client_NumTel')" class="pi pi-sort-alt"></i></th>
+          <th>Adresse <i (click)="sort('Client_Adresse')" class="pi pi-sort-alt"></i></th>
           <th></th>
         </tr>
       </thead>
       <tbody>
+        <ng-container *ngIf="flag">
+        <tr *ngFor="let client of filteredClienList | paginate: {id: 'listing_pagination', itemsPerPage: 10, currentPage: page,totalItems: totalRecords}">
+          <td>
+          </td>
+          <td>{{ client.Client_Last_Name }}</td>
+          <td>{{ client.Client_Name }}</td>
+          <td>{{ client.Client_Email }}</td>
+          <td>{{ client.Client_NumTel}}</td>
+          <td>{{ client.Client_Adresse}}</td>
+          <td>
+            <div class="button-wrapper">
+              <div class="marginButton col-sm-6">
+                <button (click)="goToEditClient(client.ID_Client)" class="btn btn-sm btn-primary"><i class="material-icons" title="Modifier">&#xE254;</i></button>
+              </div>
+              <div class="col-sm-6">
+                <button (click)="openConfirmationDeleteModal(client.ID_Client)" class="btn btn-sm btn-danger"><i class="material-icons" title="Supprimer">&#xE872;</i></button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-container *ngIf="!flag">
         <tr *ngFor="let client of ClientList | paginate: {id: 'listing_pagination', itemsPerPage: 10, currentPage: page,totalItems: totalRecords}">
           <td>
           </td>
@@ -45,6 +77,7 @@
             </div>
           </td>
         </tr>
+      </ng-container>
       </tbody>
     </table>
   </div>

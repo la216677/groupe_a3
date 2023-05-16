@@ -28,6 +28,7 @@ import { EditClientComponent } from './gestion-client/edit-client/edit-client.co
 import { CardPageVenteComponent } from './card-page-vente/card-page-vente.component';
 import { addClientModalComponent } from './gestion-client/addClientModal/addClientModal.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({

@@ -1,0 +1,162 @@
+
+.containeur{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.info-society{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 30px;
+  font-weight: 600;
+  line-height: 4px;
+}
+
+.ticket{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 85vh;
+  min-width: 40%;
+  font-size: 14px;
+  line-height: 18px;
+  border: 1px solid black;
+}
+
+.containeur-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 30px;
+  border-bottom: black 1px solid;
+  margin-top: 40px;
+  font-weight: 600;
+  line-height: 4px;
+  padding-bottom: 40px;
+}
+
+.table{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:last-child {
+  font-weight: bold;
+}
+
+.total-row {
+  text-align: right;
+}
+
+.total-row td {
+  border-top: 1px solid #ddd;
+}
+
+
+
+.date-id{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 30px;
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 40px 0 0 90px;
+  font-weight: 600;
+  line-height: 4px;
+}
+
+.button{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  padding: 0 30px;
+  margin-top: 20px;
+}
+
+.button button{
+
+  background-color: rgb(15, 103, 15);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+}
+
+.button button:hover{
+  background-color: rgb(14, 128, 14);
+
+}
+
+h1 {
+  text-align: center;
+}
+table {
+  width: 97%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  text-align: left;
+}
+.total-row {
+  font-weight: bold;
+}
+
+@media print {
+  .ticket {
+      background-color: white;
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 15px;
+      font-size: 14px;
+      line-height: 18px;
+  }
+}

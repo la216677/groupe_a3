@@ -18,12 +18,14 @@ import { ClientFormComponent } from './gestion-client/client-form/client-form.co
 import { ConfirmDeleteComponent } from './gestion-client/confirm-delete/confirm-delete.component';
 import { ListClientComponent } from './gestion-client/list-client/list-client.component';
 import { EditClientComponent } from './gestion-client/edit-client/edit-client.component';
+import { TicketComponent } from './gestion-ventes/ticket/ticket.component';
 
 const routes: Routes = [
   { path: 'ventes', component: VentesComponent, canActivate: [AuthentificattionGuard] },
-  { path: 'ventes/confirm/:id', component: ConfirmCommandeComponent, canActivate: [AuthentificattionGuard] },
+  { path: 'ventes/confirm/:id/:idclient', component: ConfirmCommandeComponent, canActivate: [AuthentificattionGuard] },
   { path: 'historique', component: HistoSaleComponent, canActivate: [AuthentificattionGuard] },
   { path: 'historique/:id', component: DetailSaleComponent, canActivate: [AuthentificattionGuard] },
+  { path: 'facture/:id/:idclient', component: TicketComponent, canActivate: [AuthentificattionGuard] },
   { path: 'menu', component: ContainerCardsComponent, canActivate: [AuthentificattionGuard] },
   { path: 'produits', component: ProduitsComponent, canActivate: [AuthentificattionGuard] },
   { path: 'profil', component: ProfilComponent, canActivate: [AuthentificattionGuard] },

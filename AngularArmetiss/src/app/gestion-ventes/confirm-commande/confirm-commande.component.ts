@@ -22,12 +22,16 @@ export class ConfirmCommandeComponent implements OnInit{
   totalCommande:number
   htmlToPdf: any
   numFacture: number = 0;
-
+  idClient: string | null;
+  idClientInt: number = 0;
 
   constructor(private route:ActivatedRoute, private router:Router, private historiqueService: HistoService, private elementRef: ElementRef){}
 
   ngOnInit(): void {
     this.saleId=this.route.snapshot.paramMap.get('id');
+    this.idClient=this.route.snapshot.paramMap.get('idclient');
+    this.idClientInt = parseInt(this.idClient!);
+    console.log(this.idClientInt);
     console.log(this.saleId);
     this.getVente();
     this.getTotalCommande();
@@ -63,6 +67,9 @@ export class ConfirmCommandeComponent implements OnInit{
   }
   goToAccueil(){
     this.router.navigate(['/menu']);
+  }
+  goToFacture(){
+    this.router.navigate(['/facture',this.saleId,this.idClient]);
   }
 
   getVente(){

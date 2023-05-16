@@ -43,4 +43,12 @@ export class HistoService {
       })
     );
   }
+
+  getSaleById(saleId:string|null){
+    return this.http.get<Sale[]>(`${this.baseUrl}getSaleById.php?id=${saleId}`).pipe(
+      map((res: any) => {
+        return res['data'];
+      })
+    );
+  }
 }

@@ -120,11 +120,11 @@ td{
   color: white;
 }
 
-table{
+.table{
   display: block;
   overflow-y: auto;
   white-space: nowrap;
-  height: 60vh;
+  height: 40vh;
   margin-top: 10%;
   border: #232b42 groove 1px;
   border-radius: 5px;
@@ -132,6 +132,20 @@ table{
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 
 }
+
+.table2{
+  display: block;
+  overflow-y: auto;
+  white-space: nowrap;
+  height: 15vh;
+  margin-top: 10%;
+  border: #232b42 groove 1px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+}
+
 
 th{
   color: #232b42;
@@ -284,3 +298,45 @@ button {
   background-color: #232b42;
   color: #fff;
 }
+
+.contain-tr{
+  width: 100%;
+}
+
+.liste-client{
+  border: cornflowerblue solid 1px;
+}
+
+.clientTdSearch{
+  padding: 20px 10px ;
+}
+
+.tdMail{
+  padding-left: 10px;
+  padding-bottom: 10px;
+  background-color: #fff;
+  border: 1px solid #232b42;
+  border-right: none;
+  max-width: 266px;
+}
+
+.tdMail:hover{
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+.tdNom{
+  padding-left: 10px;
+  padding-bottom: 10px;
+  background-color: #fff;
+  border: 1px solid #232b42;
+  border-left: none;
+}
+.tdEmail:hover{
+  background-color: #f2f2f2;
+}
+
+.clientTdAdd{
+margin-bottom: 50px;
+vertical-align: middle
+}
+

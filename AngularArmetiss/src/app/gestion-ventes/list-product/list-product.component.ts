@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ElementRef,ViewChild  } from '@angular/core';
 import { GestionService } from '../gestion.service';
 import { Product } from 'src/app/gestion-produit/models/product';
 import { Category } from 'src/app/gestion-produit/models/category';
@@ -17,6 +17,7 @@ import { addClientModalComponent } from 'src/app/gestion-client/addClientModal/a
   styleUrls: ['./list-product.component.css']
 })
 export class ListProductComponent implements OnInit{
+  @ViewChild('tableElement') tableElement!: ElementRef;
   products:Product[]; //Liste des produit
 
   totalPrice:number=0; //Prix du total de la commande
@@ -28,6 +29,7 @@ export class ListProductComponent implements OnInit{
 
   filteredProductList: Product[]; // Liste des produits filtrés
   selectedCategory: number = 0 ; // Catégorie sélectionnée dans le menu déroulant
+  searchTermClient: string; // Terme de recherche
   searchTerm: string; // Terme de recherche
   selectedClient: any;
 
@@ -39,13 +41,45 @@ export class ListProductComponent implements OnInit{
   totalRecords:number;
   page:number=1;
 
+  flag:boolean=false;
+  filterClientList: Client[]; // Liste des clients filtrés
+
   constructor(
     private gestionService:GestionService,
     private categoryService: CategoryService,
     private router:Router,
     private cookieService: CookieService,
     private modalService: BsModalService,
+    private elementRef: ElementRef
     ){}
+
+
+    filterClient() {
+      this.flag = true;
+      if (this.searchTermClient) {
+        // Si un terme de recherche est saisi
+        this.filterClientList = this.clientList.filter(
+          client => client.Client_Name.toLowerCase().replace(/ /, "-").includes(this.searchTermClient.toLowerCase().replace(/ /, "-")) // replace(/ /, "-") remplace les tirer par des espaces
+          || client.Client_Last_Name.toLowerCase().replace(/ /, "-").includes(this.searchTermClient.toLowerCase().replace(/ /, "-"))
+          || client.Client_Email.toLowerCase().replace(/ /, "-").includes(this.searchTermClient.toLowerCase().replace(/ /, "-"))
+
+          ); // Filtrer les produits par terme de recherche avec correspondance insensible à la casse et aux espaces
+      } else {
+        this.filterClientList = this.clientList; // Si aucun terme de recherche n'est saisi, afficher tous les produits
+      }
+    }
+
+
+    scrollToTop(): void {
+      this.tableElement.nativeElement.scrollTop = 0;
+    }
+
+    selectClient(client: any) {
+      this.selectedClient = client.ID_Client;
+      console.log(this.selectedClient);
+      this.searchTermClient = client.Client_Name + ' ' + client.Client_Last_Name;
+      this.scrollToTop();
+    }
 
     confirmerCommande() {
       if(this.baskets.length>0)

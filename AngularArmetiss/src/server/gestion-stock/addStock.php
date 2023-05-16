@@ -57,10 +57,14 @@ try {
 
   $stmt=$pdo->prepare($sql);
 
+  $prixTva = $price*$quantity;
+  $prixHtva = $prixTva/$tva;
+
+
   $stmt->bindParam(':quantity', $quantity);
   $stmt->bindParam(':purchaseDate', $purchaseDateOk);
-  $stmt->bindParam(':priceHtva', $price);
-  $stmt->bindValue(':priceTva', $price*$tva);
+  $stmt->bindParam(':priceHtva', $prixHtva);
+  $stmt->bindValue(':priceTva', $prixTva);
   $stmt->bindParam(':id', $id);
   $stmt->bindParam(':provider', $provider);
 

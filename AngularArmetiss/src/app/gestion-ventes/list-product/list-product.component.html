@@ -25,7 +25,18 @@
 <div class="flex">
   <div class="box">
     <div class="flex">
-      <div *ngFor="let product of filteredProductList | paginate: {id: 'listing_pagination', itemsPerPage: 10, currentPage: page,totalItems: totalRecords}">
+      <div
+        *ngFor="
+          let product of filteredProductList
+            | paginate
+              : {
+                  id: 'listing_pagination',
+                  itemsPerPage: 10,
+                  currentPage: page,
+                  totalItems: totalRecords
+                }
+        "
+      >
         <div class="card" *ngIf="product.Product_Visibility">
           <div class="img">
             <img
@@ -53,7 +64,14 @@
       </div>
     </div>
     <div>
-      <pagination-controls id="listing_pagination" [maxSize]=5 [directionLinks]=true [previousLabel]="'Précédent'" [nextLabel]="'Suivant'" (pageChange)="page = $event"></pagination-controls>
+      <pagination-controls
+        id="listing_pagination"
+        [maxSize]="5"
+        [directionLinks]="true"
+        [previousLabel]="'Précédent'"
+        [nextLabel]="'Suivant'"
+        (pageChange)="page = $event"
+      ></pagination-controls>
     </div>
   </div>
   <div class="panier-box">
@@ -98,58 +116,67 @@
             <td id="total">{{ totalPriceRounded }}€</td>
           </tr>
           <tr>
-            <td class="clientTd">
-              <p class="titleSelectp">Listes des clients :</p>
-            </td>
-            <td class="clientTd" colspan="3">
-              <button (click)="openAddClientModal()" class="btn-add-client">
-                Ajouter client
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td id="selectClient" colspan="4">
-              <select
-                class="form-control"
-                id="selectClient"
-                [(ngModel)]="selectedClient"
-                onmousedown="if(this.options.length>8){this.size=8;}"
-                onchange='this.size=0;'
-                onblur="this.size=0;"
-              >
-                <option
-                  value="-1"
-                  id="selectionnezClient"
-                  class="titleSelect"
-                  selected
-                ></option>
-                <option value="-1">Pas inscrit</option>
-                <option
-                  class="forClient"
-                  *ngFor="let client of clientList"
-                  [value]="client.ID_Client"
-                >
-                  <span>{{ client.Client_Name }} </span>
-                  <span>{{ client.Client_Last_Name }} </span>
-                  <span>({{ client.Client_Email }})</span>
-                </option>
-              </select>
-            </td>
+
           </tr>
         </tbody>
       </table>
 
+      <table class="table2" #tableElement>
+        <td class="clientTdSearch">
+          <div class="form-group">
+            <input
+              id="searchInput"
+              type="text"
+              class="form-control"
+              placeholder="Rechercher un utilisateur"
+              [(ngModel)]="searchTermClient"
+              (input)="filterClient()"
+            />
+          </div>
+        </td>
+        <td class="clientTdAdd" colspan="4" align="center">
+          <button (click)="openAddClientModal()" class="btn-add-client">
+            Ajouter client
+          </button>
+        </td>
+        <tr
+          class="liste-client"
+          *ngFor="let client of filterClientList"
+          style="border: none"
+          (click)="selectClient(client)"
+        >
+          <ng-container *ngIf="flag">
+            <td class="tdMail" id="" colspan="2">
+              {{ client.Client_Email }}
+              &nbsp; &nbsp; &nbsp;{{ client.Client_Name }} {{ client.Client_Last_Name }}   {{selectedClient}}
+            </td>
+          </ng-container>
+          <ng-container *ngIf="!flag">
+            <td id="" colspan="3">
+              {{ client.Client_Email }}
+            </td>
+            <td colspan="3">
+              {{ client.Client_Name }} {{ client.Client_Last_Name }}
+            </td>
+          </ng-container>
+        </tr>
+      </table>
     </div>
-    <button (click)="confirmerCommande()" class="btn btn-outline-success btn-confirm">
+    <button
+      (click)="confirmerCommande()"
+      class="btn btn-outline-success btn-confirm"
+    >
       Confirmer commande
     </button>
-    <div class="modal" [ngClass]="{'visible': modalVisible}">
+    <div class="modal" [ngClass]="{ visible: modalVisible }">
       <div class="modal-content">
-        <p class="msg-valid">Êtes-vous sûr(e) de vouloir confirmer votre commande ?</p>
+        <p class="msg-valid">
+          Êtes-vous sûr(e) de vouloir confirmer votre commande ?
+        </p>
         <div class="button">
-        <button class="btn-annuler" (click)="annuler()">Annuler</button>
-        <button class="btn-confirmer" (click)="confirmer()">Confirmer</button>
-      </div>
+          <button class="btn-annuler" (click)="annuler()">Annuler</button>
+          <button class="btn-confirmer" (click)="confirmer()">Confirmer</button>
+        </div>
       </div>
     </div>
   </div>

@@ -5,6 +5,11 @@
       title="Vente"
       urlImage="assets/vente.png"
     ></app-card-page-vente>
+    <app-card-page-vente
+      (click)="goToHisto()"
+      title="Historique"
+      urlImage="assets/history.png"
+    ></app-card-page-vente>
   </div>
   <div class="container-cards">
     <app-card-page
@@ -32,9 +37,10 @@
       urlImage="assets/user-edit.svg"
     ></app-card-page>
     <app-card-page
-      (click)="goToHisto()"
-      title="Historique"
-      urlImage="assets/history.png"
+      *ngIf="roleId == '3'"
+      (click)="goToSetting()"
+      title="Paramètres"
+      urlImage="assets/setting.svg"
     ></app-card-page>
   </div>
 </div>

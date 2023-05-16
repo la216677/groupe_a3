@@ -1,0 +1,113 @@
+<div class="containeur">
+  <h2>Modifier les informations de l'entreprise</h2>
+
+  <div class="form-containeur">
+    <form
+      class=""
+      (ngSubmit)="submitForm()"
+      *ngFor="let society of societyData"
+    >
+      <div class="contain-left-right">
+        <div class="left">
+          <div>
+            <label for="name">Nom:</label>
+            <input
+              type="text"
+              id="name"
+              [(ngModel)]="society.name"
+              name="name"
+              required
+            />
+          </div>
+          <div>
+            <label for="address">Adresse:</label>
+            <input
+              type="text"
+              id="address"
+              [(ngModel)]="society.address"
+              name="address"
+              required
+            />
+          </div>
+          <div>
+            <label for="city">Ville:</label>
+            <input
+              type="text"
+              id="city"
+              [(ngModel)]="society.city"
+              name="city"
+              required
+            />
+          </div>
+          <div>
+            <label for="postal_code">Code postal:</label>
+            <input
+              type="text"
+              id="postal_code"
+              [(ngModel)]="society.postal_code"
+              name="postal_code"
+              required
+            />
+          </div>
+          <div>
+            <label for="country">Pays:</label>
+            <input
+              type="text"
+              id="country"
+              [(ngModel)]="society.country"
+              name="country"
+              required
+            />
+          </div>
+        </div>
+        <div class="right">
+          <div>
+            <label for="phone_number">Téléphone:</label>
+            <input
+              type="tel"
+              id="phone_number"
+              [(ngModel)]="society.phone_number"
+              name="phone_number"
+              required
+            />
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              [(ngModel)]="society.email"
+              name="email"
+              required
+            />
+          </div>
+          <div>
+            <label for="website">Site Web:</label>
+            <input
+              type="url"
+              id="website"
+              [(ngModel)]="society.website"
+              name="website"
+              required
+            />
+          </div>
+          <div>
+            <label for="vat_number">TVA:</label>
+            <input
+              type="text"
+              id="vat_number"
+              [(ngModel)]="society.vat_number"
+              name="vat_number"
+              required
+            />
+          </div>
+          <div class="blanc">
+
+          </div>
+        </div>
+      </div>
+      <div class="button"><button type="submit">Enregistrer les modifications</button></div>
+    </form>
+  </div>
+
+</div>

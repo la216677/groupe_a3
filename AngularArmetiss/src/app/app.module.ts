@@ -29,6 +29,7 @@ import { CardPageVenteComponent } from './card-page-vente/card-page-vente.compon
 import { addClientModalComponent } from './gestion-client/addClientModal/addClientModal.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DatePipe } from '@angular/common';
+import { SettingComponent } from './setting/setting.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { DatePipe } from '@angular/common';
     ConfirmDeleteComponent,
     ListClientComponent,
     EditClientComponent,
-    addClientModalComponent
+    addClientModalComponent,
+    SettingComponent
 
   ],
   imports: [

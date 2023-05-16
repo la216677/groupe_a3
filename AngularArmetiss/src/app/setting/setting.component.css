@@ -1,0 +1,135 @@
+/* Style pour le conteneur principal */
+
+
+.containeur {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width: 100%;
+  height: 88vh;
+  background-color: #f5f5f5;
+
+}
+
+h2{
+  color: #232b42;
+  font-size: 2.0em;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.form-containeur{
+  min-width: 60%;
+  height: 65vh;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.433);
+  border: 1px solid #232b42;
+}
+
+form{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.contain-left-right{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 70%;
+}
+
+.left{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 40%;
+}
+
+.left div{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.right{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 40%;
+}
+
+.right div{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.blanc{
+  width: 363px;
+  height: 27.2px;
+}
+
+
+.button{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button button{
+  width: 30%;
+  height: 50%;
+  background-color: rgb(18, 101, 18);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.button button:hover{
+  background-color: rgb(15, 129, 15);
+
+}
+
+input{
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid #1e65a2;
+  outline: none;
+  color: #1e65a2;
+}
+
+label{
+  color: #232b42;
+  font-size: 1.2em;
+  font-weight: 400;
+}

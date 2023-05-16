@@ -19,8 +19,10 @@ import { ConfirmDeleteComponent } from './gestion-client/confirm-delete/confirm-
 import { ListClientComponent } from './gestion-client/list-client/list-client.component';
 import { EditClientComponent } from './gestion-client/edit-client/edit-client.component';
 import { TicketComponent } from './gestion-ventes/ticket/ticket.component';
+import { SettingComponent } from './setting/setting.component';
 
 const routes: Routes = [
+  { path: 'settings', component: SettingComponent, canActivate: [AuthentificattionGuard] },
   { path: 'ventes', component: VentesComponent, canActivate: [AuthentificattionGuard] },
   { path: 'ventes/confirm/:id/:idclient', component: ConfirmCommandeComponent, canActivate: [AuthentificattionGuard] },
   { path: 'historique', component: HistoSaleComponent, canActivate: [AuthentificattionGuard] },

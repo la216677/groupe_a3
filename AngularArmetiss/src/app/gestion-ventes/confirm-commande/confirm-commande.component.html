@@ -10,6 +10,7 @@
           <th>Produit</th>
           <th>Quantité</th>
           <th>Prix</th>
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>
@@ -19,17 +20,17 @@
           <td>{{ saleProduct.Product_Name }}</td>
           <td>{{ saleProduct.Quantity }}</td>
           <td>{{ saleProduct.Sale_Price }}€</td>
+          <td>{{ saleProduct.Quantity*saleProduct.Sale_Price | number:'1.2-2' }}€</td>
         </tr>
         <tr>
-          <td colspan="4"><b>Total</b></td>
+          <td colspan="5"><b>Total</b></td>
           <td>{{ totalCommande }}€</td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="btn-group" role="group" aria-label="Basic outlined example">
-    <button (click)="openPDF()" type="button" class="btn btn-outline-primary">Imprimer une facture</button>
-    <button type="button" class="btn btn-outline-primary">Imprimer un ticket</button>
+    <button *ngIf="idClientInt != -1" (click)="goToFacture()" type="button" class="btn btn-outline-primary">Imprimer une facture</button>
     <button (click)="goToVentes()" type="button" class="btn btn-outline-primary">Retour a la vente</button>
     <button (click)="goToAccueil()" type="button" class="btn btn-outline-primary">Retour a l'accueil</button>
   </div>

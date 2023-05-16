@@ -5,13 +5,15 @@ import { VentesComponent } from './ventes/ventes.component';
 import { FormsModule } from '@angular/forms';
 import { ConfirmCommandeComponent } from './confirm-commande/confirm-commande.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { TicketComponent } from './ticket/ticket.component';
 
 
 @NgModule({
   declarations: [
     ListProductComponent,
     VentesComponent,
-    ConfirmCommandeComponent
+    ConfirmCommandeComponent,
+    TicketComponent
   ],
   imports: [
     CommonModule,

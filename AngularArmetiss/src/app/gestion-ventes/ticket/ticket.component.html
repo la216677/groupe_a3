@@ -1,0 +1,64 @@
+<div class="containeur">
+  <div class="ticket" *ngFor="let info of infoSociete">
+    <div class="title"><h1>FACTURE</h1></div>
+
+    <div class="containeur-info">
+      <div class="left">
+        <div class="info-society">
+          <p>{{ info.name }}</p>
+          <p>{{ info.address }}</p>
+          <p>{{ info.postal_code }} {{ info.city }}, {{ info.country }}</p>
+          <p>{{ info.phone_number }}</p>
+          <p>{{ info.email }}</p>
+          <p>{{ info.website }}</p>
+          <p>{{ info.vat_number }}</p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="info-client">
+          <p>{{ client.Client_Name }} {{ client.Client_Last_Name }}</p>
+          <p>{{ client.Client_Adresse }}</p>
+          <p>{{ client.Client_NumTel }}</p>
+          <p>{{ client.Client_Email }}</p>
+        </div>
+        <div class="info-facture">
+          <p>Date et heure : {{ formatDate(currentDate) }}</p>
+          <p>ID vente : {{ saleId }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="table">
+      <table>
+        <tr>
+          <th>Article</th>
+          <th>Quantité</th>
+          <th>Prix unitaire</th>
+          <th>Total</th>
+        </tr>
+        <tr *ngFor="let product of saleProductList">
+          <td>{{ product.Product_Name }}</td>
+          <td>{{ product.Quantity }}</td>
+          <td>{{ product.Sale_Price }} €</td>
+          <td>{{ product.Quantity*product.Sale_Price | number:'1.2-2'  }} €</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="total-row">Total :</td>
+          <td>{{ sale }} €</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="info">
+      <p>Informations supplémentaires :</p>
+      <p>
+        Adresse : {{ info.address }}, {{ info.postal_code }} {{ info.country }}
+      </p>
+      <p>Contact : {{ info.phone_number }} | {{ info.email }}</p>
+      <p>Merci et à bientot</p>
+    </div>
+  </div>
+  <div class="button">
+    <button class="boutton" (click)="printTicket()">Imprimer</button>
+  </div>
+</div>

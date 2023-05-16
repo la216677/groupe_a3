@@ -31,7 +31,7 @@ export class ListProductComponent implements OnInit{
   selectedCategory: number = 0 ; // Catégorie sélectionnée dans le menu déroulant
   searchTermClient: string; // Terme de recherche
   searchTerm: string; // Terme de recherche
-  selectedClient: any;
+  idClient: string;
 
   modalRef: BsModalRef;
 
@@ -77,8 +77,8 @@ export class ListProductComponent implements OnInit{
     }
 
     selectClient(client: any) {
-      this.selectedClient = client.ID_Client;
-      console.log(this.selectedClient);
+      this.idClient = client.ID_Client;
+      console.log(this.idClient);
       this.searchTermClient = client.Client_Name + ' ' + client.Client_Last_Name;
       this.scrollToTop();
     }
@@ -95,7 +95,7 @@ export class ListProductComponent implements OnInit{
     }
 
     confirmer() {
-    let client= this.selectedClient;
+    let client= this.idClient;
     let clientId = client;
     let clientData: Client|null;
     let panier: Panier;
@@ -133,7 +133,11 @@ export class ListProductComponent implements OnInit{
       })
       .then(data => {
         const lastId: number = data;
-        this.router.navigate(['/ventes/confirm',lastId]);
+        console.log(this.idClient);
+        if(this.idClient == undefined){
+            this.idClient = "-1";
+          }
+        this.router.navigate(['/ventes/confirm',lastId,this.idClient]);
       })
       .catch(error => {
         console.log(error);
@@ -255,7 +259,7 @@ export class ListProductComponent implements OnInit{
 
   postBasket(){
 
-    let client= this.selectedClient;
+    let client= this.idClient;
     let clientId = client;
     let clientData: Client|null;
     let panier: Panier;

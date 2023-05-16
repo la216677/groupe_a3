@@ -99,7 +99,18 @@
         <tbody>
           <tr *ngFor="let product of baskets">
             <th scope="row">{{ product[0].Product_Name }}</th>
-            <td>{{ product[1] }}</td>
+            <td><button (click)="addBasket(product[0])"
+              type="button"
+                class="btnclose"
+                aria-label="Close">
+                +
+              </button>{{ product[1] }}<button (click)="diminuerProduit(product[0])"
+              type="button"
+                class="btnclose"
+                aria-label="Close">
+                -
+              </button></td>
+
             <td>{{ product[0].Product_Sale_Price_TVAC }}</td>
             <td>
               <button

@@ -316,4 +316,18 @@ export class ListProductComponent implements OnInit{
     }
   }
 
+  diminuerProduit(productToRemove:Product){
+    const index = this.baskets.findIndex(([product, quantity]) => product === productToRemove)
+    if(index !== -1){
+      this.baskets[index][1]--;
+      productToRemove.Product_Quantity++;
+      this.totalPrice-=productToRemove.Product_Sale_Price_TVAC;
+      this.totalPriceRounded=this.totalPrice.toFixed(2);
+      if(this.baskets[index][1]===0){
+        this.baskets.splice(index,1);
+      }
+    }
+  }
+
+
 }

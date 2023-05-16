@@ -55,8 +55,9 @@ export class ListProductComponent implements OnInit{
 
 
     filterClient() {
-      this.flag = true;
+
       if (this.searchTermClient) {
+        this.flag = true;
         // Si un terme de recherche est saisi
         this.filterClientList = this.clientList.filter(
           client => client.Client_Name.toLowerCase().replace(/ /, "-").includes(this.searchTermClient.toLowerCase().replace(/ /, "-")) // replace(/ /, "-") remplace les tirer par des espaces
@@ -65,6 +66,7 @@ export class ListProductComponent implements OnInit{
 
           ); // Filtrer les produits par terme de recherche avec correspondance insensible à la casse et aux espaces
       } else {
+        this.flag = false;
         this.filterClientList = this.clientList; // Si aucun terme de recherche n'est saisi, afficher tous les produits
       }
     }

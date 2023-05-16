@@ -116,40 +116,36 @@
             <td scope="row" colspan="3">Total :</td>
             <td id="total">{{ totalPriceRounded }}€</td>
           </tr>
-          <tr>
-
-          </tr>
+          <tr></tr>
         </tbody>
       </table>
-
-      <table class="table2" #tableElement>
-        <td class="clientTdSearch">
-          <div class="form-group">
-            <input
-              id="searchInput"
-              type="text"
-              class="form-control"
-              placeholder="Rechercher un utilisateur"
-              [(ngModel)]="searchTermClient"
-              (input)="filterClient()"
-            />
-          </div>
-        </td>
-        <td class="clientTdAdd" colspan="4" align="center">
-          <button (click)="openAddClientModal()" class="btn-add-client">
-            Ajouter client
-          </button>
-        </td>
+      <div class="client-containeur">
+        <div class="form-group">
+          <input
+            id="searchInput"
+            type="text"
+            class="form-control"
+            placeholder="Rechercher un client..."
+            [(ngModel)]="searchTermClient"
+            (input)="filterClient()"
+          />
+        </div>
+        <button (click)="openAddClientModal()" class="btn-add-client">
+          Ajouter client
+        </button>
+      </div>
+      <table *ngIf="flag" class="table2" #tableElement>
         <tr
           class="liste-client"
           *ngFor="let client of filterClientList"
           style="border: none"
           (click)="selectClient(client)"
         >
-          <ng-container *ngIf="flag">
+          <ng-container >
             <td class="tdMail" id="" colspan="2">
               {{ client.Client_Email }}
-              &nbsp; &nbsp; &nbsp;{{ client.Client_Name }} {{ client.Client_Last_Name }}   {{selectedClient}}
+              &nbsp; &nbsp; &nbsp;{{ client.Client_Name }}
+              {{ client.Client_Last_Name }} {{ selectedClient }}
             </td>
           </ng-container>
           <ng-container *ngIf="!flag">

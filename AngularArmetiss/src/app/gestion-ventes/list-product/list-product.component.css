@@ -340,3 +340,17 @@ margin-bottom: 50px;
 vertical-align: middle
 }
 
+.circle-border{
+  border-radius: 50%;
+  border: 1px solid #232b42;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #232b42;
+  color: #fff;
+}

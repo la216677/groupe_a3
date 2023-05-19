@@ -45,8 +45,6 @@ export class ListProductComponent implements OnInit{
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
   });
-
-  this.gestionStockService.updateProductQuantity(this.id).subscribe();
 }
 
   getProducts(){

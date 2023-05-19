@@ -1,9 +1,6 @@
 <?php
 
 require_once('../database.php');
-require_once('../manager/UserManager.php');
-
-$userManager = new UserManager($pdo);
 
 $sql = " SELECT SUM(Stock_Quantity)FROM Stock WHERE Id_Product = :idProduct";
 $sql2 = " SELECT SUM(Quantity)FROM Sale_Product WHERE Id_Product = :idProduct";

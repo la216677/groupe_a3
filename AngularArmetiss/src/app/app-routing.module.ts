@@ -20,8 +20,10 @@ import { ListClientComponent } from './gestion-client/list-client/list-client.co
 import { EditClientComponent } from './gestion-client/edit-client/edit-client.component';
 import { TicketComponent } from './gestion-ventes/ticket/ticket.component';
 import { SettingComponent } from './setting/setting.component';
+import { AllGestionComponent } from './all-gestion/all-gestion.component';
 
 const routes: Routes = [
+  { path: 'gestion', component: AllGestionComponent, canActivate: [AuthentificattionGuard] },
   { path: 'settings', component: SettingComponent, canActivate: [AuthentificattionGuard] },
   { path: 'ventes', component: VentesComponent, canActivate: [AuthentificattionGuard] },
   { path: 'ventes/confirm/:id/:idclient', component: ConfirmCommandeComponent, canActivate: [AuthentificattionGuard] },

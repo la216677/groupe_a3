@@ -5,41 +5,23 @@
       title="Vente"
       urlImage="assets/vente.png"
     ></app-card-page-vente>
-    <app-card-page-vente
-      (click)="goToHisto()"
-      title="Historique"
-      urlImage="assets/history.png"
-    ></app-card-page-vente>
   </div>
   <div class="container-cards">
     <app-card-page
-      (click)="goToProduct()"
-      title="Gestion produit"
-      urlImage="assets/bottle.png"
+      (click)="goToGestion()"
+      title="Gestion"
+      urlImage="assets/setting-3-svgrepo-com.svg"
       *ngIf="roleId == '3' || roleId == '2'"
     ></app-card-page>
     <app-card-page
-      *ngIf="roleId == '3' || roleId == '2'"
-      title="Gestion du stock"
-      urlImage="assets/stock.png"
-      (click)="goToStock()"
-    ></app-card-page>
-    <app-card-page
-      *ngIf="roleId == '3'"
-      title="Gestion utilisateur"
-      urlImage="assets/user-plus-svgrepo-com.svg"
-      (click)="goToUser()"
-    ></app-card-page>
-    <app-card-page
-      *ngIf="roleId == '3'"
-      (click)="goToClient()"
-      title="Gestion client"
-      urlImage="assets/user-edit.svg"
-    ></app-card-page>
+    (click)="goToHisto()"
+    title="Historique"
+    urlImage="assets/history.png"
+  ></app-card-page>
     <app-card-page
       *ngIf="roleId == '3'"
       (click)="goToSetting()"
-      title="Paramètres"
+      title="Paramètre"
       urlImage="assets/setting.svg"
     ></app-card-page>
   </div>

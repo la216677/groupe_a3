@@ -1,0 +1,28 @@
+<div class="containeur">
+  <div class="container-cards">
+    <app-card-page
+      (click)="goToProduct()"
+      title="Gestion produit"
+      urlImage="assets/bottle.png"
+      *ngIf="roleId == '3' || roleId == '2'"
+    ></app-card-page>
+    <app-card-page
+      *ngIf="roleId == '3' || roleId == '2'"
+      title="Gestion du stock"
+      urlImage="assets/stock.png"
+      (click)="goToStock()"
+    ></app-card-page>
+    <app-card-page
+      *ngIf="roleId == '3'"
+      title="Gestion utilisateur"
+      urlImage="assets/user-plus-svgrepo-com.svg"
+      (click)="goToUser()"
+    ></app-card-page>
+    <app-card-page
+      *ngIf="roleId == '3'"
+      (click)="goToClient()"
+      title="Gestion client"
+      urlImage="assets/user-edit.svg"
+    ></app-card-page>
+  </div>
+</div>

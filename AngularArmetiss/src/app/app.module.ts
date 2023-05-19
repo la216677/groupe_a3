@@ -30,6 +30,7 @@ import { addClientModalComponent } from './gestion-client/addClientModal/addClie
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DatePipe } from '@angular/common';
 import { SettingComponent } from './setting/setting.component';
+import { AllGestionComponent } from './all-gestion/all-gestion.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { SettingComponent } from './setting/setting.component';
     ListClientComponent,
     EditClientComponent,
     addClientModalComponent,
-    SettingComponent
+    SettingComponent,
+    AllGestionComponent
 
   ],
   imports: [

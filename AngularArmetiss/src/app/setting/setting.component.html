@@ -15,9 +15,17 @@
               type="text"
               id="name"
               [(ngModel)]="society.name"
-              name="name"
               required
+              pattern="^[a-zA-ZÀ-ÿ\- ']*$"
+              name="name"
+              #name="ngModel"
             />
+            <div class="error" [hidden]="!name || name.valid || name.pristine">
+              <span *ngIf="name.errors?.['required']">Le nom est requis.</span>
+              <span *ngIf="name.errors?.['pattern']"
+                >Le nom ne peut pas contenir de chiffres ou de caractères.</span
+              >
+            </div>
           </div>
           <div>
             <label for="address">Adresse:</label>
@@ -27,7 +35,20 @@
               [(ngModel)]="society.address"
               name="address"
               required
+              pattern="^([^\d]+)\s+(\d+)([^\d]*)$"
+              #address="ngModel"
             />
+            <div
+            class="error"
+            [hidden]="!address || address.valid || address.pristine"
+          >
+            <span *ngIf="address.errors?.['required']"
+              >L'adresse est requise'</span
+            >
+            <span *ngIf="address.errors?.['pattern']"
+            >L'adresse n'est pas valide.</span
+          >
+          </div>
           </div>
           <div>
             <label for="city">Ville:</label>
@@ -47,7 +68,20 @@
               [(ngModel)]="society.postal_code"
               name="postal_code"
               required
+              pattern="^[0-9]{4}$"
+              #postal_code="ngModel"
             />
+            <div
+            class="error"
+            [hidden]="!postal_code || postal_code.valid || postal_code.pristine"
+          >
+            <span *ngIf="postal_code.errors?.['required']"
+              >Le code postal est requis.</span
+            >
+            <span *ngIf="postal_code.errors?.['pattern']"
+              >Le code postal n'est pas valide.</span
+            >
+            </div>
           </div>
           <div>
             <label for="country">Pays:</label>
@@ -57,6 +91,7 @@
               [(ngModel)]="society.country"
               name="country"
               required
+
             />
           </div>
         </div>
@@ -69,7 +104,20 @@
               [(ngModel)]="society.phone_number"
               name="phone_number"
               required
+              pattern="^[0-9]{10}$"
+              #phone_number="ngModel"
             />
+            <div
+            class="error"
+            [hidden]="!phone_number || phone_number.valid || phone_number.pristine"
+          >
+            <span *ngIf="phone_number.errors?.['required']"
+              >Le numéro de téléphone est requis.</span
+            >
+            <span *ngIf="phone_number.errors?.['pattern']"
+              >Le numéro de téléphone n'est pas valide.</span
+            >
+            </div>
           </div>
           <div>
             <label for="email">Email:</label>
@@ -79,7 +127,20 @@
               [(ngModel)]="society.email"
               name="email"
               required
+              pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              #email="ngModel"
             />
+            <div
+            class="error"
+            [hidden]="!email || email.valid || email.pristine"
+          >
+            <span *ngIf="email.errors?.['required']"
+              >L'email est requis.</span
+            >
+            <span *ngIf="email.errors?.['pattern']"
+              >L'email n'est pas valide.</span
+            >
+            </div>
           </div>
           <div>
             <label for="website">Site Web:</label>
@@ -89,7 +150,20 @@
               [(ngModel)]="society.website"
               name="website"
               required
+              pattern="^((http|https):\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$"
+              #website="ngModel"
             />
+            <div
+            class="error"
+            [hidden]="!website || website.valid || website.pristine"
+          >
+            <span *ngIf="website.errors?.['required']"
+              >Le site web est requis.</span
+            >
+            <span *ngIf="website.errors?.['pattern']"
+              >Le site web n'est pas valide.</span
+            >
+            </div>
           </div>
           <div>
             <label for="vat_number">TVA:</label>
@@ -99,15 +173,27 @@
               [(ngModel)]="society.vat_number"
               name="vat_number"
               required
+              pattern="^BE\d{10}$"
+              #vat_number="ngModel"
             />
+            <div
+            class="error"
+            [hidden]="!vat_number || vat_number.valid || vat_number.pristine"
+          >
+            <span *ngIf="vat_number.errors?.['required']"
+              >Le numéro de TVA est requis.</span
+            >
+            <span *ngIf="vat_number.errors?.['pattern']"
+              >Le numéro de TVA n'est pas valide.</span
+            >
+            </div>
           </div>
-          <div class="blanc">
-
-          </div>
+          <div class="blanc"></div>
         </div>
       </div>
-      <div class="button"><button type="submit">Enregistrer les modifications</button></div>
+      <div class="button">
+        <button type="submit">Enregistrer les modifications</button>
+      </div>
     </form>
   </div>
-
 </div>

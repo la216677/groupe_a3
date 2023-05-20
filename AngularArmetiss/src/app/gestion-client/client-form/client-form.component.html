@@ -1,6 +1,6 @@
 <div class="container">
-  <div *ngIf="isAddForm" class="title">Ajouter un utilisateur</div>
-  <div *ngIf="!isAddForm" class="title">Modifier un utilisateur</div>
+  <div *ngIf="isAddForm" class="title">Ajouter un client</div>
+  <div *ngIf="!isAddForm" class="title">Modifier un client</div>
   <div class="content">
     <form *ngIf="client" (ngSubmit)="onSubmit()" #clientForm="ngForm">
       <div class="user-details">

@@ -22,7 +22,7 @@ h2{
 
 .form-containeur{
   min-width: 60%;
-  height: 65vh;
+  height: 74vh;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.433);
@@ -55,7 +55,7 @@ form{
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  width: 40%;
+  width: 45%;
 }
 
 .left div{
@@ -74,7 +74,7 @@ form{
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  width: 40%;
+  width: 45%;
 }
 
 .right div{
@@ -94,7 +94,7 @@ form{
 
 .button{
   width: 100%;
-  height: 20%;
+  height: 6vh;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -103,9 +103,9 @@ form{
 }
 
 .button button{
-  width: 30%;
-  height: 50%;
-  background-color: rgb(18, 101, 18);
+  min-width: 35%;
+  min-height: 100%;
+  background-color: #232b42;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -116,15 +116,16 @@ form{
 
 
 .button button:hover{
-  background-color: rgb(15, 129, 15);
+  background-color: #34436e;
 
 }
 
 input{
   height: 30px;
-  border: none;
-  border-bottom: 1px solid #1e65a2;
-  outline: none;
+  width: 60%;
+  padding: 8px 16px;
+  border: 1px solid #d7d7d7;
+  border-radius: 5px;
   color: #1e65a2;
 }
 

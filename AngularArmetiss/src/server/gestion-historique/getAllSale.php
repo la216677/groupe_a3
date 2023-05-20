@@ -6,7 +6,6 @@ FROM Sale s
 LEFT JOIN Client c ON s.Id_Client = c.ID_Client
 LEFT JOIN Users u ON s.Id_User = u.Id_User
 ORDER BY s.Sale_Date DESC;
-
 ";
 
 $stmt = $pdo->prepare($sqlRequest);

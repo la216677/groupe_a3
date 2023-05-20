@@ -11,7 +11,13 @@
       (click)="goToGestion()"
       title="Gestion"
       urlImage="assets/setting-3-svgrepo-com.svg"
-      *ngIf="roleId == '3' || roleId == '2'"
+      *ngIf="roleId == '3'"
+    ></app-card-page>
+    <app-card-page
+      *ngIf="roleId == '2'"
+      title="Gestion du stock"
+      urlImage="assets/stock.png"
+      (click)="goToStock()"
     ></app-card-page>
     <app-card-page
     (click)="goToHisto()"

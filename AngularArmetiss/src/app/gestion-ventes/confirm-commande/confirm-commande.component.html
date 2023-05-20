@@ -30,7 +30,8 @@
     </table>
   </div>
   <div class="btn-group" role="group" aria-label="Basic outlined example">
-    <button *ngIf="idClientInt != -1" (click)="goToFacture()" type="button" class="btn btn-outline-primary">Imprimer une facture</button>
+    <button *ngIf="idClientInt != -1" (click)="goToFacture()" type="button" class="btn btn-outline-primary">Imprimer une facture nominative</button>
+    <button *ngIf="idClientInt == -1" (click)="goToFacture()" type="button" class="btn btn-outline-primary">Imprimer une facture divers</button>
     <button (click)="goToVentes()" type="button" class="btn btn-outline-primary">Retour a la vente</button>
     <button (click)="goToAccueil()" type="button" class="btn btn-outline-primary">Retour a l'accueil</button>
   </div>

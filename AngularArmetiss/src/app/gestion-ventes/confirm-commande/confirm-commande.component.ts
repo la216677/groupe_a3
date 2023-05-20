@@ -37,31 +37,6 @@ export class ConfirmCommandeComponent implements OnInit{
     this.getTotalCommande();
   }
 
-  public openPDF(): void {
-    // let DATA: any = document.getElementById('htmlData');
-    // DATA.style.fontSize = '30px';
-    // html2canvas(DATA).then((canvas) => {
-    //   let fileWidth = 190;
-    //   let fileHeight = (canvas.height * fileWidth) / canvas.width;
-    //   const FILEURI = canvas.toDataURL('image/png');
-    //   let PDF = new jsPDF('p', 'mm', 'a4');
-    //   PDF.text('Armetiss',5,10);
-    //   PDF.text('TVA : 0454871210',5,15);
-    //   PDF.text('Facture n°' ,5,20);
-    //   PDF.text('Commande n°'+this.saleId,5,25);
-    //   PDF.text('Date : '+new Date().toLocaleDateString(),5,30);
-    //   PDF.text('Client : ',160,10);
-    //   PDF.text('Adresse : ',160,15);
-    //   PDF.text('Téléphone : ',160,20);
-    //   PDF.text('Email : ',160,25);
-
-    //   PDF.addImage(FILEURI, 'PNG', 9, 60, fileWidth, fileHeight);
-    //   PDF.addImage('../../../assets/Logo_ARMETISS-blue.png', 'PNG', 80, 5, 50, 25);
-    //   PDF.save('angular-demo.pdf');
-    // });
-    // DATA.style.fontSize = '21px';
-  }
-
   goToVentes(){
     this.router.navigate(['/ventes']);
   }

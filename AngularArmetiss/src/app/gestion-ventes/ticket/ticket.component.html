@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="right">
-        <div class="info-client">
+        <div class="info-client" *ngIf="idClient >0">
           <p>{{ client.Client_Name }} {{ client.Client_Last_Name }}</p>
           <p>{{ client.Client_Adresse }}</p>
           <p>{{ client.Client_NumTel }}</p>

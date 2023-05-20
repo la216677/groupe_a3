@@ -118,7 +118,7 @@ export class TicketComponent implements OnInit {
   }
 
   getClientById() {
-    if (this.idClient != 0) {
+    if (this.idClient > 0) {
       this.clientService.getClientById(this.idClient).subscribe((data: any) => {
         this.client = data as Client;
         this.client.Client_Email = this.client.Client_Email;

@@ -81,6 +81,7 @@ export class ListProductComponent implements OnInit{
       console.log(this.idClient);
       this.searchTermClient = client.Client_Name + ' ' + client.Client_Last_Name;
       this.scrollToTop();
+      this.flag = false;
     }
 
     confirmerCommande() {

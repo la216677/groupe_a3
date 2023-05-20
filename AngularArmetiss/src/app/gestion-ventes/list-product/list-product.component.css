@@ -305,16 +305,30 @@ button {
 .clientTdSearch{
   padding: 4px 40px 4px 4px ;
 }
+.table2 tr{
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 5vh;
+}
 
 .tdMail{
-  padding-left: 10px;
-  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #fff;
   border: 1px solid #232b42;
   border-right: none;
   border-left: none;
   border-top: none;
-  width: 400px;
+  width: 100%;
+  height: 100%;
+}
+
+.tdMail div{
+  margin: 0 10px;
 }
 
 .tdMail:hover{

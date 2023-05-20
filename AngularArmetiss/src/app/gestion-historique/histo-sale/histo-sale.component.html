@@ -20,13 +20,13 @@
       </thead>
       <tbody>
         <tr *ngFor="let sale of saleList | paginate: {id: 'listing_pagination', itemsPerPage: 10, currentPage: page,totalItems: totalRecords}" (click)="goToDetailSale(sale)">
-          <td></td>
-          <td>{{ sale.Id_Sale }}</td>
-          <td *ngIf="sale.Id_Client">{{ sale.Client_Name }} {{ sale.Client_Last_Name }} ({{ sale.Id_Client }})</td>
-          <td *ngIf="!sale.Id_Client"></td>
-          <td>{{ sale.User_Last_Name}} {{ sale.User_First_Name }} ({{ sale.Id_User }})</td>
-          <td>{{ sale.Sale_Date }}</td>
-          <td>{{ sale.Sale_Price }}€</td>
+            <td></td>
+            <td><span>{{ sale.Id_Sale }}</span></td>
+            <td *ngIf="sale.Id_Client"><span>{{ sale.Client_Name }} {{ sale.Client_Last_Name }}</span> ({{ sale.Client_Email }})</td>
+            <td *ngIf="!sale.Id_Client"></td>
+            <td><span>{{ sale.User_Last_Name}} {{ sale.User_First_Name }}</span> ({{ sale.User_Email_Address }})</td>
+            <td><span>{{ sale.Sale_Date }}</span></td>
+            <td><span>{{ sale.Sale_Price }}€</span></td>
         </tr>
       </tbody>
     </table>

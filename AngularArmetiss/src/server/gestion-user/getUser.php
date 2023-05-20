@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 include_once('../database.php');
 
 $users = [];
-$sql = "SELECT * FROM Users";
+$sql = "SELECT * FROM Users WHERE User_Delete = FALSE";
 
 try{
   $stmt=$pdo->query($sql);

@@ -10,6 +10,30 @@ class UserManager
     $this->db = $db;
   }
 
+  public function getDeleteUser($user)
+  {
+    $sql = "SELECT User_Delete from Users where User_Email_Address=:login";
+    try {
+      $select = $this->db->prepare($sql);
+      $params = array(
+        'login' => $user
+      );
+      $select->execute($params);
+      $delete = $select->fetch(PDO::FETCH_ASSOC);
+      if ($delete) {
+        $result = $delete['User_Delete'];
+      }
+      else{
+        $result = false;
+      }
+    } catch (PDOException $e) {
+      die($e);
+    } finally {
+      $select->closeCursor();
+    }
+    return $result;
+  }
+
   public function getUser($user, $password)
   {
     $sql = "SELECT * from Users where User_Email_Address=:login";

@@ -3,7 +3,7 @@
 include_once('../database.php');
 
 $users = [];
-$sql = "SELECT * FROM Client";
+$sql = "SELECT * FROM Client WHERE Client_Delete = FALSE";
 
 try{
   $stmt=$pdo->query($sql);

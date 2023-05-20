@@ -6,7 +6,7 @@ if(isset($_GET['clientId'])){
     $clientId = $_GET['clientId'];
 
     try{
-        $sql = "DELETE FROM Client WHERE ID_Client = :clientId";
+        $sql = "UPDATE Client SET Client_Delete = TRUE WHERE ID_Client = :clientId";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":clientId",$clientId,PDO::PARAM_INT);
 

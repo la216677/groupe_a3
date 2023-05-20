@@ -18,14 +18,14 @@ if(isset($postdata) && !empty($postdata)){
   $id_TVA = trim($request->Id_TVA);
   $id_Category = trim($request->Id_Category);
 
-  $sql = "UPDATE Product SET 
-            Product_Name = :product_Name, 
-            Product_Sale_Price_HTVA = :product_Sale_Price_HTVA, 
-            Product_Sale_Price_TVAC = :product_Sale_Price_TVAC, 
-            Product_Description = :product_Description, 
-            Product_Image_URL = :product_Image_URL, 
-            Product_Visibility = :product_Visibility, 
-            Id_TVA = :id_TVA, 
+  $sql = "UPDATE Product SET
+            Product_Name = :product_Name,
+            Product_Sale_Price_HTVA = :product_Sale_Price_HTVA,
+            Product_Sale_Price_TVAC = :product_Sale_Price_TVAC,
+            Product_Description = :product_Description,
+            Product_Image_URL = :product_Image_URL,
+            Product_Visibility = :product_Visibility,
+            Id_TVA = :id_TVA,
             Id_Category = :id_Category
           WHERE Id_Product = :product_ID";
 
@@ -41,7 +41,7 @@ if(isset($postdata) && !empty($postdata)){
   $stmt->bindParam(':id_Category', $id_Category);
   $stmt->bindParam(':product_ID', $product_ID);
 
-  
+
   if ($stmt->execute()) {
     $data = array('message' => 'success');
     echo json_encode($data);

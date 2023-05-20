@@ -9,23 +9,17 @@ if(isset($postdata) && !empty($postdata)){
   // Extraire les données
   $request = json_decode($postdata);
 
-  echo json_encode($request);
   $product_Name = trim($request->Product_Name);
   $product_Sale_Price_TVAC = trim($request->Product_Sale_Price_TVAC);
   $id_TVA = trim($request->Id_TVA);
 
   $tva_rateFloat = 0.0;
-  $sql = "SELECT TVA_Rate from TVA where ID_TVA = :id";
-  $stmt = $pdo->prepare($sql);
+  $stmt = $pdo->prepare("SELECT TVA_Rate FROM TVA WHERE ID_TVA = :id");
   $stmt->bindParam(':id', $id_TVA);
-  if($stmt->execute()){
-    $tva = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    foreach($tva as $tva)
-    {
-      $tva_rate = $tva['TVA_Rate'];
-      $tva_rateFloat = floatval($tva_rate);
-    }
-
+  $stmt->execute();
+  $tva_rate = $stmt->fetchColumn();
+  if ($tva_rate !== false) {
+    $tva_rateFloat = floatval($tva_rate);
   }
 
   $product_Sale_Price_HTVA = trim($product_Sale_Price_TVAC / (1+$tva_rateFloat));
@@ -39,11 +33,11 @@ if(isset($postdata) && !empty($postdata)){
   if (!empty($product_Image_URL)) {
     $product_Image_URL = "$product_Image_URL"; // Encadrer la valeur avec des quotes simples
   } else {
-    $product_Image_URL = "NULL"; // Définir la valeur comme NULL si elle est nulle ou vide
+    $product_Image_URL = null; // Définir la valeur comme NULL si elle est nulle ou vide
   }
 
   // Construire la requête SQL en excluant la colonne Product_Image_URL si elle est nulle ou vide
-  $sql = "INSERT INTO Product(Product_Name, Product_Sale_Price_HTVA, Product_Sale_Price_TVAC, Product_Description, Product_Quantity, Product_Visibility, Id_TVA, Id_Category,Product_Image_URL) VALUES (:product_Name, :product_Sale_Price_HTVA, :product_Sale_Price_TVAC, :product_Description, :product_Quantity, :product_Visibility, :id_TVA, :id_Category,:product_Image_URL)";
+  $sql = "INSERT INTO Product(Product_Name, Product_Sale_Price_HTVA, Product_Sale_Price_TVAC, Product_Description, Product_Quantity, Product_Visibility, Id_TVA, Id_Category, Product_Image_URL) VALUES (:product_Name, :product_Sale_Price_HTVA, :product_Sale_Price_TVAC, :product_Description, :product_Quantity, :product_Visibility, :id_TVA, :id_Category, :product_Image_URL)";
 
   // Préparer la requête PDO
   $stmt = $pdo->prepare($sql);
@@ -55,17 +49,14 @@ if(isset($postdata) && !empty($postdata)){
   $stmt->bindParam(':product_Visibility', $product_Visibility);
   $stmt->bindParam(':id_TVA', $id_TVA);
   $stmt->bindParam(':id_Category', $id_Category);
-
-  if($product_Image_URL != "NULL") {
-    $stmt->bindParam(':product_Image_URL', $product_Image_URL);
-  }
+  $stmt->bindParam(':product_Image_URL', $product_Image_URL, PDO::PARAM_NULL);
 
   if($stmt->execute()){
     $data = array('message' => 'success');
-    echo json_encode($data);
-  } else{
+  } else {
     $data = array('message' => 'failed');
-    echo json_encode($data);
   }
+
+  echo json_encode($data);
 }
 ?>

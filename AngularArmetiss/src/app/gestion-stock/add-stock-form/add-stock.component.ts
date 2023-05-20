@@ -42,7 +42,10 @@ export class AddStockComponent implements OnInit{
         this.boolAddStock = 1;
         console.log("success");
         this.UpdateProductQuantity();
-        this.goToListProduct();
+        setTimeout(() => {
+          this.goToListProduct();
+        }, 500);
+
       } else {
         this.boolAddStock = -1;
         console.log("error");

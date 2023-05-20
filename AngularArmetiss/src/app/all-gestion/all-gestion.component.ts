@@ -43,6 +43,10 @@ export class AllGestionComponent implements OnInit {
     this.router.navigate(['/settings']);
   }
 
+  goToCategorie(){
+    this.router.navigate(['/categories']);
+  }
+
 
   logout(){
     this.cookieService.delete('connected');

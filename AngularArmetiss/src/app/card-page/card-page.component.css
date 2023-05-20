@@ -3,15 +3,15 @@
     flex-direction: column;
     color: white;
     background-color: #232B42;
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     border-radius: 5%;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    margin: 20px 30px;
+    padding: 3%;
 }
 
 .card:hover {

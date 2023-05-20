@@ -7,6 +7,12 @@
       *ngIf="roleId == '3'"
     ></app-card-page>
     <app-card-page
+    (click)="goToCategorie()"
+    title="Gestion catégories"
+    urlImage="assets/category-svgrepo-com(1).svg"
+    *ngIf="roleId == '3'"
+  ></app-card-page>
+    <app-card-page
       *ngIf="roleId == '3' || roleId == '2'"
       title="Gestion du stock"
       urlImage="assets/stock.png"

@@ -27,7 +27,7 @@
     <div class="flex">
       <div class="card" *ngFor="let product of filteredProductList | paginate: {id: 'listing_pagination', itemsPerPage: 12, currentPage: page,totalItems: totalRecords}" (click)="goToHistory(product.Id_Product)" >
         <div class="img">
-          <img class="product_image" src='../../../assets/{{product.Product_Image_URL}}'>
+          <img class="product_image" src='assets/{{product.Product_Image_URL}}'>
         </div>
         <p class="center-text">{{product.Product_Name}}</p>
         <div class="bottom-stock">
